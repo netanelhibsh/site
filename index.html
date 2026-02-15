@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>נתנאל היבש | בהירות עסקית, מערכות אוטומטיות, AI</title>
+  <meta name="description" content="נתנאל היבש - ליווי עסקי, בניית מערכות אוטומטיות, קורס מאסטרמיינד דיגיטלי וקהילת אוטוטיוזדיי. כשמייצרים בהירות, דברים זזים במהירות.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    /* Almoni Font Faces */
+    @font-face {
+      font-family: 'Almoni';
+      src: url('fonts/almoni-light-aaa.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Almoni';
+      src: url('fonts/almoni-regular-aaa.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Almoni';
+      src: url('fonts/almoni-medium-aaa.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Almoni';
+      src: url('fonts/almoni-bold-aaa.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Almoni';
+      src: url('fonts/almoni-black-aaa.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-dark: #1e222c;
+      --bg-card: #262a36;
+      --bg-card-hover: #2d3242;
+      --gold: #e2b21f;
+      --magenta: #c20078;
+      --magenta-hover: #d6008a;
+      --teal: #5b959e;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a6b8;
+      --text-muted: #6b7280;
+      --font-body: 'Almoni', sans-serif;
+      --font-heading: 'Almoni', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Utility */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(30, 34, 44, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 32px;
+      width: auto;
+      transition: opacity 0.2s;
+    }
+
+    .nav-logo img:hover {
+      opacity: 0.85;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: var(--magenta);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--magenta-hover);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 6px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(194, 0, 120, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(226, 178, 31, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(226, 178, 31, 0.12);
+      border: 1px solid rgba(226, 178, 31, 0.25);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--magenta);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(194, 0, 120, 0.3);
+    }
+
+    .hero-cta:hover {
+      background: var(--magenta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 32px rgba(194, 0, 120, 0.4);
+    }
+
+    .hero-cta svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .hero-sub {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text .section-desc {
+      margin-bottom: 24px;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .about-highlight {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .about-highlight-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .about-highlight-icon.gold { background: rgba(226, 178, 31, 0.12); }
+    .about-highlight-icon.magenta { background: rgba(194, 0, 120, 0.12); }
+    .about-highlight-icon.teal { background: rgba(91, 149, 158, 0.12); }
+
+    .about-highlight p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .about-highlight strong {
+      color: var(--text-primary);
+    }
+
+    .about-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.3s;
+    }
+
+    .about-card:hover {
+      border-color: rgba(226, 178, 31, 0.2);
+    }
+
+    .about-card-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .about-card-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(226, 178, 31, 0.1) 0%, rgba(194, 0, 120, 0.1) 100%);
+      padding: 20px;
+      border: 1px solid rgba(226, 178, 31, 0.2);
+    }
+
+    .about-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+    }
+
+    .about-stats-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat-mini {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    .stat-mini:hover {
+      border-color: rgba(226, 178, 31, 0.2);
+    }
+
+    .stat-mini .stat-number {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .stat-mini .stat-label {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+
+    /* ===== OFFERS ===== */
+    .offers {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1e28 50%, var(--bg-dark) 100%);
+    }
+
+    .offers-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .offers-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .offer-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .offer-card.blueprint::before { background: var(--gold); }
+    .offer-card.mastermind::before { background: var(--magenta); }
+    .offer-card.autotuesday::before { background: var(--teal); }
+
+    .offer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .offer-card.blueprint:hover { border-color: rgba(226, 178, 31, 0.3); }
+    .offer-card.mastermind:hover { border-color: rgba(194, 0, 120, 0.3); }
+    .offer-card.autotuesday:hover { border-color: rgba(91, 149, 158, 0.3); }
+
+    .offer-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .blueprint .offer-icon { background: rgba(226, 178, 31, 0.12); }
+    .mastermind .offer-icon { background: rgba(194, 0, 120, 0.12); }
+    .autotuesday .offer-icon { background: rgba(91, 149, 158, 0.12); }
+
+    .offer-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .offer-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .blueprint .offer-tag {
+      background: rgba(226, 178, 31, 0.1);
+      color: var(--gold);
+    }
+
+    .mastermind .offer-tag {
+      background: rgba(194, 0, 120, 0.1);
+      color: #e84aad;
+    }
+
+    .autotuesday .offer-tag {
+      background: rgba(91, 149, 158, 0.1);
+      color: var(--teal);
+    }
+
+    .offer-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      flex-grow: 1;
+      line-height: 1.7;
+    }
+
+    .offer-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .offer-features li {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .offer-features li::before {
+      content: '✓';
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .blueprint .offer-features li::before { color: var(--gold); }
+    .mastermind .offer-features li::before { color: var(--magenta); }
+    .autotuesday .offer-features li::before { color: var(--teal); }
+
+    .offer-price {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .offer-price span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .offer-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .blueprint .offer-cta {
+      background: rgba(226, 178, 31, 0.12);
+      color: var(--gold);
+      border: 1px solid rgba(226, 178, 31, 0.25);
+    }
+    .blueprint .offer-cta:hover {
+      background: rgba(226, 178, 31, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .mastermind .offer-cta {
+      background: var(--magenta);
+      color: #fff;
+    }
+    .mastermind .offer-cta:hover {
+      background: var(--magenta-hover);
+      transform: translateY(-1px);
+    }
+
+    .autotuesday .offer-cta {
+      background: rgba(91, 149, 158, 0.12);
+      color: var(--teal);
+      border: 1px solid rgba(91, 149, 158, 0.25);
+    }
+    .autotuesday .offer-cta:hover {
+      background: rgba(91, 149, 158, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .offer-cta svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ===== SOCIAL PROOF ===== */
+    .proof {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .proof-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .proof-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .proof-stat {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .proof-stat:hover {
+      border-color: rgba(226, 178, 31, 0.2);
+    }
+
+    .proof-stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .proof-stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .proof-testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .testimonial-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-text::before {
+      content: '"';
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(226, 178, 31, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-role {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      text-align: center;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(194, 0, 120, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+
+    .final-cta .section-desc {
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .final-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--magenta);
+      color: #fff;
+      padding: 18px 42px;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(194, 0, 120, 0.3);
+    }
+
+    .final-cta-btn:hover {
+      background: var(--magenta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 32px rgba(194, 0, 120, 0.4);
+    }
+
+    .final-cta-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .final-cta-sub {
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .offers-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .proof-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .proof-testimonials {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-visual {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: rgba(30, 34, 44, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        z-index: 99;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+      }
+
+      .nav-toggle {
+        display: block;
+        z-index: 101;
+      }
+
+      .nav-toggle.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .proof-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .proof-stat {
+        padding: 24px 12px;
+      }
+
+      .proof-stat-number {
+        font-size: 2rem;
+      }
+
+      .about-visual {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo"><img src="logo.png" alt="נתנאל היבש"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">מי אני</a></li>
+        <li><a href="#offers">הצעות</a></li>
+        <li><a href="#proof">תוצאות</a></li>
+        <li><a href="https://wa.me/972504777411?text=היי מירי, הגעתי מהאתר ואשמח לשמוע עוד" class="nav-cta">בואו נדבר</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="תפריט">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content fade-up">
+      <div class="hero-badge">בהירות עסקית &bull; אוטומציה &bull; AI</div>
+      <h1>כשמייצרים <span class="highlight">בהירות</span>,<br>דברים זזים במהירות</h1>
+      <p>אני עוזר ליועצים, מומחים ובעלי עסקים לבנות מערכות אוטומטיות שעובדות בשבילם &mdash; כדי שהם יתפנו לעשות את מה שהם באמת טובים בו.</p>
+      <a href="https://wa.me/972504777411?text=היי מירי, הגעתי מהאתר ואשמח לשמוע עוד" class="hero-cta">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        דברו עם מירי בוואטסאפ
+      </a>
+      <p class="hero-sub">מירי, העוזרת הדיגיטלית שלי, תענה תוך דקות</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <span class="section-label">מי אני</span>
+          <h2 class="section-title">נתנאל היבש</h2>
+          <p class="section-desc">
+            יזם, בונה מערכות ואוטומציות, מלווה יועצים ומומחים בבניית תשתית דיגיטלית שמייצרת הכנסה חוזרת. מאמין שהדרך לצמיחה עוברת דרך בהירות &mdash; לא דרך עוד כלי.
+          </p>
+          <div class="about-highlights">
+            <div class="about-highlight">
+              <div class="about-highlight-icon gold">&#x1F4A1;</div>
+              <p><strong>בהירות לפני כלים</strong> &mdash; קודם מבינים מה צריך, אחר כך בונים</p>
+            </div>
+            <div class="about-highlight">
+              <div class="about-highlight-icon magenta">&#x2699;</div>
+              <p><strong>מערכות שעובדות לבד</strong> &mdash; אוטומציות, AI, תהליכים אוטונומיים</p>
+            </div>
+            <div class="about-highlight">
+              <div class="about-highlight-icon teal">&#x1F91D;</div>
+              <p><strong>ליווי, לא ייעוץ</strong> &mdash; בונה איתך, לא רק אומר לך מה לעשות</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual fade-up">
+          <div class="about-image-wrapper">
+            <img src="netanel-profile.png" alt="נתנאל היבש" class="about-image">
+          </div>
+          <div class="about-stats-mini">
+            <div class="stat-mini">
+              <span class="stat-number">6,000+</span>
+              <span class="stat-label">משתמשים ביומטוב</span>
+            </div>
+            <div class="stat-mini">
+              <span class="stat-number">2,000+</span>
+              <span class="stat-label">חברי אוטוטיוזדיי</span>
+            </div>
+            <div class="stat-mini">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">מערכות שנבנו</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="offers" id="offers">
+    <div class="container">
+      <div class="offers-header fade-up">
+        <span class="section-label">ההצעות שלי</span>
+        <h2 class="section-title">שלוש דרכים לעבוד איתי</h2>
+        <p class="section-desc">לא משנה באיזה שלב אתם &mdash; יש פתרון שמותאם לכם</p>
+      </div>
+      <div class="offers-grid">
+
+        <!-- Blueprint -->
+        <div class="offer-card blueprint fade-up">
+          <div class="offer-icon">&#x1F3D7;</div>
+          <h3>Blueprint</h3>
+          <span class="offer-tag">ליווי 1-on-1</span>
+          <p class="offer-desc">ליווי אישי ליועצים ומומחים בבניית מערכות אוטומטיות. מהאפיון ועד ההפעלה &mdash; בונה איתך את התשתית שמייצרת הכנסה חוזרת.</p>
+          <ul class="offer-features">
+            <li>אפיון מלא של המערכת</li>
+            <li>בנייה ואוטומציה מותאמת</li>
+            <li>הדרכה ותמיכה שוטפת</li>
+            <li>AI agents מותאמים אישית</li>
+          </ul>
+          <div class="offer-price">החל מ-4,000&#8362; <span>| אפיון + בנייה</span></div>
+          <a href="https://wa.me/972504777411?text=היי מירי, מעוניין לשמוע על שירות Blueprint" class="offer-cta">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            בואו נדבר על זה
+          </a>
+        </div>
+
+        <!-- Mastermind -->
+        <div class="offer-card mastermind fade-up">
+          <div class="offer-icon">&#x1F9E0;</div>
+          <h3>מאסטרמיינד דיגיטלי</h3>
+          <span class="offer-tag">קורס דיגיטלי</span>
+          <p class="offer-desc">בנה מועצת יועצים אישית מבוססת AI. שיטה מוכחת שמביאה בהירות, החלטות טובות יותר ותוצאות עסקיות &mdash; בלי לשלם ליועצים.</p>
+          <ul class="offer-features">
+            <li>בניית מועצת יועצים AI</li>
+            <li>תבניות ופרומפטים מוכנים</li>
+            <li>גישה לקהילת בוגרים</li>
+            <li>עדכונים שוטפים</li>
+          </ul>
+          <div class="offer-price">997&#8362; <span>| גישה מלאה</span></div>
+          <a href="https://mastermind.netanelhibsh.com" class="offer-cta">
+            לעמוד הקורס
+            <svg viewBox="0 0 24 24" style="transform: scaleX(-1)"><path d="M14 7l-5 5 5 5V7z"/></svg>
+          </a>
+        </div>
+
+        <!-- AutoTuesday -->
+        <div class="offer-card autotuesday fade-up">
+          <div class="offer-icon">&#x1F916;</div>
+          <h3>אוטוטיוזדיי</h3>
+          <span class="offer-tag">קהילה חינם</span>
+          <p class="offer-desc">הקהילה הגדולה בישראל לאוטומציה ו-AI. כל שבוע תכנים חדשים, הדגמות, ושיתוף ידע &mdash; בחינם.</p>
+          <ul class="offer-features">
+            <li>תכנים שבועיים חדשים</li>
+            <li>קהילת 2,000+ חברים</li>
+            <li>הדגמות כלים ואוטומציות</li>
+            <li>נטוורקינג ושיתופי פעולה</li>
+          </ul>
+          <div class="offer-price">חינם <span>| הצטרפות פתוחה</span></div>
+          <a href="https://wa.me/972504777411?text=היי מירי, רוצה להצטרף לאוטוטיוזדיי" class="offer-cta">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            הצטרפות לקהילה
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof" id="proof">
+    <div class="container">
+      <div class="proof-header fade-up">
+        <span class="section-label">תוצאות</span>
+        <h2 class="section-title">מספרים שמדברים</h2>
+        <p class="section-desc">מאחורי כל מספר יש אנשים שקיבלו בהירות ויצרו שינוי</p>
+      </div>
+      <div class="proof-stats fade-up">
+        <div class="proof-stat">
+          <div class="proof-stat-number">6,000+</div>
+          <div class="proof-stat-label">משתמשים ביומטוב</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-number">2,000+</div>
+          <div class="proof-stat-label">חברי אוטוטיוזדיי</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-number">50+</div>
+          <div class="proof-stat-label">מערכות שנבנו</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-number">3+</div>
+          <div class="proof-stat-label">שנות ניסיון</div>
+        </div>
+      </div>
+      <!-- TODO: להחליף בסרטוני עדויות לקוחות -->
+      <div class="proof-testimonials fade-up">
+        <div class="testimonial">
+          <p class="testimonial-text">נתנאל בנה לי מערכת שלמה שחסכה לי 15 שעות בשבוע. מה שלקח לי שבועות של עבודה ידנית קורה עכשיו אוטומטית.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">א</div>
+            <div>
+              <div class="testimonial-name">אלחנן ב.</div>
+              <div class="testimonial-role">יועץ עסקי</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">קורס המאסטרמיינד שינה לי את הגישה. במקום לבזבז אלפים על יועצים, יש לי מועצה אישית שזמינה 24/7.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ד</div>
+            <div>
+              <div class="testimonial-name">דניאלה מ.</div>
+              <div class="testimonial-role">מאמנת אישית</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">הקהילה של אוטוטיוזדיי היא הדבר הכי שווה. כל שבוע למידה חדשה וחיבורים עם אנשים שמבינים.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">י</div>
+            <div>
+              <div class="testimonial-name">יוסי ק.</div>
+              <div class="testimonial-role">בעל עסק</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-content fade-up">
+        <span class="section-label">הצעד הבא</span>
+        <h2 class="section-title">מוכנים ליצור <span style="color: var(--gold)">בהירות</span>?</h2>
+        <p class="section-desc">ספרו למירי, העוזרת הדיגיטלית שלי, מה אתם מחפשים &mdash; והיא תתאים לכם בדיוק את מה שאתם צריכים.</p>
+        <a href="https://wa.me/972504777411?text=היי מירי, הגעתי מהאתר ואשמח לשמוע עוד" class="final-cta-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          שלחו הודעה למירי
+        </a>
+        <p class="final-cta-sub">תגובה תוך דקות &bull; בלי טפסים &bull; בלי המתנה</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 נתנאל היבש &bull; <a href="mailto:netanel@netanelhibsh.com">netanel@netanelhibsh.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
