@@ -715,24 +715,15 @@
     document.getElementById('total').textContent = totalSlides;
 
     function goTo(n) {
-        if (n < 0 || n >= totalSlides) return;
-        const dir = n > currentSlide ? 1 : -1;
+        if (n < 0 || n >= totalSlides || n === currentSlide) return;
         slides[currentSlide].classList.remove('active');
-        slides[currentSlide].classList.add(dir > 0 ? 'prev' : '');
         currentSlide = n;
-        // Reset all
-        slides.forEach(s => { s.classList.remove('active', 'prev'); });
         slides[currentSlide].classList.add('active');
 
-        // Update dots
         document.querySelectorAll('.dot').forEach((d, i) => {
             d.classList.toggle('active', i === currentSlide);
         });
-
-        // Update counter
         document.getElementById('current').textContent = currentSlide + 1;
-
-        // Update buttons
         document.getElementById('prevBtn').disabled = currentSlide === 0;
         document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
     }
