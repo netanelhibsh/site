@@ -414,7 +414,55 @@
         }
         .calc-card.highlight .revenue { color: var(--gold); }
 
-        /* ===== SLIDE 9 - CLOSE ===== */
+        /* ===== CALC TABLE ===== */
+        .calc-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 650px;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .calc-table th, .calc-table td {
+            padding: 14px 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .calc-table thead th {
+            background: rgba(255,255,255,0.06);
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .calc-table thead th.col-them { color: var(--gold); }
+        .calc-table thead th.col-me { color: var(--magenta-light); }
+        .calc-table tbody td {
+            color: rgba(255,255,255,0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .calc-table tbody td.col-them {
+            font-family: 'Anomalia', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--gold);
+        }
+        .calc-table tbody td.col-me {
+            font-weight: 500;
+            color: var(--magenta-light);
+        }
+        .calc-table .row-highlight td {
+            background: rgba(226, 178, 31, 0.08);
+        }
+        .calc-table .row-highlight td.col-them {
+            font-size: 1.3rem;
+        }
+        .calc-table tbody tr:last-child td { border-bottom: none; }
+
+        /* ===== SLIDE 10 - CLOSE ===== */
         .close-quote {
             font-family: 'Anomalia', sans-serif;
             font-size: 2rem;
@@ -647,26 +695,39 @@
 
     <!-- SLIDE 9: CALC -->
     <div class="slide" data-slide="8">
-        <div class="label-tag">כמה אתם מרוויחים</div>
-        <div class="big-text" style="font-size:1.6rem;">מוצר ב-2,000 &#8362;/חודש | הצעה B (35% עמלה)</div>
-        <div class="calc-grid">
-            <div class="calc-card">
-                <div class="clients">5 לקוחות</div>
-                <div class="revenue">6,500 &#8362;</div>
-                <div class="per-month">לכם / חודש</div>
-            </div>
-            <div class="calc-card">
-                <div class="clients">10 לקוחות</div>
-                <div class="revenue">13,000 &#8362;</div>
-                <div class="per-month">לכם / חודש</div>
-            </div>
-            <div class="calc-card highlight">
-                <div class="clients">20 לקוחות</div>
-                <div class="revenue">26,000 &#8362;</div>
-                <div class="per-month">לכם / חודש</div>
-            </div>
-        </div>
-        <div class="sub-text" style="margin-top:24px; font-size:1rem;">
+        <div class="label-tag">דוגמת חישוב</div>
+        <div class="big-text" style="font-size:1.5rem;">מוצר ב-2,000 &#8362;/חודש | הצעה B (35% עמלה)</div>
+        <table class="calc-table">
+            <thead>
+                <tr>
+                    <th>לקוחות</th>
+                    <th>הכנסה ברוטו</th>
+                    <th class="col-them">לכם (65%)</th>
+                    <th class="col-me">לי (35%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>10,000 &#8362;</td>
+                    <td class="col-them">6,500 &#8362;</td>
+                    <td class="col-me">3,500 &#8362;</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>20,000 &#8362;</td>
+                    <td class="col-them">13,000 &#8362;</td>
+                    <td class="col-me">7,000 &#8362;</td>
+                </tr>
+                <tr class="row-highlight">
+                    <td>20</td>
+                    <td>40,000 &#8362;</td>
+                    <td class="col-them">26,000 &#8362;</td>
+                    <td class="col-me">14,000 &#8362;</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="sub-text" style="margin-top:20px; font-size:0.95rem;">
             הכנסה חדשה שלא הייתה קיימת בלעדיי. ה-18K הקמה מחזירים את עצמם תוך חודשיים.
         </div>
     </div>
