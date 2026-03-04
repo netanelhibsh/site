@@ -221,103 +221,79 @@
             font-weight: 300;
         }
 
-        /* ===== SLIDE 5 - 3 OFFERS ===== */
-        .offers {
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-            align-items: stretch;
-        }
-        .offer {
-            flex: 1;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 28px 24px;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .offer.featured {
+        /* ===== SLIDE 5 - SINGLE OFFER ===== */
+        .single-offer {
             background: rgba(194, 0, 120, 0.08);
-            border-color: var(--magenta);
-            transform: scale(1.04);
-            box-shadow: 0 0 40px rgba(194, 0, 120, 0.15);
+            border: 1px solid var(--magenta);
+            border-radius: 24px;
+            padding: 40px 48px;
+            max-width: 580px;
+            width: 100%;
+            box-shadow: 0 0 60px rgba(194, 0, 120, 0.15);
         }
-        .offer-badge {
-            background: var(--magenta);
-            color: var(--white);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 3px 12px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-bottom: 12px;
-            width: fit-content;
-        }
-        .offer-letter {
+        .single-offer h3 {
             font-family: 'Anomalia', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.3);
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .offer h3 {
-            font-family: 'Anomalia', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 8px;
+            text-align: center;
         }
-        .offer .desc {
-            font-size: 0.88rem;
-            color: rgba(255,255,255,0.5);
+        .single-offer .desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
             font-weight: 300;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             line-height: 1.6;
-            flex-grow: 1;
+            text-align: center;
         }
         .offer-price {
             text-align: center;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
         }
         .offer-price .setup-label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: rgba(255,255,255,0.4);
         }
         .offer-price .amount {
             font-family: 'Anomalia', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
         }
-        .offer-price .amount.zero { color: var(--teal); }
         .offer-price .commission {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--magenta-light);
-            margin-top: 4px;
+            margin-top: 6px;
         }
         .offer-terms {
             list-style: none;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
         }
         .offer-terms li {
-            padding: 5px 0;
-            color: rgba(255,255,255,0.7);
+            padding: 7px 0;
+            color: rgba(255,255,255,0.8);
             display: flex;
-            gap: 8px;
+            gap: 10px;
             align-items: flex-start;
         }
         .offer-terms .ic {
-            color: var(--teal);
+            color: var(--magenta-light);
             flex-shrink: 0;
             margin-top: 1px;
         }
-        .offer.featured .offer-terms .ic { color: var(--magenta-light); }
         .offer-terms .bold { font-weight: 700; color: var(--white); }
+        .offer-terms .guarantee-line {
+            background: rgba(226, 178, 31, 0.12);
+            border: 1px solid rgba(226, 178, 31, 0.3);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin: 4px -12px;
+            color: var(--gold);
+            font-weight: 700;
+        }
 
         /* ===== SLIDE 6 - GUARANTEE ===== */
         .guarantee-box {
@@ -489,8 +465,7 @@
             .slide { padding: 30px 24px; }
             .hero-title { font-size: 2.5rem; }
             .big-text { font-size: 1.8rem; }
-            .offers { flex-direction: column; max-width: 400px; }
-            .offer.featured { transform: scale(1); }
+            .single-offer { padding: 28px 20px; }
             .roles { flex-direction: column; }
             .calc-grid { flex-wrap: wrap; justify-content: center; }
             .solution-items { gap: 20px; }
@@ -564,63 +539,26 @@
         </div>
     </div>
 
-    <!-- SLIDE 5: 3 OFFERS -->
+    <!-- SLIDE 5: SINGLE OFFER -->
     <div class="slide" data-slide="4">
-        <div class="label-tag">3 מודלים לבחירתכם</div>
-        <div class="offers">
-            <!-- A -->
-            <div class="offer">
-                <div class="offer-letter">A</div>
-                <h3>איש מכירות</h3>
-                <div class="desc">אני מביא לקוחות, מקבל עמלה. בלי התחייבויות גדולות.</div>
-                <div class="offer-price">
-                    <div class="setup-label">דמי הקמה</div>
-                    <div class="amount zero">ללא</div>
-                    <div class="commission">35% עמלה recurring</div>
-                </div>
-                <ul class="offer-terms">
-                    <li><span class="ic">&#10005;</span> ללא בלעדיות</li>
-                    <li><span class="ic">&#10003;</span> לידים + סגירת עסקאות</li>
-                    <li><span class="ic">&#10005;</span> ללא דפי נחיתה/משפכים</li>
-                    <li><span class="ic">&#10003;</span> הגנה על לקוחות שלי</li>
-                </ul>
+        <div class="label-tag">ההצעה</div>
+        <div class="single-offer">
+            <h3>שותף מכירות</h3>
+            <div class="desc">אני בונה לכם מכונת מכירות מלאה. אם לא מביא תוצאות - הכסף חוזר.</div>
+            <div class="offer-price">
+                <div class="setup-label">דמי הקמה (חד-פעמי)</div>
+                <div class="amount">18,000 &#8362;</div>
+                <div class="commission">30% עמלה recurring</div>
             </div>
-            <!-- B -->
-            <div class="offer featured">
-                <div class="offer-badge">מומלץ</div>
-                <div class="offer-letter">B</div>
-                <h3>שותף מכירות</h3>
-                <div class="desc">מכונת שיווק שלמה. אם לא מביא תוצאות - הכסף חוזר.</div>
-                <div class="offer-price">
-                    <div class="setup-label">דמי הקמה (חד-פעמי)</div>
-                    <div class="amount">18,000 &#8362;</div>
-                    <div class="commission">35% עמלה recurring</div>
-                </div>
-                <ul class="offer-terms">
-                    <li><span class="ic">&#10003;</span> <span class="bold">ערבות: 5 לקוחות ב-90 יום</span></li>
-                    <li><span class="ic">&#10003;</span> אריזה + דף + סרטון + משפך + בוט</li>
-                    <li><span class="ic">&#10003;</span> בלעדיות על סוכנים</li>
-                    <li><span class="ic">&#10003;</span> הגנה לתמיד + דיווח שבועי</li>
-                    <li><span class="ic">&#10003;</span> minimum 6 חודשים</li>
-                </ul>
-            </div>
-            <!-- C -->
-            <div class="offer">
-                <div class="offer-letter">C</div>
-                <h3>שותף צמיחה</h3>
-                <div class="desc">אני לוקח את כל הסיכון. בונה הכל מכיסי.</div>
-                <div class="offer-price">
-                    <div class="setup-label">דמי הקמה</div>
-                    <div class="amount zero">ללא</div>
-                    <div class="commission">40% עמלה recurring</div>
-                </div>
-                <ul class="offer-terms">
-                    <li><span class="ic">&#10003;</span> <span class="bold">בלעדיות מלאה</span></li>
-                    <li><span class="ic">&#10003;</span> הכל - אריזה, שיווק, מכירה</li>
-                    <li><span class="ic">&#10003;</span> הגנה לתמיד</li>
-                    <li><span class="ic">&#10003;</span> minimum 6 חודשים</li>
-                </ul>
-            </div>
+            <ul class="offer-terms">
+                <li class="guarantee-line">&#10003;&nbsp; ערבות: 5 לקוחות ב-90 יום - או כסף בחזרה + ממשיך לעבוד בחינם</li>
+                <li><span class="ic">&#10003;</span> אריזה מלאה - פוזישנינג, הצעת ערך, תמחור</li>
+                <li><span class="ic">&#10003;</span> דף נחיתה + סרטון מכירה + משפך שלם</li>
+                <li><span class="ic">&#10003;</span> בוט לידים שמייצר שיחות</li>
+                <li><span class="ic">&#10003;</span> בלעדיות על סוכנים</li>
+                <li><span class="ic">&#10003;</span> הגנה לתמיד + דיווח שבועי</li>
+                <li><span class="ic">&#10003;</span> minimum 6 חודשים</li>
+            </ul>
         </div>
     </div>
 
@@ -631,8 +569,10 @@
             <div class="guarantee-number">5</div>
             <div class="big-text" style="font-size:1.8rem; margin-bottom:16px;">לקוחות משלמים ב-90 יום</div>
             <div class="sub-text" style="color:rgba(255,255,255,0.7);">
-                אם לא הגענו ליעד - <strong style="color:var(--white)">דמי ההקמה חוזרים במלואם</strong>.
-                <br>אני לוקח את הסיכון על עצמי. לכם אין מה להפסיד.
+                אם לא הגענו ליעד -
+                <br><strong style="color:var(--white)">דמי ההקמה חוזרים במלואם</strong>
+                <br><strong style="color:var(--gold)">+ אני ממשיך לעבוד בחינם עד שנגיע ליעד</strong>.
+                <br><br>אני לוקח את כל הסיכון על עצמי. לכם אין מה להפסיד.
             </div>
         </div>
     </div>
@@ -696,39 +636,39 @@
     <!-- SLIDE 9: CALC -->
     <div class="slide" data-slide="8">
         <div class="label-tag">דוגמת חישוב</div>
-        <div class="big-text" style="font-size:1.5rem;">מוצר ב-2,000 &#8362;/חודש | הצעה B (35% עמלה)</div>
+        <div class="big-text" style="font-size:1.5rem;">מוצר ב-2,000 &#8362;/חודש | 30% עמלה</div>
         <table class="calc-table">
             <thead>
                 <tr>
                     <th>לקוחות</th>
                     <th>הכנסה ברוטו</th>
-                    <th class="col-them">לכם (65%)</th>
-                    <th class="col-me">לי (35%)</th>
+                    <th class="col-them">לכם (70%)</th>
+                    <th class="col-me">לי (30%)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>5</td>
                     <td>10,000 &#8362;</td>
-                    <td class="col-them">6,500 &#8362;</td>
-                    <td class="col-me">3,500 &#8362;</td>
+                    <td class="col-them">7,000 &#8362;</td>
+                    <td class="col-me">3,000 &#8362;</td>
                 </tr>
                 <tr>
                     <td>10</td>
                     <td>20,000 &#8362;</td>
-                    <td class="col-them">13,000 &#8362;</td>
-                    <td class="col-me">7,000 &#8362;</td>
+                    <td class="col-them">14,000 &#8362;</td>
+                    <td class="col-me">6,000 &#8362;</td>
                 </tr>
                 <tr class="row-highlight">
                     <td>20</td>
                     <td>40,000 &#8362;</td>
-                    <td class="col-them">26,000 &#8362;</td>
-                    <td class="col-me">14,000 &#8362;</td>
+                    <td class="col-them">28,000 &#8362;</td>
+                    <td class="col-me">12,000 &#8362;</td>
                 </tr>
             </tbody>
         </table>
         <div class="sub-text" style="margin-top:20px; font-size:0.95rem;">
-            הכנסה חדשה שלא הייתה קיימת בלעדיי. ה-18K הקמה מחזירים את עצמם תוך חודשיים.
+            הכנסה חדשה שלא הייתה קיימת בלעדיי. ה-18K הקמה מחזירים את עצמם תוך 3 חודשים.
         </div>
     </div>
 
@@ -739,7 +679,7 @@
             <br>שאני נותן <span class="gold">ערבות מלאה</span>.
             <br><br>
             אם לא הבאתי 5 לקוחות -
-            <br>אתם מקבלים את הכסף בחזרה.
+            <br>הכסף חוזר + אני ממשיך לעבוד בחינם.
             <br><br>
             <span class="gold">מה יש לכם להפסיד?</span>
         </div>
