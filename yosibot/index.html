@@ -26,6 +26,8 @@
             --light: #F5F5F5;
             --cream: #FFF9F0;
             --white: #FFFFFF;
+            --green: #22c55e;
+            --red: #ef4444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -178,17 +180,36 @@
             margin: 20px auto;
         }
 
-        /* ===== SLIDE 2 - PROBLEM ===== */
-        .problem-stat {
-            font-family: 'Anomalia', sans-serif;
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--magenta);
-            line-height: 1;
-            margin-bottom: 12px;
+        /* ===== SLIDE 2 - MARKET ===== */
+        .blocked-list {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .blocked-item {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .blocked-item .x { color: var(--red); font-weight: 700; margin-left: 6px; }
+        .standing-item {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--green);
+            font-weight: 700;
         }
 
-        /* ===== SLIDE 3 - SOLUTION ===== */
+        /* ===== SOLUTION ITEMS ===== */
         .solution-items {
             display: flex;
             gap: 40px;
@@ -221,7 +242,132 @@
             font-weight: 300;
         }
 
-        /* ===== SLIDE 5 - SINGLE OFFER ===== */
+        /* ===== ACTION PLAN ===== */
+        .plan-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 850px;
+            margin-top: 24px;
+        }
+        .plan-step {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        .plan-step .step-num {
+            font-family: 'Anomalia', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--magenta-light);
+            margin-bottom: 6px;
+        }
+        .plan-step h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .plan-step p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        .plan-step.highlight-step {
+            border-color: var(--gold);
+            background: rgba(226, 178, 31, 0.06);
+        }
+        .plan-step.highlight-step .step-num { color: var(--gold); }
+
+        /* ===== DETAIL SLIDES ===== */
+        .detail-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 36px 40px;
+            max-width: 780px;
+            width: 100%;
+        }
+        .detail-card h3 {
+            font-family: 'Anomalia', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .detail-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .detail-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .detail-item .di-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .detail-item h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .detail-item p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        .detail-highlight {
+            grid-column: 1 / -1;
+            background: rgba(226, 178, 31, 0.08);
+            border: 1px solid rgba(226, 178, 31, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: center;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .affiliate-math {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+        .aff-step {
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: center;
+            flex: 1;
+            max-width: 180px;
+        }
+        .aff-step .aff-num {
+            font-family: 'Anomalia', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--magenta-light);
+        }
+        .aff-step .aff-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+        }
+        .aff-step.aff-gold .aff-num { color: var(--gold); }
+        @media (max-width: 768px) {
+            .detail-items { grid-template-columns: 1fr; }
+            .detail-card { padding: 24px 20px; }
+            .affiliate-math { flex-wrap: wrap; }
+        }
+
+        /* ===== SINGLE OFFER ===== */
         .single-offer {
             background: rgba(194, 0, 120, 0.08);
             border: 1px solid var(--magenta);
@@ -296,7 +442,7 @@
             font-weight: 700;
         }
 
-        /* ===== SLIDE 6 - GUARANTEE ===== */
+        /* ===== GUARANTEE ===== */
         .guarantee-box {
             background: linear-gradient(135deg, rgba(194,0,120,0.12), rgba(194,0,120,0.04));
             border: 1px solid rgba(194,0,120,0.3);
@@ -314,7 +460,7 @@
             margin-bottom: 8px;
         }
 
-        /* ===== SLIDE 7 - ROLES ===== */
+        /* ===== ROLES ===== */
         .roles {
             display: flex;
             gap: 30px;
@@ -355,41 +501,6 @@
             margin-top: 9px;
         }
         .role.them ul li::before { background: var(--teal); }
-
-        /* ===== SLIDE 8 - CALC ===== */
-        .calc-grid {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .calc-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 24px 32px;
-            text-align: center;
-            min-width: 160px;
-        }
-        .calc-card .clients {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 4px;
-        }
-        .calc-card .revenue {
-            font-family: 'Anomalia', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--magenta-light);
-        }
-        .calc-card .per-month {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
-        }
-        .calc-card.highlight {
-            border-color: var(--gold);
-            background: rgba(226, 178, 31, 0.08);
-        }
-        .calc-card.highlight .revenue { color: var(--gold); }
 
         /* ===== CALC TABLE ===== */
         .calc-table {
@@ -439,7 +550,7 @@
         }
         .calc-table tbody tr:last-child td { border-bottom: none; }
 
-        /* ===== SLIDE 10 - CLOSE ===== */
+        /* ===== CLOSE ===== */
         .close-quote {
             font-family: 'Anomalia', sans-serif;
             font-size: 2rem;
@@ -468,11 +579,12 @@
             .big-text { font-size: 1.8rem; }
             .single-offer { padding: 28px 20px; }
             .roles { flex-direction: column; }
-            .calc-grid { flex-wrap: wrap; justify-content: center; }
+            .plan-steps { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .plan-step { padding: 14px; }
             .solution-items { gap: 20px; }
-            .problem-stat { font-size: 4rem; }
             .guarantee-number { font-size: 3.5rem; }
             .guarantee-box { padding: 30px; }
+            .blocked-list { gap: 10px; }
         }
     </style>
 </head>
@@ -485,67 +597,217 @@
         <div class="cover-names">נתנאל היבש x יוסי יחזקאל</div>
         <div class="hero-title">הצעת <span class="accent">שיתוף פעולה</span></div>
         <div class="cover-line"></div>
-        <div class="sub-text">בוט סטטוסים לאושיות רשת</div>
+        <div class="sub-text">בוט סטטוסים לעסקים</div>
         <div class="cover-date">מרץ 2026</div>
     </div>
 
-    <!-- SLIDE 2: THE PROBLEM -->
+    <!-- SLIDE 2: MARKET REALITY -->
     <div class="slide" data-slide="1">
-        <div class="label-tag">הבעיה</div>
-        <div class="problem-stat">73%</div>
-        <div class="big-text">מאושיות הרשת מפסידים לידים<br>בגלל חסימות וואטסאפ</div>
+        <div class="label-tag">מצב השוק</div>
+        <div class="big-text">כל בוטי הסטטוס <span style="color:var(--red)">נחסמו</span></div>
         <div class="sub-text">
-            כל הודעה דורשת הצפנה מחדש. התוצאה? איטיות, חסימות, לקוחות שנעלמים.
-            <br>זה לא באג - זה כסף על הרצפה. כל יום.
+            עשרות בוטים עם עשרות אלפי צפיות - נחסמו אחד אחרי השני.
+            <br>כל השוק ב-quiet. אנשים מפחדים. אף אחד לא יודע מה עובד.
+        </div>
+        <div class="blocked-list">
+            <div class="blocked-item"><span class="x">&#10007;</span> חסימות מתמידות</div>
+            <div class="blocked-item"><span class="x">&#10007;</span> קמפיינים נעצרים</div>
+            <div class="blocked-item"><span class="x">&#10007;</span> חשבונות נסגרים</div>
+            <div class="standing-item">&#10003; יוסי בוט - עובד. לא נחסם.</div>
         </div>
     </div>
 
-    <!-- SLIDE 3: THE SOLUTION -->
+    <!-- SLIDE 3: THE OPPORTUNITY -->
     <div class="slide" data-slide="2">
-        <div class="label-tag">הפתרון</div>
-        <div class="big-text">בוט סטטוסים + מכונת מכירות</div>
-        <div class="sub-text">יוסי בנה את הטכנולוגיה. אני בונה את מכונת השיווק והמכירות.</div>
-        <div class="solution-items">
-            <div class="solution-item">
-                <div class="solution-icon">📦</div>
-                <h4>אריזה</h4>
-                <p>פוזישנינג, הצעת ערך, תמחור</p>
-            </div>
-            <div class="solution-item">
-                <div class="solution-icon">🎯</div>
-                <h4>משפך</h4>
-                <p>דף נחיתה, סרטון, בוט לידים</p>
-            </div>
-            <div class="solution-item">
-                <div class="solution-icon">📣</div>
-                <h4>שיווק</h4>
-                <p>קמפיינים, פרסום, תוכן</p>
-            </div>
-            <div class="solution-item">
-                <div class="solution-icon">🤝</div>
-                <h4>מכירה</h4>
-                <p>וובינרים, 1-on-1, אפילייט</p>
-            </div>
+        <div class="label-tag">ההזדמנות</div>
+        <div class="big-text">המוצר היחיד שעומד</div>
+        <div class="sub-text">
+            כל מי שמכיר את עולם הסטטוסים יודע את הכאב.
+            <br>חסימות, חשבונות שנסגרים, קמפיינים שנעצרים באמצע.
+            <br><br><strong style="color:var(--gold)">יוסי בנה משהו שעובד בלי חסימות.</strong>
+            <br>חסר רק דבר אחד - מי שיבנה את זה כמותג וימכור אותו.
         </div>
     </div>
 
     <!-- SLIDE 4: WHY ME -->
     <div class="slide" data-slide="3">
         <div class="label-tag">למה אני</div>
-        <div class="big-text">קהילה של 2,000+ אנשי אוטומציה</div>
+        <div class="big-text">לא סתם מוכר. בונה מותג.</div>
         <div class="sub-text">
-            אני מפעיל את אוטוטיוזדיי - הקהילה הגדולה בישראל לאוטומציה.
-            <br>אני יודע לבנות מכונות שיווק, לארוז מוצרים, ולמכור.
-            <br>הבוט של יוסי פותר בעיה אמיתית. חסר רק מי שימכור אותו.
+            קהילת אוטוטיוזדיי - 2,000+ בעלי עסקים ואנשי אוטומציה.
+            <br>ניסיון בבניית מותגים דיגיטליים, משפכי מכירה, ואריזת מוצרים.
+            <br><br><strong style="color:var(--gold)">המטרה:</strong> שיוסי יתעסק רק במוצר - פיתוח, שיפורים, תמיכה.
+            <br>כל המכירות, השיווק והלידים - <strong style="color:var(--white)">עליי.</strong>
         </div>
     </div>
 
-    <!-- SLIDE 5: SINGLE OFFER -->
+    <!-- SLIDE 5: ACTION PLAN -->
     <div class="slide" data-slide="4">
+        <div class="label-tag">תוכנית הפעולה</div>
+        <div class="big-text" style="font-size:1.8rem;">6 שלבים להפוך את הבוט למותג</div>
+        <div class="plan-steps">
+            <div class="plan-step highlight-step">
+                <div class="step-num">01</div>
+                <h4>Case Study</h4>
+                <p>תיעוד תוצאות מלקוחות קיימים. צילומי מסך, מספרים, ראיות אמיתיות.</p>
+            </div>
+            <div class="plan-step highlight-step">
+                <div class="step-num">02</div>
+                <h4>מפגש חשיפה</h4>
+                <p>Zoom מוקלט עם אושיות רשת. הדגמה חיה. התוכן הופך לנכס שיווקי.</p>
+            </div>
+            <div class="plan-step">
+                <div class="step-num">03</div>
+                <h4>בוט מכירות</h4>
+                <p>פאנל אוטומטי - פניות נכנסות, סינון, קביעת פגישות. מכונה שעובדת 24/7.</p>
+            </div>
+            <div class="plan-step">
+                <div class="step-num">04</div>
+                <h4>מיתוג מחדש</h4>
+                <p>שם חדש קליט, זהות ויזואלית, פוזישנינג מנצח.</p>
+            </div>
+            <div class="plan-step">
+                <div class="step-num">05</div>
+                <h4>תוכנית שותפים</h4>
+                <p>לקוחות מפנים לקוחות. כל הפניה = הנחה. 10 הפניות = בוט חינם.</p>
+            </div>
+            <div class="plan-step">
+                <div class="step-num">06</div>
+                <h4>אונבורדינג דיגיטלי</h4>
+                <p>סרטוני הדרכה, מדריכים, חוויית כניסה מקצועית לכל לקוח חדש.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: ZOOM EVENT DETAIL -->
+    <div class="slide" data-slide="5">
+        <div class="label-tag">שלב 1+2</div>
+        <div class="detail-card">
+            <h3>Case Study + מפגש חשיפה</h3>
+            <div class="detail-items">
+                <div class="detail-item">
+                    <div class="di-icon">📊</div>
+                    <div>
+                        <h5>תיעוד תוצאות</h5>
+                        <p>נתעד את הלקוחות הקיימים - כמה סטטוסים, כמה פניות, כמה מכירות. מספרים אמיתיים.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">🎬</div>
+                    <div>
+                        <h5>Zoom מוקלט</h5>
+                        <p>מפגש חשיפה עם אושיות רשת. מוקלט. הופך לסרטון שיווקי שעובד לנו שוב ושוב.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">🗺️</div>
+                    <div>
+                        <h5>Roadmap + פיצ'רים</h5>
+                        <p>אני ויוסי בונים ביחד - מה מראים, מה בפיתוח, לאן הולכים. חזון ברור.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">📣</div>
+                    <div>
+                        <h5>הפצה דרך אושיות</h5>
+                        <p>שולח לאושיות שמפיצים בקהילות שלהם. חשיפה אורגנית מטורפת.</p>
+                    </div>
+                </div>
+                <div class="detail-highlight">המסר: "הבוט היחיד שלא נחסם - בואו לראות אותו חי"</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: SALES MACHINE -->
+    <div class="slide" data-slide="6">
+        <div class="label-tag">שלב 3+4+5</div>
+        <div class="detail-card">
+            <h3>מכונת מכירות + תוכנית שותפים</h3>
+            <div class="detail-items">
+                <div class="detail-item">
+                    <div class="di-icon">🤖</div>
+                    <div>
+                        <h5>בוט מכירות</h5>
+                        <p>בוט שמטפל בפניות נכנסות, מסנן לידים, קובע פגישה. עובד 24/7 בלי מגע יד.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">✨</div>
+                    <div>
+                        <h5>מיתוג מחדש</h5>
+                        <p>שם חדש קליט, זהות ויזואלית, סיפור מותג. משהו שאפשר לרוץ איתו.</p>
+                    </div>
+                </div>
+                <div class="detail-item" style="grid-column: 1 / -1;">
+                    <div class="di-icon">🔗</div>
+                    <div>
+                        <h5>תוכנית שותפים (Affiliate) - רק ללקוחות פעילים</h5>
+                        <p>כל לקוח משלם שמפנה לקוח חדש מקבל 5% הנחה על המנוי. מפנים 10? הבוט בחינם. התנאי: חייב להיות לקוח פעיל כדי להיכנס לתוכנית.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="affiliate-math">
+                <div class="aff-step">
+                    <div class="aff-num">5%</div>
+                    <div class="aff-label">הנחה לכל הפניה</div>
+                </div>
+                <div class="aff-step">
+                    <div class="aff-num">10</div>
+                    <div class="aff-label">הפניות</div>
+                </div>
+                <div class="aff-step aff-gold">
+                    <div class="aff-num">חינם</div>
+                    <div class="aff-label">הבוט שלך בחינם</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: ONBOARDING -->
+    <div class="slide" data-slide="7">
+        <div class="label-tag">שלב 6</div>
+        <div class="detail-card">
+            <h3>אונבורדינג דיגיטלי מקצועי</h3>
+            <div class="detail-items">
+                <div class="detail-item">
+                    <div class="di-icon">🎥</div>
+                    <div>
+                        <h5>סרטוני הדרכה</h5>
+                        <p>איך מעלים סטטוסים, איך מתזמנים, איך בונים קמפיינים - הכל בסרטונים קצרים וברורים.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">🔌</div>
+                    <div>
+                        <h5>חיבור ואינטגרציות</h5>
+                        <p>איך מתחברים לחשבונות, איך מחברים כלים, איך מפיקים את המקסימום מהבוט.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">📚</div>
+                    <div>
+                        <h5>דף הדרכות באתר</h5>
+                        <p>סקשן מסודר עם כל המדריכים - כל לקוח חדש מקבל גישה מיידית.</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="di-icon">🛠️</div>
+                    <div>
+                        <h5>יוסי = טכני, אני = חוויה</h5>
+                        <p>יוסי נותן תמיכה טכנית. אני בונה את התוכן, ההדרכות, והחוויה של הכניסה למוצר.</p>
+                    </div>
+                </div>
+                <div class="detail-highlight">כל לקוח חדש מקבל חוויית כניסה מקצועית - לא "תסתדר לבד"</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: THE OFFER -->
+    <div class="slide" data-slide="8">
         <div class="label-tag">ההצעה</div>
         <div class="single-offer">
             <h3>שיתוף פעולה</h3>
-            <div class="desc">אני בונה את כל מערך השיווק והמכירות מכיסי. לא הבאתי תוצאות? נפרדים כחברים.</div>
+            <div class="desc">אני בונה את כל מערך השיווק והמכירות באחריותי. לא הבאתי תוצאות? נפרדים כחברים.</div>
             <div class="offer-price">
                 <div class="setup-label">דמי הקמה</div>
                 <div class="amount zero">ללא</div>
@@ -553,17 +815,18 @@
             </div>
             <ul class="offer-terms">
                 <li class="guarantee-line">&#10003;&nbsp; פיילוט 3 חודשים - לא הבאתי 10 לקוחות? נפרדים בטוב</li>
-                <li><span class="ic">&#10003;</span> אני בונה הכל מכיסי - סרטונים, בוט, וובינרים, משפכים</li>
-                <li><span class="ic">&#10003;</span> אריזה מלאה - פוזישנינג, הצעת ערך, תמחור</li>
-                <li><span class="ic">&#10003;</span> מכירה ישירה + תוכנית אפיליאייטים</li>
-                <li><span class="ic">&#10003;</span> הגנה על לקוחות + דיווח שבועי</li>
+                <li><span class="ic">&#10003;</span> בניית מותג מאפס - שם, זהות, פוזישנינג</li>
+                <li><span class="ic">&#10003;</span> מפגש חשיפה עם אושיות רשת</li>
+                <li><span class="ic">&#10003;</span> בוט מכירות + משפך אוטומטי</li>
+                <li><span class="ic">&#10003;</span> תוכנית שותפים (Affiliate)</li>
+                <li><span class="ic">&#10003;</span> אונבורדינג דיגיטלי מקצועי</li>
                 <li><span class="ic">&#10003;</span> אפס סיכון מצדכם - ההשקעה כולה עליי</li>
             </ul>
         </div>
     </div>
 
-    <!-- SLIDE 6: GUARANTEE -->
-    <div class="slide" data-slide="5">
+    <!-- SLIDE 10: GUARANTEE -->
+    <div class="slide" data-slide="9">
         <div class="label-tag">אפס סיכון</div>
         <div class="guarantee-box">
             <div class="guarantee-number">10</div>
@@ -577,64 +840,36 @@
         </div>
     </div>
 
-    <!-- SLIDE 7: ROLES -->
-    <div class="slide" data-slide="6">
+    <!-- SLIDE 11: ROLES -->
+    <div class="slide" data-slide="10">
         <div class="label-tag">חלוקת תפקידים</div>
-        <div class="big-text" style="font-size:1.6rem;">כל אחד עושה את מה שהוא הכי טוב בו</div>
+        <div class="big-text" style="font-size:1.6rem;">יוסי בונה. נתנאל מוכר. נקודה.</div>
         <div class="roles">
             <div class="role">
-                <h4>🚀 נתנאל - שיווק ומכירות</h4>
+                <h4>נתנאל - מותג, שיווק ומכירות</h4>
                 <ul>
-                    <li>אריזת המוצר (פוזישנינג, הצעת ערך)</li>
-                    <li>דף נחיתה + סרטון מכירה</li>
-                    <li>משפך מכירה שלם</li>
-                    <li>בוט לידים שמייצר שיחות</li>
-                    <li>קמפיינים ופרסום</li>
-                    <li>מכירה ישירה + אפילייט</li>
+                    <li>בניית מותג מאפס (שם, זהות, סיפור)</li>
+                    <li>Case Studies + תוכן שיווקי</li>
+                    <li>מפגשי חשיפה + וובינרים</li>
+                    <li>בוט מכירות + משפך אוטומטי</li>
+                    <li>תוכנית שותפים (Affiliate)</li>
+                    <li>אונבורדינג דיגיטלי + הדרכות</li>
                 </ul>
             </div>
             <div class="role them">
-                <h4>🛠 יוסי - מוצר וטכנולוגיה</h4>
+                <h4>יוסי - רק מוצר. אפס מכירות.</h4>
                 <ul>
-                    <li>מוצר שעובד + שיפורים</li>
-                    <li>אונבורדינג טכני ללקוחות</li>
-                    <li>תמיכה טכנית שוטפת</li>
-                    <li>זמינות לדמואים ושאלות</li>
+                    <li>פיתוח ושיפור המוצר</li>
+                    <li>תמיכה טכנית ללקוחות</li>
+                    <li>להפוך את הבוט לכיפי, יציב ומדהים</li>
+                    <li>אפס עיסוק בלידים, מכירות או שיווק</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 8: WHAT YOU GET BEYOND MONEY -->
-    <div class="slide" data-slide="7">
-        <div class="label-tag">מה עוד מקבלים</div>
-        <div class="big-text" style="font-size:1.8rem;">לא רק מכירות. שותף אמיתי.</div>
-        <div class="solution-items" style="margin-top:20px;">
-            <div class="solution-item">
-                <div class="solution-icon">💡</div>
-                <h4>תובנות ורעיונות</h4>
-                <p>רעיונות לשיפור המוצר, פיצ'רים חדשים, הזדמנויות</p>
-            </div>
-            <div class="solution-item">
-                <div class="solution-icon">🎤</div>
-                <h4>הצגה והנגשה</h4>
-                <p>אני יודע לקחת מוצר טכני ולהסביר אותו בשפה שהקהל מבין</p>
-            </div>
-            <div class="solution-item">
-                <div class="solution-icon">🔥</div>
-                <h4>אנרגיה וכיף</h4>
-                <p>שותפות שמייצרת אנרגיה, מוטיבציה, וחשק לרוץ קדימה</p>
-            </div>
-            <div class="solution-item">
-                <div class="solution-icon">👥</div>
-                <h4>הבנת הקהל</h4>
-                <p>אני מכיר את הקהל, יודע מה כואב להם, ואיך לדבר אליהם</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 9: CALC -->
-    <div class="slide" data-slide="8">
+    <!-- SLIDE 12: CALC -->
+    <div class="slide" data-slide="11">
         <div class="label-tag">דוגמת חישוב</div>
         <div class="big-text" style="font-size:1.5rem;">מוצר ב-2,000 &#8362;/חודש | 20% נקי מעסקה</div>
         <table class="calc-table">
@@ -672,16 +907,19 @@
         </div>
     </div>
 
-    <!-- SLIDE 10: CLOSE -->
-    <div class="slide" data-slide="9">
+    <!-- SLIDE 13: CLOSE -->
+    <div class="slide" data-slide="12">
         <div class="close-quote">
+            כל הבוטים נחסמו.
+            <br>של יוסי - <span class="gold">עובד</span>.
+            <br><br>
             אני לוקח את כל הסיכון.
-            <br>בונה הכל <span class="gold">מכיסי</span>.
+            <br>בונה הכל <span class="gold">באחריותי</span>.
             <br><br>
-            לא הבאתי 10 לקוחות ב-3 חודשים?
-            <br>נפרדים כחברים. בלי חשבונות.
+            לא הבאתי לקוחות?
+            <br>נפרדים כחברים.
             <br><br>
-            <span class="gold">מה יש לכם להפסיד?</span>
+            <span class="gold">בואו נבנה מותג ביחד.</span>
         </div>
         <div class="cover-line" style="margin-top:30px;"></div>
         <div class="cover-date" style="margin-top:16px;">נתנאל היבש | מרץ 2026</div>
