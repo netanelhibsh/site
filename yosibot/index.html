@@ -574,17 +574,50 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .slide { padding: 30px 24px; }
-            .hero-title { font-size: 2.5rem; }
-            .big-text { font-size: 1.8rem; }
-            .single-offer { padding: 28px 20px; }
-            .roles { flex-direction: column; }
-            .plan-steps { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .plan-step { padding: 14px; }
-            .solution-items { gap: 20px; }
-            .guarantee-number { font-size: 3.5rem; }
-            .guarantee-box { padding: 30px; }
-            .blocked-list { gap: 10px; }
+            .slide { padding: 20px 18px 90px; overflow-y: auto; justify-content: flex-start; padding-top: 50px; }
+            .hero-title { font-size: 2.2rem; }
+            .big-text { font-size: 1.4rem; }
+            .sub-text { font-size: 1rem; line-height: 1.6; }
+            .label-tag { font-size: 0.75rem; padding: 4px 14px; margin-bottom: 12px; }
+            .single-offer { padding: 20px 16px; }
+            .single-offer h3 { font-size: 1.3rem; }
+            .offer-price .amount { font-size: 1.8rem; }
+            .offer-terms { font-size: 0.85rem; }
+            .roles { flex-direction: column; gap: 16px; }
+            .role { padding: 18px; }
+            .role h4 { font-size: 1rem; }
+            .plan-steps { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .plan-step { padding: 12px; }
+            .plan-step .step-num { font-size: 1.2rem; }
+            .plan-step h4 { font-size: 0.85rem; }
+            .plan-step p { font-size: 0.75rem; }
+            .solution-items { gap: 16px; }
+            .guarantee-number { font-size: 3rem; }
+            .guarantee-box { padding: 24px; }
+            .blocked-list { gap: 8px; }
+            .blocked-item, .standing-item { padding: 8px 14px; font-size: 0.8rem; }
+            .close-quote { font-size: 1.4rem; }
+            .calc-table th, .calc-table td { padding: 10px 12px; font-size: 0.85rem; }
+            .calc-table tbody td.col-them { font-size: 1rem; }
+            /* Detail slides */
+            .detail-card { padding: 20px 16px; }
+            .detail-card h3 { font-size: 1.2rem; margin-bottom: 14px; }
+            .detail-items { grid-template-columns: 1fr; gap: 12px; }
+            .detail-item .di-icon { font-size: 1.1rem; }
+            .detail-item h5 { font-size: 0.85rem; }
+            .detail-item p { font-size: 0.78rem; }
+            .detail-highlight { font-size: 0.82rem; padding: 10px 14px; }
+            .affiliate-math { gap: 8px; }
+            .aff-step { padding: 10px 12px; }
+            .aff-step .aff-num { font-size: 1.1rem; }
+            .aff-step .aff-label { font-size: 0.7rem; }
+            /* Nav */
+            .nav { bottom: 16px; gap: 10px; }
+            .nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .dot { width: 6px; height: 6px; }
+            .dot.active { width: 18px; }
+            .hint { display: none; }
+            .slide-counter { top: 14px; left: 14px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -934,7 +967,7 @@
     <button class="nav-btn" id="nextBtn">&#8592;</button>
 </div>
 
-<div class="slide-counter"><span id="current">1</span> / <span id="total"></span></div>
+<div class="slide-counter"><span id="total"></span> / <span id="current">1</span></div>
 <div class="hint">חצים / רווח לניווט</div>
 
 <script>
