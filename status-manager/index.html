@@ -4,10 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>סטטוס מנג'ר — ניהול סטטוסים לוואטסאפ</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
+    @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-light-aaa.otf') format('opentype'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-regular-aaa.otf') format('opentype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-medium-aaa.otf') format('opentype'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-bold-aaa.otf') format('opentype'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-black-aaa.otf') format('opentype'); font-weight: 900; font-display: swap; }
+    @font-face { font-family: 'Anomalia'; src: url('/fonts/anomalia-regular-aaa.otf') format('opentype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Anomalia'; src: url('/fonts/anomalia-bold-aaa.otf') format('opentype'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Anomalia'; src: url('/fonts/anomalia-ultrabold-aaa.otf') format('opentype'); font-weight: 900; font-display: swap; }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -15,21 +21,25 @@
     }
 
     :root {
-      --green: #25D366;
-      --green-dark: #1ebe5a;
-      --green-light: #dcfce7;
-      --bg-main: #0B141A;
-      --bg-card: #162026;
-      --bg-card-hover: #1c2b34;
-      --bg-highlight: #1B2631;
-      --text-primary: #e8eaed;
-      --text-secondary: #9aafb8;
-      --text-muted: #6b8490;
-      --border: #2a3f4a;
-      --border-light: #1e3040;
-      --gold: #f5c842;
-      --radius: 14px;
-      --radius-sm: 8px;
+      --bg-dark: #1a1a2e;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-border: rgba(255,255,255,0.12);
+      --bg-card-hover: rgba(255,255,255,0.08);
+      --gold: #e2b21f;
+      --gold-dim: rgba(226, 178, 31, 0.12);
+      --gold-border: rgba(226, 178, 31, 0.25);
+      --magenta: #c20078;
+      --magenta-light: #d4198a;
+      --magenta-dark: #a00065;
+      --magenta-hover: #d6008a;
+      --teal: #5b959e;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a6b8;
+      --text-muted: #6b7280;
+      --border: rgba(255,255,255,0.08);
+      --border-light: rgba(255,255,255,0.05);
+      --radius: 16px;
+      --radius-sm: 10px;
     }
 
     html {
@@ -37,10 +47,10 @@
     }
 
     body {
-      font-family: 'Heebo', sans-serif;
-      background-color: var(--bg-main);
+      font-family: 'Almoni', sans-serif;
+      background-color: var(--bg-dark);
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
@@ -58,7 +68,7 @@
 
     /* ─── HEADER STRIP ─── */
     .top-bar {
-      background: var(--bg-highlight);
+      background: rgba(255,255,255,0.03);
       border-bottom: 1px solid var(--border);
       padding: 10px 20px;
       text-align: center;
@@ -68,83 +78,98 @@
     }
 
     .top-bar strong {
-      color: var(--green);
+      color: var(--gold);
     }
 
     /* ─── HERO ─── */
     .hero {
-      padding: 60px 0 48px;
+      padding: 64px 0 52px;
       text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(194, 0, 120, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(226, 178, 31, 0.07) 0%, transparent 50%);
     }
 
     .hero-badge {
       display: inline-block;
-      background: rgba(37, 211, 102, 0.12);
-      color: var(--green);
-      border: 1px solid rgba(37, 211, 102, 0.25);
-      border-radius: 30px;
-      padding: 5px 16px;
+      background: rgba(194, 0, 120, 0.15);
+      color: var(--magenta-light);
+      border-radius: 20px;
+      padding: 6px 18px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 24px;
-      letter-spacing: 0.02em;
+      letter-spacing: 1px;
     }
 
     .hero h1 {
-      font-size: clamp(26px, 6vw, 38px);
-      font-weight: 800;
-      line-height: 1.25;
+      font-family: 'Anomalia', sans-serif;
+      font-size: clamp(28px, 7vw, 42px);
+      font-weight: 900;
+      line-height: 1.2;
       margin-bottom: 16px;
       color: #ffffff;
     }
 
-    .hero h1 span {
-      color: var(--green);
+    .hero h1 .accent {
+      color: var(--gold);
+    }
+
+    .cover-line {
+      width: 60px;
+      height: 3px;
+      background: var(--magenta);
+      border-radius: 2px;
+      margin: 20px auto;
     }
 
     .hero-sub {
       font-size: clamp(15px, 3.5vw, 18px);
       color: var(--text-secondary);
       max-width: 480px;
-      margin: 0 auto 32px;
-      line-height: 1.65;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
-    /* ─── PAIN POINTS ─── */
-    .pain-list {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-right: 3px solid #e74c3c;
-      border-radius: var(--radius);
-      padding: 28px;
-      margin: 40px 0 0;
-      text-align: right;
+    /* ─── PAIN SECTION ─── */
+    .pain-section {
+      margin-top: 8px;
     }
 
-    .pain-list h3 {
-      font-size: 15px;
+    .section-label {
+      display: inline-block;
+      background: rgba(194, 0, 120, 0.15);
+      color: var(--magenta-light);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: #e74c3c;
-      margin-bottom: 16px;
-      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
     }
 
-    .pain-list ul {
-      list-style: none;
+    .pain-items-grid {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      margin-top: 16px;
+      text-align: right;
     }
 
-    .pain-list ul li {
+    .pain-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 14px 20px;
       font-size: 14.5px;
       color: var(--text-secondary);
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .pain-list ul li::before {
+    .pain-item::before {
       content: '';
       display: inline-block;
       width: 6px;
@@ -152,7 +177,7 @@
       min-width: 6px;
       background: #e74c3c;
       border-radius: 50%;
-      margin-top: 7px;
+      margin-top: 8px;
     }
 
     /* ─── DIVIDER ─── */
@@ -165,15 +190,20 @@
     /* ─── SECTION TITLE ─── */
     .section-title {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
 
     .section-title h2 {
-      font-size: clamp(22px, 5vw, 30px);
-      font-weight: 800;
+      font-family: 'Anomalia', sans-serif;
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 900;
       color: #ffffff;
-      margin-bottom: 10px;
-      line-height: 1.3;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .section-title .cover-line {
+      margin: 14px auto 16px;
     }
 
     .section-title p {
@@ -181,39 +211,48 @@
       color: var(--text-secondary);
       max-width: 420px;
       margin: 0 auto;
-      line-height: 1.65;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
     /* ─── HOW IT WORKS ─── */
     .steps-grid {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .step-item {
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: var(--radius);
       padding: 20px;
+      transition: all 0.3s;
+    }
+
+    .step-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07);
     }
 
     .step-num {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      background: rgba(37, 211, 102, 0.1);
-      border: 1px solid rgba(37, 211, 102, 0.25);
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--green);
+      font-family: 'Anomalia', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--gold);
     }
 
     .step-text h4 {
@@ -226,7 +265,8 @@
     .step-text p {
       font-size: 14px;
       color: var(--text-secondary);
-      line-height: 1.55;
+      line-height: 1.6;
+      font-weight: 300;
     }
 
     /* ─── TOGGLE ─── */
@@ -235,7 +275,7 @@
       align-items: center;
       justify-content: center;
       gap: 14px;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
     .toggle-label {
@@ -267,7 +307,7 @@
     .toggle-track {
       position: absolute;
       inset: 0;
-      background: var(--border);
+      background: rgba(255,255,255,0.1);
       border-radius: 26px;
       transition: background 0.25s;
     }
@@ -285,7 +325,7 @@
     }
 
     .toggle-switch input:checked ~ .toggle-track {
-      background: var(--green);
+      background: var(--magenta);
     }
 
     .toggle-switch input:checked ~ .toggle-thumb {
@@ -293,13 +333,13 @@
     }
 
     .annual-badge {
-      background: rgba(37, 211, 102, 0.1);
-      color: var(--green);
-      border: 1px solid rgba(37, 211, 102, 0.2);
+      background: var(--gold-dim);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
       border-radius: 20px;
       padding: 2px 10px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* ─── PACKAGES ─── */
@@ -310,29 +350,35 @@
     }
 
     .package-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
     }
 
     .package-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07);
     }
 
     .package-card.featured {
-      border-color: var(--green);
-      position: relative;
+      border-color: var(--magenta);
+    }
+
+    .package-card.featured:hover {
+      border-color: var(--magenta-light);
     }
 
     .featured-ribbon {
-      background: var(--green);
-      color: #0B141A;
+      background: var(--magenta);
+      color: #ffffff;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       text-align: center;
-      padding: 6px 0;
+      padding: 7px 0;
       letter-spacing: 0.08em;
     }
 
@@ -342,23 +388,24 @@
     }
 
     .package-name {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       margin-bottom: 6px;
     }
 
     .package-card.featured .package-name {
-      color: var(--green);
+      color: var(--magenta-light);
     }
 
     .package-title {
+      font-family: 'Anomalia', sans-serif;
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 700;
       color: #ffffff;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .package-price {
@@ -368,8 +415,9 @@
     }
 
     .price-amount {
-      font-size: 32px;
-      font-weight: 800;
+      font-family: 'Anomalia', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
       color: #ffffff;
       line-height: 1;
     }
@@ -397,7 +445,7 @@
     body.annual .price-annual { display: block; }
 
     .package-body {
-      padding: 20px 24px 24px;
+      padding: 20px 24px 26px;
     }
 
     .features-list {
@@ -405,7 +453,7 @@
       display: flex;
       flex-direction: column;
       gap: 11px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .features-list li {
@@ -414,7 +462,7 @@
       gap: 10px;
       font-size: 14.5px;
       color: var(--text-secondary);
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     .check-icon {
@@ -424,7 +472,7 @@
       width: 18px;
       height: 18px;
       min-width: 18px;
-      background: rgba(37, 211, 102, 0.12);
+      background: var(--gold-dim);
       border-radius: 50%;
       margin-top: 1px;
     }
@@ -440,79 +488,87 @@
     }
 
     .addon-note {
-      background: rgba(37, 211, 102, 0.05);
-      border: 1px solid rgba(37, 211, 102, 0.12);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
       border-radius: var(--radius-sm);
       padding: 10px 14px;
       font-size: 13px;
       color: var(--text-secondary);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .addon-note strong {
-      color: var(--green);
-    }
-
-    .package-cta {
-      display: block;
-      width: 100%;
-      padding: 14px 20px;
-      border-radius: var(--radius-sm);
-      font-family: 'Heebo', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: 2px solid var(--border);
-      background: transparent;
-      color: var(--text-primary);
-    }
-
-    .package-card.featured .package-cta {
-      background: var(--green);
-      border-color: var(--green);
-      color: #0B141A;
-    }
-
-    .package-card.featured .package-cta:hover {
-      background: var(--green-dark);
-      border-color: var(--green-dark);
-    }
-
-    .package-cta:hover {
-      border-color: var(--text-secondary);
-      color: #ffffff;
+      color: var(--gold);
     }
 
     /* ─── CONTACTS LIMIT ─── */
     .contacts-tag {
       display: inline-block;
-      background: rgba(245, 200, 66, 0.08);
-      border: 1px solid rgba(245, 200, 66, 0.2);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
       border-radius: 20px;
-      padding: 3px 10px;
+      padding: 3px 12px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--gold);
       margin-top: 12px;
     }
 
+    /* ─── CTA BUTTONS ─── */
+    .package-cta {
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-family: 'Almoni', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.05);
+      color: var(--text-primary);
+    }
+
+    .package-cta:hover {
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.1);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .package-card.featured .package-cta {
+      background: var(--magenta);
+      border-color: var(--magenta);
+      color: #ffffff;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 20px rgba(194, 0, 120, 0.3);
+    }
+
+    .package-card.featured .package-cta:hover {
+      background: var(--magenta-hover);
+      border-color: var(--magenta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(194, 0, 120, 0.4);
+    }
+
     /* ─── GUARANTEE ─── */
     .guarantee-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
       border-radius: var(--radius);
-      padding: 36px 28px;
+      padding: 40px 28px;
       text-align: center;
     }
 
     .guarantee-icon {
-      width: 56px;
-      height: 56px;
-      background: rgba(37, 211, 102, 0.1);
-      border: 2px solid rgba(37, 211, 102, 0.2);
+      width: 60px;
+      height: 60px;
+      background: var(--gold-dim);
+      border: 2px solid var(--gold-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -521,41 +577,53 @@
     }
 
     .guarantee-icon svg {
-      width: 26px;
-      height: 26px;
-      color: var(--green);
+      width: 28px;
+      height: 28px;
+      color: var(--gold);
     }
 
     .guarantee-section h2 {
-      font-size: 22px;
-      font-weight: 800;
+      font-family: 'Anomalia', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
       color: #ffffff;
-      margin-bottom: 24px;
+      margin-bottom: 8px;
+    }
+
+    .guarantee-section .cover-line {
+      margin: 14px auto 28px;
     }
 
     .guarantee-items {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .guarantee-item {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 16px;
       text-align: right;
-      background: var(--bg-highlight);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 16px 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: all 0.3s;
+    }
+
+    .guarantee-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.18);
     }
 
     .guarantee-num {
-      font-size: 24px;
+      font-family: 'Anomalia', sans-serif;
+      font-size: 28px;
       font-weight: 900;
-      color: var(--green);
+      color: var(--gold);
       line-height: 1;
-      min-width: 36px;
+      min-width: 40px;
     }
 
     .guarantee-text h4 {
@@ -568,14 +636,15 @@
     .guarantee-text p {
       font-size: 13.5px;
       color: var(--text-secondary);
-      line-height: 1.55;
+      line-height: 1.6;
+      font-weight: 300;
     }
 
     /* ─── PAUSE NOTE ─── */
     .pause-note {
-      background: var(--bg-highlight);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
       padding: 20px 24px;
       text-align: center;
       margin-top: 20px;
@@ -584,57 +653,66 @@
     .pause-note p {
       font-size: 14px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
     .pause-note strong {
       color: var(--text-primary);
+      font-weight: 700;
     }
 
     /* ─── MAIN CTA ─── */
     .main-cta-section {
       text-align: center;
-      padding: 56px 0;
+      padding: 64px 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(194, 0, 120, 0.1) 0%, transparent 60%);
+    }
+
+    .main-cta-section .section-label {
+      margin-bottom: 24px;
     }
 
     .main-cta-section h2 {
-      font-size: clamp(22px, 5vw, 30px);
-      font-weight: 800;
+      font-family: 'Anomalia', sans-serif;
+      font-size: clamp(24px, 5.5vw, 34px);
+      font-weight: 900;
       color: #ffffff;
       margin-bottom: 12px;
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
     .main-cta-section p {
       font-size: 15px;
       color: var(--text-secondary);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       max-width: 380px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.65;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
     .btn-main-cta {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--green);
-      color: #0B141A;
-      font-family: 'Heebo', sans-serif;
-      font-size: 17px;
-      font-weight: 800;
-      padding: 16px 32px;
-      border-radius: 50px;
+      background: var(--magenta);
+      color: #ffffff;
+      font-family: 'Almoni', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      padding: 16px 40px;
+      border-radius: 12px;
       text-decoration: none;
-      transition: all 0.2s;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(194, 0, 120, 0.3);
     }
 
     .btn-main-cta:hover {
-      background: var(--green-dark);
+      background: var(--magenta-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.35);
+      box-shadow: 0 8px 30px rgba(194, 0, 120, 0.4);
     }
 
     .btn-main-cta svg {
@@ -644,7 +722,7 @@
     }
 
     .no-commitment {
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 13px;
       color: var(--text-muted);
     }
@@ -659,7 +737,16 @@
     }
 
     footer strong {
-      color: var(--text-secondary);
+      color: var(--gold);
+    }
+
+    footer a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     /* ─── RESPONSIVE TWEAKS ─── */
@@ -687,21 +774,22 @@
       <div class="hero-badge">ניהול סטטוסים חכם לוואטסאפ</div>
       <h1>
         הסטטוסים שלך שווים<br />
-        <span>אלפי שקלים בחודש.</span><br />
+        <span class="accent">אלפי שקלים בחודש.</span><br />
         בתנאי שאף אחד לא חוסם אותך.
       </h1>
+      <div class="cover-line"></div>
       <p class="hero-sub">
         מערכת שמנהלת את הסטטוסים שלך אוטומטית — עם Warm-up חכם שמגן על המספר, אנליטיקות מעמיקות, ותזמון לפי לוח השנה העברי.
       </p>
 
-      <div class="pain-list">
-        <h3>את מכירה את זה?</h3>
-        <ul>
-          <li>המספר נחסם בדיוק לפני קמפיין חשוב</li>
-          <li>שלחת סטטוסים לאלפי אנשים — ואין לך מושג מי ראה</li>
-          <li>מבלה שעות בשליחה ידנית ובמעקב</li>
-          <li>אין גיבוי לאנשי הקשר — אם המספר נחסם, הכל נעלם</li>
-        </ul>
+      <div class="pain-section">
+        <div class="section-label">את מכירה את זה?</div>
+        <div class="pain-items-grid">
+          <div class="pain-item">המספר נחסם בדיוק לפני קמפיין חשוב</div>
+          <div class="pain-item">שלחת סטטוסים לאלפי אנשים — ואין לך מושג מי ראה</div>
+          <div class="pain-item">מבלה שעות בשליחה ידנית ובמעקב</div>
+          <div class="pain-item">אין גיבוי לאנשי הקשר — אם המספר נחסם, הכל נעלם</div>
+        </div>
       </div>
     </div>
   </section>
@@ -713,6 +801,7 @@
     <div class="container">
       <div class="section-title">
         <h2>איך זה עובד</h2>
+        <div class="cover-line"></div>
         <p>שלושה דברים שמשתנים מהיום הראשון</p>
       </div>
       <div class="steps-grid">
@@ -748,6 +837,7 @@
     <div class="container">
       <div class="section-title">
         <h2>בחרי את החבילה שמתאימה לך</h2>
+        <div class="cover-line"></div>
         <p>כל החבילות כוללות שרת נפרד ו-Warm-up חכם</p>
       </div>
 
@@ -796,43 +886,43 @@
             <ul class="features-list">
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>סטטוסים ללא הגבלה</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>קמפיינים ותזמון אוטומטי</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span><span class="feature-highlight">לוח שנה עברי מובנה</span> — הדלקת נרות, שבת, חגים</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>Warm-up חכם — מגן על המספר מחסימות</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>שרת נפרד בלעדי שלך</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>אנליטיקות בסיסיות</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>תמיכה במייל</span>
               </li>
@@ -872,37 +962,37 @@
             <ul class="features-list">
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>הכל מחבילת Essential</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span><span class="feature-highlight">סינון צופים</span> — מי ראה, מי לא, מתי</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span><span class="feature-highlight">שמירה אוטומטית</span> לGoogle Contacts</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>אנליטיקות מלאות — שעות שיא, חוסמים</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>חיתוך סרטונים אוטומטי</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>תמיכה טלפונית</span>
               </li>
@@ -944,25 +1034,25 @@
             <ul class="features-list">
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>הכל מחבילת Pro</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span><span class="feature-highlight">עד 5 מספרים/חשבונות</span> תחת ניהול אחד</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>תצוגת ניהול מרכזית לכולם</span>
               </li>
               <li>
                 <span class="check-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#e2b21f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
                 </span>
                 <span>Priority support</span>
               </li>
@@ -991,6 +1081,7 @@
           </svg>
         </div>
         <h2>ערבות כפולה</h2>
+        <div class="cover-line"></div>
         <div class="guarantee-items">
           <div class="guarantee-item">
             <div class="guarantee-num">30</div>
@@ -1023,6 +1114,7 @@
   <!-- MAIN CTA -->
   <section class="main-cta-section">
     <div class="container">
+      <div class="section-label">מוכנה להתחיל?</div>
       <h2>מוכנה להפסיק לפחד מחסימות?</h2>
       <p>
         שלחי הודעה ונמצא ביחד את החבילה שמתאימה לגודל הרשת שלך.
@@ -1043,7 +1135,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <strong>נתנאל היבש</strong> | שותף רשמי של סטטוס מנג'ר
+      <strong>נתנאל היבש</strong> | שותף רשמי &nbsp;·&nbsp; <a href="https://netanelhibsh.com">netanelhibsh.com</a>
     </div>
   </footer>
 
