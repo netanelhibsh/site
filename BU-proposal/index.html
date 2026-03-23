@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הצעה - מנוע צמיחה לפונטים | נתנאל היבש</title>
+<style>
+  @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-light-aaa.otf') format('opentype'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-regular-aaa.otf') format('opentype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-medium-aaa.otf') format('opentype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-bold-aaa.otf') format('opentype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-black-aaa.otf') format('opentype'); font-weight: 900; font-display: swap; }
+
+  :root {
+    --primary: #f0f0f0;
+    --accent: #e2b21f;
+    --accent-light: #f0c840;
+    --gold: #e2b21f;
+    --green: #5b959e;
+    --red: #ef4444;
+    --magenta: #c20078;
+    --bg: #0a0a14;
+    --bg-soft: #12121e;
+    --bg-card: #12121e;
+    --text: #f0f0f5;
+    --text-muted: #8b8ba3;
+    --border: rgba(255,255,255,0.08);
+    --gradient: linear-gradient(135deg, #0a0a14 0%, #12121e 50%, #1a1a2e 100%);
+    --gradient-accent: linear-gradient(135deg, #c20078 0%, #e2b21f 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Almoni', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .hero {
+    background: var(--gradient);
+    color: white;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(194,0,120,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(226,178,31,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(226,178,31,0.1);
+    border: 1px solid rgba(226,178,31,0.3);
+    color: var(--gold);
+    padding: 6px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 {
+    font-size: 46px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 20px;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .client-info {
+    background: var(--bg-soft);
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .client-info .label { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .client-info .value { font-size: 18px; font-weight: 700; color: var(--primary); }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+
+  .section { padding: 60px 0; }
+  .section + .section { border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--primary);
+  }
+  .section-subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .problem-card {
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .problem-card.red { border-right: 4px solid var(--red); background: var(--bg-card); }
+  .problem-card.green { border-right: 4px solid var(--green); background: var(--bg-card); }
+  .problem-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .problem-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .problem-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+  .process-steps { margin-top: 32px; }
+  .step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--gradient);
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .step-content h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .step-content p { font-size: 15px; color: var(--text-muted); }
+  .step-content .tag {
+    display: inline-block;
+    background: var(--bg-soft);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* Two column layout for the model */
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .model-card {
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    background: var(--bg-card);
+    position: relative;
+  }
+  .model-card.featured { border-color: var(--gold); }
+  .model-card .card-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--gradient-accent);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .model-header {
+    padding: 32px 28px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .model-header .emoji { font-size: 40px; margin-bottom: 12px; }
+  .model-header h3 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+  .model-header .desc { font-size: 14px; color: var(--text-muted); }
+  .model-pricing {
+    padding: 24px 28px;
+    text-align: center;
+    background: var(--bg-soft);
+  }
+  .model-pricing .price-label { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .model-pricing .price-main { font-size: 40px; font-weight: 900; color: var(--primary); margin: 4px 0; }
+  .model-pricing .price-main span { font-size: 18px; font-weight: 400; color: var(--text-muted); }
+  .model-pricing .price-note { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+  .model-pricing .price-note strong { color: var(--accent); font-weight: 700; }
+  .model-features { padding: 24px 28px; }
+  .model-features li {
+    list-style: none;
+    padding: 10px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .model-features li:last-child { border-bottom: none; }
+  .model-features .check { color: var(--green); font-weight: 700; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #262a36 0%, #2d3242 100%);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 40px;
+  }
+  .highlight-box h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; color: var(--primary); }
+  .highlight-box p { font-size: 16px; color: var(--text-muted); line-height: 1.7; }
+
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+  }
+  .scenario-table th {
+    text-align: right;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+  }
+  .scenario-table td {
+    padding: 14px 16px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--border);
+  }
+  .scenario-table tr:last-child td { border-bottom: none; }
+  .scenario-table .highlight-row { background: rgba(91, 149, 158, 0.15); }
+  .scenario-table .highlight-row td { font-weight: 700; color: var(--green); }
+
+  .vs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 15px;
+  }
+  .vs-table th {
+    text-align: right;
+    padding: 12px 16px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .vs-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .vs-table .old { color: var(--red); }
+  .vs-table .new { color: var(--green); font-weight: 600; }
+
+  .guarantee-box {
+    background: var(--bg-card);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+  }
+  .guarantee-box .shield { font-size: 48px; margin-bottom: 16px; }
+  .guarantee-box h3 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+  .guarantee-box p { font-size: 17px; color: var(--text-muted); max-width: 550px; margin: 0 auto; }
+
+  .cta-section {
+    background: var(--gradient);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    margin-top: 60px;
+  }
+  .cta-section h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+  .cta-section p { font-size: 18px; opacity: 0.85; margin-bottom: 32px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gradient-accent);
+    color: white;
+    padding: 16px 48px;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(194,0,120,0.4); }
+  .cta-note { margin-top: 16px; font-size: 14px; opacity: 0.7; }
+
+  .footer {
+    padding: 24px 40px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media print {
+    .hero { padding: 40px 20px 30px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 30px 0; }
+    .cta-section { padding: 30px 20px; }
+    body { font-size: 14px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 32px; }
+    .problem-grid, .model-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 20px; }
+    .client-info { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">הצעה אישית</div>
+    <h1>הקטלוג שלך שווה יותר &mdash;<br><span>בלי מבצע אחד נוסף</span></h1>
+    <p>מערכת אוטומטית שהופכת כל פונט בקטלוג להזדמנות קנייה אישית &mdash; 365 יום בשנה, בלי לשחוק את המותג שבנית</p>
+    <div style="margin-top: 32px;">
+      <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%A2%D7%9D%20Font%20Alert" class="cta-btn">בוא נדבר &#8592;</a>
+    </div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 12px;">אני מרוויח רק כשאתה מרוויח. 85% מכל מכירה &mdash; שלך.</div>
+  </div>
+</div>
+
+<!-- CLIENT INFO -->
+<div class="client-info">
+  <div>
+    <div class="label">הוכן עבור</div>
+    <div class="value">אלחנן בן אורי</div>
+  </div>
+  <div>
+    <div class="label">עסק</div>
+    <div class="value">פונטים בעברית</div>
+  </div>
+  <div>
+    <div class="label">תאריך</div>
+    <div class="value">מרץ 2026</div>
+  </div>
+  <div>
+    <div class="label">תוקף ההצעה</div>
+    <div class="value">14 ימים</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STORY + GUIDE -->
+  <div class="section">
+    <div style="background: var(--bg-card); border-radius: 16px; padding: 32px; border-right: 4px solid var(--gold);">
+      <p style="font-size: 17px; color: var(--text-muted); line-height: 1.9;">
+        יוצרים שמוכרים את היצירות שלהם נתקלים באותה בעיה: עבדת שנים על מותג &mdash; ואז מבצע אחד שוחק אותו בשנייה. הלקוחות מתרגלים לחכות, והמכירות תלויות ב-4 פיקים בשנה.<br><br>
+        <strong style="color: var(--text);">בניתי מערכות אוטומטיות לעסקים עם קטלוגים דיגיטליים &mdash; מערכות שמחליפות את מודל המבצעים בהזדמנויות אישיות שוטפות.</strong> התוצאה: מכירות כל חודש, מותג שלא נשחק, ובעלים שישן בלילה.
+      </p>
+    </div>
+  </div>
+
+  <!-- PROBLEM (GAIN framing) -->
+  <div class="section">
+    <div class="section-label">מה שבנית</div>
+    <div class="section-title">קטלוג חזק, קהל נאמן &mdash; ומערכת שיכולה לעשות הרבה יותר</div>
+    <div class="section-subtitle">אתה יוצר 4 קמפיינים בשנה. העסק שלך יכול למכור 365 יום.</div>
+
+    <div class="problem-grid">
+      <div class="problem-card red">
+        <div class="icon">&#128260;</div>
+        <h4>4 מבצעים, 365 יום</h4>
+        <p>בין מבצע למבצע הלקוחות מחכים. כל חודש בלי המערכת = עוד מבצע שמלמד אותם לחכות.</p>
+      </div>
+      <div class="problem-card red">
+        <div class="icon">&#128200;</div>
+        <h4>הנחות ששוחקות</h4>
+        <p>כל מבצע הנחה אומר &ldquo;הפונט שלי שווה פחות&rdquo;. אתה יודע את זה. הלקוחות שלך למדו לחכות.</p>
+      </div>
+    </div>
+
+    <!-- Stakes -->
+    <div style="text-align: center; padding: 20px; margin-top: 24px; color: var(--text-muted); font-size: 16px; font-style: italic;">
+      כל חודש שעובר בלי המערכת = עוד מבצע שמלמד את הלקוחות לחכות. ה-Wish List של הלקוחות מתמלא &mdash; ואף אחד לא קונה ממנו.
+    </div>
+  </div>
+
+  <!-- SOLUTION -->
+  <div class="section">
+    <div class="section-label">הפתרון</div>
+    <div class="section-title">Font Alert &mdash; הזדמנויות אישיות, כל השנה</div>
+    <div class="section-subtitle">מערכת אוטומטית שיודעת מה כל לקוח רוצה &mdash; ומייצרת לו הזדמנות קנייה אישית ברגע הנכון.</div>
+
+    <div class="problem-grid">
+      <div class="problem-card green">
+        <div class="icon">&#127919;</div>
+        <h4>Wish List אישי</h4>
+        <p>כל לקוח מסמן 3-5 פונטים שהוא רוצה. לא AI שמנחש &mdash; הלקוח אומר בעצמו. בדיוק מה שעבד לפני שנתיים, אבל אוטומטי.</p>
+      </div>
+      <div class="problem-card green">
+        <div class="icon">&#9889;</div>
+        <h4>Font Drop אישי</h4>
+        <p>הבוט שולח ללקוח הודעה ב-WhatsApp: &ldquo;הפונט שרצית &mdash; X% הנחה ל-48 שעות. רק לך.&rdquo; רנדומלי, אישי, אי אפשר לחכות למבצע.</p>
+      </div>
+      <div class="problem-card green">
+        <div class="icon">&#128202;</div>
+        <h4>אתה שולט</h4>
+        <p>לכל פונט בקטלוג אתה מגדיר טווח הנחה (15%-70%). פונט חזק = הנחה קטנה. פונט שצריך דחיפה = הנחה גדולה. המערכת שולפת בטווח שהגדרת.</p>
+      </div>
+      <div class="problem-card green">
+        <div class="icon">&#128640;</div>
+        <h4>אוטומציות מכירה</h4>
+        <p>נטישת עגלה, אפסייל אחרי רכישה, מומנטום (&ldquo;קנית עכשיו? הנה הנחה על עוד אחד מהרשימה שלך&rdquo;). הכל אוטומטי, רץ לבד.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="section">
+    <div class="section-label">איך זה עובד</div>
+    <div class="section-title">מאפס למנוע מכירות &mdash; ב-4 שלבים</div>
+    <div class="section-subtitle">אתה ממשיך ליצור פונטים. אני בונה את המערכת שמוכרת אותם.</div>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>אוטומציות בסיס</h4>
+          <p>נטישת עגלה, post-purchase upsell, welcome sequence. הפירות הנמוכים שכבר מייצרים כסף.</p>
+          <span class="tag">שבוע 1-2</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Wish List + טבלת הנחות</h4>
+          <p>בניית עמוד Wish List, טבלת הגדרות לכל פונט (שם, טווח הנחה, סטטוס), חיבור ל-Monday.</p>
+          <span class="tag">שבוע 2-3</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Font Alert System</h4>
+          <p>בניית האוטומציות: Font Drop אישי, Group Drop, מומנטום. חיבור ל-WhatsApp. הכל אוטומטי.</p>
+          <span class="tag">שבוע 3-4</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>השקה + אופטימיזציה</h4>
+          <p>Wish List יוצא לכל הרשימה. Font Alert מתחיל לרוץ. שבועיים של כיול ושיפור.</p>
+          <span class="tag">שבוע 4-6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FONT IN 30 DAYS -->
+  <div class="section">
+    <div class="section-label">המנוע השני</div>
+    <div class="section-title">&ldquo;פונט תוך 30 יום&rdquo;</div>
+    <div class="section-subtitle">האירוע המרכזי של העסק. קהל שהוא שותף ליצירה &mdash; קונה אחרת.</div>
+
+    <!-- What is it -->
+    <div style="background: var(--bg-soft); border-radius: 16px; padding: 32px; margin-bottom: 32px;">
+      <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">מה זה?</h4>
+      <p style="font-size: 16px; color: var(--text-muted); line-height: 1.8;">
+        <strong>רק 1,000 מקומות.</strong> קבוצת WhatsApp סגורה שמצטרפת לתהליך יצירה של פונט חדש מאפס. במשך 30 יום, הם רואים איך הפונט נולד, מצביעים על בחירות עיצוביות, מרגישים חלק מהתהליך &mdash; וביום ההשקה, הם הראשונים לקנות.
+      </p>
+      <p style="font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-top: 12px;">
+        זה לא מבצע. זה חוויה. מי שלא נרשם &mdash; מחכה לסיבוב הבא. <strong>3-4 סיבובים בשנה</strong>, כל אחד עם פונט חדש. זה הופך להיות <strong>האירוע שכולם מחכים לו.</strong>
+      </p>
+    </div>
+
+    <!-- How it works - timeline -->
+    <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">איך זה עובד?</h4>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num" style="background: var(--gradient-accent);">1</div>
+        <div class="step-content">
+          <h4>גיוס משתתפים</h4>
+          <p>דף נחיתה ייעודי + רצף הודעות WA אוטומטי לרשימה הקיימת. המשתתפים נרשמים לקבוצה ומבינים מה הולך לקרות.</p>
+          <span class="tag">שבוע לפני תחילת האירוע</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: var(--gradient-accent);">2</div>
+        <div class="step-content">
+          <h4>30 יום של יצירה משותפת</h4>
+          <p>אלחנן יוצר, הקהל שותף. הצבעות על סגנון, שם, שימושים. עדכונים שבועיים אוטומטיים. בוט WA מנהל את הקבוצה &mdash; תזכורות, מעורבות, שאלות.</p>
+          <span class="tag">4 שבועות</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: var(--gradient-accent);">3</div>
+        <div class="step-content">
+          <h4>השקה + מכירה</h4>
+          <p>הפונט מוכן. חברי הקבוצה מקבלים early bird אקסקלוסיבי ל-48 שעות. אחרי זה &mdash; השקה לכל הרשימה. אוטומציית upsell לפונטים נוספים מהקטלוג.</p>
+          <span class="tag">שבוע 5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roles -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;">
+      <div style="background: var(--bg-soft); border-radius: 16px; padding: 28px; border-right: 4px solid var(--accent);">
+        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">&#127912; מה אלחנן עושה</h4>
+        <ul style="list-style: none; padding: 0; font-size: 15px; color: var(--text-muted); line-height: 2;">
+          <li>&#8226; יוצר את הפונט (מה שאתה עושה בכל מקרה)</li>
+          <li>&#8226; משתף תהליך &mdash; סקיצות, דילמות, בחירות</li>
+          <li>&#8226; מגדיר מחיר ותנאי early bird</li>
+        </ul>
+      </div>
+      <div style="background: var(--bg-soft); border-radius: 16px; padding: 28px; border-right: 4px solid var(--green);">
+        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">&#9881;&#65039; מה נתנאל בונה ומתפעל</h4>
+        <ul style="list-style: none; padding: 0; font-size: 15px; color: var(--text-muted); line-height: 2;">
+          <li>&#8226; דף נחיתה + רצף גיוס אוטומטי</li>
+          <li>&#8226; קבוצת WA + בוט לניהול (הצבעות, תזכורות, מעורבות)</li>
+          <li>&#8226; עדכונים שבועיים אוטומטיים לקבוצה</li>
+          <li>&#8226; אוטומציית השקה: early bird &rarr; רשימה מלאה &rarr; upsell</li>
+          <li>&#8226; תשתית תשלום ומדידה</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Potential -->
+    <div style="background: rgba(91, 149, 158, 0.1); border: 2px solid var(--green); border-radius: 16px; padding: 28px; margin-top: 24px; text-align: center;">
+      <div style="font-size: 15px; color: var(--text-muted); margin-bottom: 4px;">פוטנציאל לסיבוב (כולל early bird, bundles, upsell)</div>
+      <div style="font-size: 36px; font-weight: 900; color: var(--green);">80,000 &ndash; 120,000 &#8362;</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">3-4 סיבובים בשנה = <strong style="color: var(--green);">240,000 &ndash; 480,000 &#8362; בשנה</strong></div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בנוסף ל-Font Alert השוטף שרץ 24/7</div>
+    </div>
+  </div>
+
+  <!-- SCENARIOS (moved before pricing) -->
+  <div class="section">
+    <div class="section-label">תרחישים</div>
+    <div class="section-title">כמה זה שווה?</div>
+    <div class="section-subtitle">הנה כמה תרחישים ריאליסטיים. כל המספרים מבוססים על הנתונים שלך.</div>
+
+    <table class="scenario-table">
+      <thead>
+        <tr>
+          <th>תרחיש</th>
+          <th>מכירות דרך המערכת (חודש)</th>
+          <th>אלחנן מרוויח</th>
+          <th>נתנאל מרוויח (15%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>שמרני</td>
+          <td>10,000 &#8362;</td>
+          <td>8,500 &#8362;</td>
+          <td>1,500 &#8362;</td>
+        </tr>
+        <tr>
+          <td>ריאליסטי</td>
+          <td>25,000 &#8362;</td>
+          <td>21,250 &#8362;</td>
+          <td>3,750 &#8362;</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>אופטימי</td>
+          <td>40,000 &#8362;</td>
+          <td>34,000 &#8362;</td>
+          <td>6,000 &#8362;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="scenario-table" style="margin-top: 32px;">
+      <thead>
+        <tr>
+          <th>&ldquo;פונט תוך 30 יום&rdquo; (לסיבוב)</th>
+          <th>הכנסות</th>
+          <th>אלחנן</th>
+          <th>נתנאל (15% + fee)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>שמרני: 200 קונים &times; 149 &#8362;</td>
+          <td>30,000 &#8362;</td>
+          <td>25,500 &#8362;</td>
+          <td>7,500 &#8362;</td>
+        </tr>
+        <tr>
+          <td>ריאליסטי: 500 קונים + bundles</td>
+          <td>80,000 &#8362;</td>
+          <td>68,000 &#8362;</td>
+          <td>15,000 &#8362;</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>אופטימי: 800 קונים + bundles + upsell</td>
+          <td>120,000 &#8362;</td>
+          <td>102,000 &#8362;</td>
+          <td>21,000 &#8362;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background: var(--bg-soft); border-radius: 12px; padding: 20px; margin-top: 16px; text-align: center;">
+      <div style="font-size: 15px; color: var(--text-muted);">שנתי (3-4 סיבובים + Font Alert שוטף)</div>
+      <div style="font-size: 28px; font-weight: 900; color: var(--primary); margin: 8px 0;">
+        תוספת של <span style="color: var(--green);">300,000 &ndash; 550,000 &#8362;</span> בשנה
+      </div>
+      <div style="font-size: 14px; color: var(--text-muted);">על מה שכבר קיים &mdash; בלי מבצעים, בלי שחיקת מותג</div>
+    </div>
+
+    <!-- ROI Break-even -->
+    <div style="text-align: center; padding: 24px; background: rgba(91,149,158,0.1); border: 1px solid rgba(91,149,158,0.3); border-radius: 12px; margin-top: 24px;">
+      <div style="font-size: 17px; color: var(--text);">בתרחיש שמרני (10,000 &#8362;/חודש דרך המערכות) &mdash;</div>
+      <div style="font-size: 24px; font-weight: 900; color: var(--green); margin-top: 8px;">ההשקעה מחזירה את עצמה תוך 90 יום.</div>
+    </div>
+
+    <!-- Mid-page CTA -->
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%A2%D7%9D%20Font%20Alert" class="cta-btn">בוא נתחיל &#8592;</a>
+      <div style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">תוקף ההצעה: 14 ימים</div>
+    </div>
+  </div>
+
+  <!-- COMPARISON (moved before pricing) -->
+  <div class="section">
+    <div class="section-label">השוואה</div>
+    <div class="section-title">לפני ואחרי</div>
+
+    <table class="vs-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>היום</th>
+          <th>עם Font Alert</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>מודל מכירה</td>
+          <td class="old">מבצע תקופתי 4x בשנה</td>
+          <td class="new">הזדמנויות אישיות כל השנה</td>
+        </tr>
+        <tr>
+          <td>התאמה אישית</td>
+          <td class="old">כולם מקבלים אותו מייל</td>
+          <td class="new">כל לקוח מקבל הצעה על מה שהוא רוצה</td>
+        </tr>
+        <tr>
+          <td>הנחות</td>
+          <td class="old">50-60% על הכל, שוחק את המותג</td>
+          <td class="new">אתה קובע: 15% עד 70% לכל פונט בנפרד</td>
+        </tr>
+        <tr>
+          <td>עבודה ידנית</td>
+          <td class="old">תכנון, ניוזלטר, ממומן</td>
+          <td class="new">אפס &mdash; המערכת רצה לבד</td>
+        </tr>
+        <tr>
+          <td>נטישת עגלה</td>
+          <td class="old">אין טיפול</td>
+          <td class="new">אוטומציה שמחזירה לקוחות</td>
+        </tr>
+        <tr>
+          <td>אפסייל</td>
+          <td class="old">אין</td>
+          <td class="new">הצעה אוטומטית אחרי כל רכישה</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PRICING MODEL -->
+  <div class="section">
+    <div class="section-label">המודל</div>
+    <div class="section-title">הצעה אחת. שני מרכיבים.</div>
+    <div class="section-subtitle">אני בונה את כל המערכות, אתה מגדיר את הכללים. שנינו מרוויחים כשזה עובד.</div>
+
+    <!-- Value Stack -->
+    <div class="highlight-box" style="margin-bottom: 32px; margin-top: 32px;">
+      <h3>מה שווה המערכת הזו?</h3>
+      <div style="margin-top: 16px;">
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 16px;">
+          <span style="color: var(--text-muted);">&#9889; Font Alert System (בנייה + אוטומציות)</span>
+          <span style="font-weight: 700;">15,000 &#8362;</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 16px;">
+          <span style="color: var(--text-muted);">&#127912; פונט תוך 30 יום (תשתית מלאה)</span>
+          <span style="font-weight: 700;">18,000 &#8362;</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 16px;">
+          <span style="color: var(--text-muted);">שבועיים אופטימיזציה + ליווי</span>
+          <span style="font-weight: 700;">5,000 &#8362;</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 16px 0 0; font-size: 16px;">
+          <span style="color: var(--text-muted);">שווי שוק</span>
+          <span style="font-weight: 700; text-decoration: line-through; color: var(--text-muted);">38,000 &#8362;</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 12px 0 0; font-size: 22px;">
+          <span style="font-weight: 800; color: var(--gold);">המחיר שלך</span>
+          <span style="font-weight: 900; color: var(--gold);">25,000 &#8362;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unified pricing card -->
+    <div class="model-card featured" style="margin-top: 24px; border: 2px solid var(--accent);">
+
+      <!-- Top: the two numbers side by side -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border);">
+        <div style="padding: 32px 28px; text-align: center; border-left: 1px solid var(--border);">
+          <div style="font-size: 13px; color: var(--text-muted); font-weight: 500;">הקמה (חד-פעמי)</div>
+          <div style="font-size: 42px; font-weight: 900; color: var(--primary); margin: 8px 0;">25,000 <span style="font-size: 18px; font-weight: 400; color: var(--text-muted);">&#8362;</span></div>
+          <div style="font-size: 14px; color: var(--text-muted);">אפשרות פריסה: 50% בהתחלה, 50% כשחי</div>
+        </div>
+        <div style="padding: 32px 28px; text-align: center;">
+          <div style="font-size: 13px; color: var(--text-muted); font-weight: 500;">אחוזים מתוצאות (שוטף)</div>
+          <div style="font-size: 42px; font-weight: 900; color: var(--primary); margin: 8px 0;">15<span style="font-size: 18px; font-weight: 400; color: var(--text-muted);">%</span></div>
+          <div style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--accent);">85% מכל מכירה &mdash; שלך</strong></div>
+        </div>
+      </div>
+
+      <!-- What's included -->
+      <div style="padding: 32px 28px;">
+        <h4 style="font-size: 18px; font-weight: 800; margin-bottom: 20px; color: var(--primary);">מה כלול ב-25,000 &#8362;</h4>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <!-- Engine 1: Font Alert -->
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">&#9889; מנוע 1: Font Alert System</div>
+            <ul class="model-features" style="padding: 0;">
+              <li><span class="check">&#10003;</span> עמוד Wish List + טבלת הנחות</li>
+              <li><span class="check">&#10003;</span> Font Drop אישי (WhatsApp)</li>
+              <li><span class="check">&#10003;</span> Group Drop (קבוצת WA)</li>
+              <li><span class="check">&#10003;</span> אוטומציית מומנטום (upsell אחרי רכישה)</li>
+              <li><span class="check">&#10003;</span> אוטומציית נטישת עגלה</li>
+              <li><span class="check">&#10003;</span> Post-purchase upsell</li>
+            </ul>
+          </div>
+
+          <!-- Engine 2: Font in 30 Days -->
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">&#127912; מנוע 2: פונט תוך 30 יום</div>
+            <ul class="model-features" style="padding: 0;">
+              <li><span class="check">&#10003;</span> דף נחיתה לגיוס משתתפים</li>
+              <li><span class="check">&#10003;</span> קבוצת WA אוטומטית (עד 1,000 איש)</li>
+              <li><span class="check">&#10003;</span> בוט לניהול הקבוצה + הצבעות + מעורבות</li>
+              <li><span class="check">&#10003;</span> רצף הודעות גיוס אוטומטי</li>
+              <li><span class="check">&#10003;</span> אוטומציית השקה + early bird + upsell</li>
+              <li><span class="check">&#10003;</span> תשתית תשלום ורצף מכירה</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);">
+          <ul class="model-features" style="padding: 0;">
+            <li><span class="check">&#10003;</span> שבועיים אופטימיזציה אחרי השקה</li>
+            <li><span class="check">&#10003;</span> דוח חודשי שקוף עם כל המכירות</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- What's NOT included -->
+      <div style="padding: 20px 28px; background: var(--bg-soft); border-top: 1px solid var(--border); border-radius: 0 0 18px 18px;">
+        <div style="display: flex; gap: 32px; font-size: 14px; color: var(--text-muted);">
+          <span><strong style="color: var(--green);">0%</strong> ממכירות אורגניות רגילות</span>
+          <span><strong style="color: var(--green);">0%</strong> ממבצעים תקופתיים שלך</span>
+          <span><strong>3,000 &#8362;</strong> fee הפעלה לכל סיבוב &ldquo;פונט תוך 30 יום&rdquo;</span>
+          <span>מדידה שקופה &mdash; מדידה לפי מערכת</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="section">
+    <div class="section-label">הגנה</div>
+    <div class="section-title">אפס סיכון</div>
+
+    <div class="guarantee-box">
+      <div class="shield">&#128737;&#65039;</div>
+      <h3>ההבטחה שלי</h3>
+      <p>אם בתוך <strong>90 יום</strong> מהשקה המערכות לא ייצרו לך לפחות <strong>15,000 &#8362;</strong> במכירות נוספות &mdash; אני ממשיך לעבוד בחינם עד שתגיע לשם. <strong>בלי שאלות.</strong></p>
+    </div>
+
+    <div style="background: var(--bg-soft); border-radius: 16px; padding: 28px; margin-top: 24px;">
+      <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">מדידה שקופה</h4>
+      <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7;">
+        כל מכירה שעוברת דרך המערכת מזוהה במערכת ייעודית. מה שלא עבר דרך המערכת &mdash; לא משלמים עליו. דוח חודשי שקוף עם כל המספרים. פשוט, שקוף, הוגן.
+      </p>
+    </div>
+
+    <div style="background: var(--bg-soft); border-radius: 16px; padding: 28px; margin-top: 24px;">
+      <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">מה קורה אם צריך שינויים?</h4>
+      <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7;">
+        שדרוגים, אוטומציות חדשות, או שינויים משמעותיים = פרויקט נפרד, בתשלום נפרד שיסוכם מראש. תיקוני באגים קטנים בתוך 30 יום מההשקה &mdash; עליי.
+      </p>
+    </div>
+
+    <!-- Transparency & Terms -->
+    <div style="background: var(--bg-soft); border-radius: 16px; padding: 28px; margin-top: 24px;">
+      <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 16px;">שקיפות ותנאים</h4>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h5 style="font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent);">על מה ה-15%?</h5>
+          <ul style="list-style: none; padding: 0; font-size: 14px; color: var(--text-muted); line-height: 2;">
+            <li>&#8226; על הכנסות ברוטו ממכירות שעברו דרך המערכות שנבנה</li>
+            <li>&#8226; כולל: Font Alert, Font Drop, Group Drop, נטישת עגלה, upsell</li>
+            <li>&#8226; כולל: מכירות &ldquo;פונט תוך 30 יום&rdquo;</li>
+            <li>&#8226; לא כולל: מכירות ישירות, אורגני, מבצעים תקופתיים</li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent);">דיווח ושקיפות</h5>
+          <ul style="list-style: none; padding: 0; font-size: 14px; color: var(--text-muted); line-height: 2;">
+            <li>&#8226; דוח חודשי אוטומטי &mdash; כל המכירות דרך המערכות</li>
+            <li>&#8226; גישה משותפת לדשבורד מכירות בזמן אמת</li>
+            <li>&#8226; תשלום חודשי עד ל-10 בכל חודש</li>
+            <li>&#8226; כל מחלוקת &mdash; הנתונים מדברים</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); text-align: center;">
+        <h5 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--gold);">תקרה ברורה: 50,000 &#8362;/חודש</h5>
+        <p style="font-size: 15px; color: var(--text-muted); line-height: 1.8;">
+          כשהמכירות דרך המערכת עוברות 50K/חודש &mdash; נשב ביחד ונעדכן תנאים. זה הצלחה של שנינו. עד אז &mdash; 15% קבוע, פשוט, ללא הפתעות.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>מוכן להפעיל את המנוע?</h2>
+  <p>בניית המערכת לוקחת 4-6 שבועות. ברגע שהיא חיה &mdash; היא עובדת בשבילך 24/7.</p>
+  <div style="font-size: 16px; opacity: 0.85; margin-bottom: 24px;">אני מרוויח רק כשאתה מרוויח. אין retainer, אין subscription &mdash; רק תוצאות.</div>
+  <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%A2%D7%9D%20Font%20Alert" class="cta-btn">שמור את המקום שלי &#8592;</a>
+  <div class="cta-note">ההצעה במחיר הזה פתוחה ל-14 ימים בלבד.</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <a href="https://netanelhibsh.com" style="color: var(--text-muted); text-decoration: none;">netanelhibsh.com</a> &bull; 2026
+</div>
+
+</body>
+</html>
