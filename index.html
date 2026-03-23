@@ -3,178 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>נתנאל היבש | בהירות עסקית, מערכות אוטומטיות, AI</title>
-  <meta name="description" content="נתנאל היבש - ליווי עסקי, בניית מערכות אוטומטיות, קורס מאסטרמיינד דיגיטלי וקהילת אוטוטיוזדיי. כשמייצרים בהירות, דברים זזים במהירות.">
+  <title>נתנאל היבש | מערכות AI שעובדות בשביל העסק שלך</title>
+  <meta name="description" content="נתנאל היבש — בונה מערכות AI ואוטומציות ליועצים ומומחים. Miri Knows, Blueprint, שיתופי פעולה. תוצאות אמיתיות, מערכות שעובדות לבד.">
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
-    /* Almoni Font Faces */
-    @font-face {
-      font-family: 'Almoni';
-      src: url('fonts/almoni-light-aaa.otf') format('opentype');
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'Almoni';
-      src: url('fonts/almoni-regular-aaa.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'Almoni';
-      src: url('fonts/almoni-medium-aaa.otf') format('opentype');
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'Almoni';
-      src: url('fonts/almoni-bold-aaa.otf') format('opentype');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'Almoni';
-      src: url('fonts/almoni-black-aaa.otf') format('opentype');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
+    @font-face { font-family: 'Almoni'; src: url('fonts/almoni-light-aaa.otf') format('opentype'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('fonts/almoni-regular-aaa.otf') format('opentype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('fonts/almoni-medium-aaa.otf') format('opentype'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('fonts/almoni-bold-aaa.otf') format('opentype'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('fonts/almoni-black-aaa.otf') format('opentype'); font-weight: 900; font-display: swap; }
 
     :root {
-      --bg-dark: #1e222c;
-      --bg-card: #262a36;
-      --bg-card-hover: #2d3242;
+      --bg: #0a0a14;
+      --bg-card: #12121e;
       --gold: #e2b21f;
+      --gold-light: #f5d060;
       --magenta: #c20078;
-      --magenta-hover: #d6008a;
+      --magenta-light: #e84aad;
       --teal: #5b959e;
-      --text-primary: #f0f0f0;
-      --text-secondary: #a0a6b8;
-      --text-muted: #6b7280;
-      --font-body: 'Almoni', sans-serif;
-      --font-heading: 'Almoni', sans-serif;
+      --teal-light: #7eb8c1;
+      --text: #f0f0f5;
+      --text-muted: #8b8ba3;
+      --text-dim: #6b7280;
+      --border: rgba(255,255,255,0.08);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-body);
-      background: var(--bg-dark);
-      color: var(--text-primary);
+      font-family: 'Almoni', sans-serif;
+      font-size: 17px;
       line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
       overflow-x: hidden;
     }
 
-    /* Utility */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
     /* ===== NAV ===== */
     nav {
       position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
+      top: 0; right: 0; left: 0;
       z-index: 100;
       padding: 16px 0;
       transition: background 0.3s, box-shadow 0.3s;
     }
-
     nav.scrolled {
-      background: rgba(30, 34, 44, 0.95);
+      background: rgba(10,10,20,0.95);
       backdrop-filter: blur(12px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
     }
-
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      height: 32px;
-      width: auto;
-      transition: opacity 0.2s;
-    }
-
-    .nav-logo img:hover {
-      opacity: 0.85;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo img { height: 32px; width: auto; transition: opacity 0.2s; }
+    .nav-logo img:hover { opacity: 0.85; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
     .nav-links a {
-      color: var(--text-secondary);
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
+      font-size: 15px;
+      font-weight: 500;
       transition: color 0.2s;
     }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
+    .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--magenta);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--magenta), var(--magenta-light)) !important;
       color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background 0.2s, transform 0.2s;
+      padding: 8px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(194,0,120,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(194,0,120,0.4); }
 
-    .nav-cta:hover {
-      background: var(--magenta-hover);
-      transform: translateY(-1px);
-    }
-
-    .nav-toggle {
+    /* Hamburger */
+    .hamburger {
       display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
       background: none;
       border: none;
-      cursor: pointer;
-      padding: 8px;
     }
-
-    .nav-toggle span {
+    .hamburger span {
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--text-primary);
-      margin: 6px 0;
+      background: var(--text);
+      border-radius: 2px;
       transition: transform 0.3s, opacity 0.3s;
     }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; right: 0; left: 0; bottom: 0;
+      background: rgba(10,10,20,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .nav-cta { font-size: 16px; padding: 12px 32px; }
+
+    /* ===== FLOATING NODES ===== */
+    .node { position: absolute; border-radius: 50%; animation: float 6s ease-in-out infinite; opacity: 0.4; pointer-events: none; z-index: 0; }
+    .node:nth-child(1) { width: 6px; height: 6px; background: var(--magenta); top: 20%; right: 15%; animation-delay: 0s; }
+    .node:nth-child(2) { width: 4px; height: 4px; background: var(--gold); top: 60%; right: 25%; animation-delay: 1s; }
+    .node:nth-child(3) { width: 8px; height: 8px; background: var(--teal); top: 30%; left: 20%; animation-delay: 2s; }
+    .node:nth-child(4) { width: 5px; height: 5px; background: var(--magenta-light); top: 70%; left: 15%; animation-delay: 3s; }
+    .node:nth-child(5) { width: 4px; height: 4px; background: var(--gold-light); top: 15%; left: 40%; animation-delay: 4s; }
+    .node:nth-child(6) { width: 6px; height: 6px; background: var(--magenta); top: 80%; right: 40%; animation-delay: 1.5s; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; } 50% { transform: translateY(-20px) scale(1.3); opacity: 0.7; } }
 
     /* ===== HERO ===== */
     .hero {
@@ -183,1213 +146,674 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px 24px 80px;
+      padding: 140px 24px 100px;
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -30%;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(194, 0, 120, 0.08) 0%, transparent 70%);
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(194,0,120,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 30% 60%, rgba(226,178,31,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(226, 178, 31, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-    }
-
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
     .hero-badge {
       display: inline-block;
-      background: rgba(226, 178, 31, 0.12);
-      border: 1px solid rgba(226, 178, 31, 0.25);
-      color: var(--gold);
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 0.85rem;
+      font-size: 15px;
       font-weight: 500;
-      margin-bottom: 28px;
+      padding: 8px 24px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      background: rgba(226,178,31,0.1);
+      border: 1px solid rgba(226,178,31,0.3);
+      color: var(--gold);
       letter-spacing: 0.5px;
     }
-
     .hero h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 20px;
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
     }
-
-    .hero h1 .highlight {
-      color: var(--gold);
+    .hero h1 .highlight { color: var(--gold); }
+    .hero .subtitle {
+      font-size: clamp(18px, 3vw, 22px);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
     }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-secondary);
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.8;
-    }
-
+    .hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
     .hero-cta {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--magenta);
+      background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
       color: #fff;
-      padding: 16px 36px;
-      border-radius: 12px;
-      font-size: 1.1rem;
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-size: 18px;
       font-weight: 700;
       text-decoration: none;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(194, 0, 120, 0.3);
+      box-shadow: 0 0 40px rgba(194,0,120,0.3);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(194,0,120,0.4); }
+    .hero-cta svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
+    .hero-sub { color: var(--text-dim); font-size: 14px; }
 
-    .hero-cta:hover {
-      background: var(--magenta-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 32px rgba(194, 0, 120, 0.4);
-    }
-
-    .hero-cta svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    .hero-sub {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* ===== SECTION COMMON ===== */
-    section {
-      padding: 100px 0;
-    }
-
+    /* ===== SECTION BASE ===== */
+    section { padding: 100px 0; }
     .section-label {
       display: inline-block;
-      color: var(--teal);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 1.5px;
+      font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 2px;
       margin-bottom: 12px;
     }
-
     .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 700;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      line-height: 1.2;
       margin-bottom: 16px;
-      line-height: 1.3;
+    }
+    .section-desc {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 650px;
+      margin-bottom: 48px;
     }
 
-    .section-desc {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      max-width: 560px;
-      line-height: 1.8;
+    /* ===== FADE-UP ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== ABOUT ===== */
-    .about {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
+    #about { background: var(--bg-card); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 64px;
       align-items: center;
     }
-
-    .about-text .section-desc {
-      margin-bottom: 24px;
-    }
-
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .about-highlight {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
+    .about-text .section-label { color: var(--teal); }
+    .about-text .section-title { margin-bottom: 20px; }
+    .about-text > p { color: var(--text-muted); line-height: 1.75; margin-bottom: 32px; font-size: 17px; }
+    .about-highlights { display: flex; flex-direction: column; gap: 20px; }
+    .about-highlight { display: flex; align-items: flex-start; gap: 16px; }
     .about-highlight-icon {
-      flex-shrink: 0;
       width: 40px;
       height: 40px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 18px;
+      flex-shrink: 0;
     }
-
-    .about-highlight-icon.gold { background: rgba(226, 178, 31, 0.12); }
-    .about-highlight-icon.magenta { background: rgba(194, 0, 120, 0.12); }
-    .about-highlight-icon.teal { background: rgba(91, 149, 158, 0.12); }
-
-    .about-highlight p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    .about-highlight strong {
-      color: var(--text-primary);
-    }
-
-    .about-visual {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .about-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 28px;
-      transition: border-color 0.3s;
-    }
-
-    .about-card:hover {
-      border-color: rgba(226, 178, 31, 0.2);
-    }
-
-    .about-card-number {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .about-card-label {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .about-image-wrapper {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(226, 178, 31, 0.1) 0%, rgba(194, 0, 120, 0.1) 100%);
-      padding: 20px;
-      border: 1px solid rgba(226, 178, 31, 0.2);
-    }
-
-    .about-image {
+    .about-highlight-icon.gold { background: rgba(226,178,31,0.15); }
+    .about-highlight-icon.magenta { background: rgba(194,0,120,0.15); }
+    .about-highlight-icon.teal { background: rgba(91,149,158,0.15); }
+    .about-highlight-text strong { display: block; font-weight: 700; margin-bottom: 3px; font-size: 16px; }
+    .about-highlight-text span { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+    .about-image { position: relative; }
+    .about-image img {
       width: 100%;
-      height: auto;
+      border-radius: 16px;
       display: block;
-      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+      border: 1px solid var(--border);
     }
-
-    .about-stats-mini {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+    .about-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
     }
-
-    .stat-mini {
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-      padding: 16px 12px;
-      text-align: center;
-      transition: border-color 0.3s;
-    }
-
-    .stat-mini:hover {
-      border-color: rgba(226, 178, 31, 0.2);
-    }
-
-    .stat-mini .stat-number {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 2px;
-    }
-
-    .stat-mini .stat-label {
-      display: block;
-      color: var(--text-secondary);
-      font-size: 0.75rem;
-      line-height: 1.3;
-    }
+    .about-stat { text-align: center; }
+    .about-stat strong { display: block; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+    .about-stat span { font-size: 13px; color: var(--text-dim); }
 
     /* ===== OFFERS ===== */
-    .offers {
-      background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1e28 50%, var(--bg-dark) 100%);
-    }
-
-    .offers-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .offers-header .section-desc {
-      margin: 0 auto;
-    }
-
+    #offers { background: var(--bg); }
     .offers-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
-
     .offer-card {
       background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 20px;
-      padding: 36px 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       position: relative;
       overflow: hidden;
     }
-
     .offer-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
+      top: 0; right: 0; left: 0;
       height: 3px;
-      border-radius: 20px 20px 0 0;
     }
-
-    .offer-card.blueprint::before { background: var(--gold); }
-    .offer-card.mastermind::before { background: var(--magenta); }
-    .offer-card.autotuesday::before { background: var(--teal); }
-
-    .offer-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .offer-card.blueprint:hover { border-color: rgba(226, 178, 31, 0.3); }
-    .offer-card.mastermind:hover { border-color: rgba(194, 0, 120, 0.3); }
-    .offer-card.autotuesday:hover { border-color: rgba(91, 149, 158, 0.3); }
-
-    .offer-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-
-    .blueprint .offer-icon { background: rgba(226, 178, 31, 0.12); }
-    .mastermind .offer-icon { background: rgba(194, 0, 120, 0.12); }
-    .autotuesday .offer-icon { background: rgba(91, 149, 158, 0.12); }
-
-    .offer-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
+    .offer-card.magenta::before { background: linear-gradient(90deg, var(--magenta), var(--magenta-light)); }
+    .offer-card.gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .offer-card.teal::before { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+    .offer-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .offer-card.magenta:hover { border-color: rgba(194,0,120,0.3); }
+    .offer-card.gold:hover { border-color: rgba(226,178,31,0.3); }
+    .offer-card.teal:hover { border-color: rgba(91,149,158,0.3); }
+    .offer-icon { font-size: 32px; margin-bottom: 16px; }
     .offer-tag {
       display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       margin-bottom: 16px;
-      width: fit-content;
     }
-
-    .blueprint .offer-tag {
-      background: rgba(226, 178, 31, 0.1);
-      color: var(--gold);
-    }
-
-    .mastermind .offer-tag {
-      background: rgba(194, 0, 120, 0.1);
-      color: #e84aad;
-    }
-
-    .autotuesday .offer-tag {
-      background: rgba(91, 149, 158, 0.1);
-      color: var(--teal);
-    }
-
-    .offer-desc {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 24px;
-      flex-grow: 1;
-      line-height: 1.7;
-    }
-
-    .offer-features {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-
-    .offer-features li {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      padding: 6px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .offer-features li::before {
-      content: '✓';
-      font-weight: 700;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-
-    .blueprint .offer-features li::before { color: var(--gold); }
-    .mastermind .offer-features li::before { color: var(--magenta); }
-    .autotuesday .offer-features li::before { color: var(--teal); }
-
+    .offer-tag.magenta { background: rgba(194,0,120,0.15); color: var(--magenta-light); }
+    .offer-tag.gold { background: rgba(226,178,31,0.15); color: var(--gold); }
+    .offer-tag.teal { background: rgba(91,149,158,0.15); color: var(--teal-light); }
+    .offer-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 14px; }
+    .offer-card > p { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 20px; }
+    .offer-features { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .offer-features li { font-size: 14px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; }
+    .offer-features li::before { content: '✓'; flex-shrink: 0; font-weight: 700; font-size: 13px; }
+    .offer-features li.magenta::before { color: var(--magenta-light); }
+    .offer-features li.gold::before { color: var(--gold); }
+    .offer-features li.teal::before { color: var(--teal-light); }
     .offer-price {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--text-primary);
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
-
-    .offer-price span {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--text-muted);
+    .offer-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, background 0.2s;
+      text-align: center;
     }
+    .offer-btn.magenta-filled {
+      background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(194,0,120,0.3);
+    }
+    .offer-btn.magenta-filled:hover { transform: translateY(-1px); opacity: 0.92; box-shadow: 0 6px 28px rgba(194,0,120,0.4); }
+    .offer-btn.gold-outline {
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+    .offer-btn.gold-outline:hover { background: rgba(226,178,31,0.1); transform: translateY(-1px); }
+    .offer-btn.teal-outline {
+      border: 1.5px solid var(--teal);
+      color: var(--teal-light);
+      background: transparent;
+    }
+    .offer-btn.teal-outline:hover { background: rgba(91,149,158,0.1); transform: translateY(-1px); }
 
-    .offer-cta {
+    /* ===== PROOF ===== */
+    #proof { background: var(--bg-card); }
+    .proof-stats {
+      display: flex;
+      gap: 48px;
+      margin: 40px 0 56px;
+      flex-wrap: wrap;
+    }
+    .proof-stat strong { display: block; font-size: 40px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+    .proof-stat span { font-size: 14px; color: var(--text-dim); }
+    .carousel-wrap { position: relative; }
+    .carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .carousel-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .carousel-item iframe { width: 100%; height: 100%; border: none; display: block; }
+    .carousel-controls {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
+      gap: 16px;
+      margin-top: 32px;
     }
-
-    .blueprint .offer-cta {
-      background: rgba(226, 178, 31, 0.12);
-      color: var(--gold);
-      border: 1px solid rgba(226, 178, 31, 0.25);
-    }
-    .blueprint .offer-cta:hover {
-      background: rgba(226, 178, 31, 0.2);
-      transform: translateY(-1px);
-    }
-
-    .mastermind .offer-cta {
-      background: var(--magenta);
-      color: #fff;
-    }
-    .mastermind .offer-cta:hover {
-      background: var(--magenta-hover);
-      transform: translateY(-1px);
-    }
-
-    .autotuesday .offer-cta {
-      background: rgba(91, 149, 158, 0.12);
-      color: var(--teal);
-      border: 1px solid rgba(91, 149, 158, 0.25);
-    }
-    .autotuesday .offer-cta:hover {
-      background: rgba(91, 149, 158, 0.2);
-      transform: translateY(-1px);
-    }
-
-    .offer-cta svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
-    /* ===== SOCIAL PROOF ===== */
-    .proof {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .proof-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .proof-header .section-desc {
-      margin: 0 auto;
-    }
-
-    .proof-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-bottom: 56px;
-    }
-
-    .proof-stat {
-      text-align: center;
-      padding: 32px 20px;
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      transition: border-color 0.3s;
-    }
-
-    .proof-stat:hover {
-      border-color: rgba(226, 178, 31, 0.2);
-    }
-
-    .proof-stat-number {
-      font-family: var(--font-heading);
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .proof-stat-label {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .proof-testimonials {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial {
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 28px;
-    }
-
-    .testimonial-text {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    .testimonial-text::before {
-      content: '"';
-      color: var(--gold);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-left: 4px;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .testimonial-avatar {
+    .carousel-btn {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(226, 178, 31, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-role {
+      border: 1px solid var(--border);
+      background: var(--bg);
       color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-
-    /* ===== TESTIMONIALS CAROUSEL ===== */
-    .testimonials-carousel {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .carousel-slide {
-      min-width: 100%;
-      flex-shrink: 0;
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      background: var(--bg-card);
-      border-radius: 12px;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(226, 178, 31, 0.9);
-      color: var(--bg-dark);
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 2rem;
-      font-weight: 700;
       cursor: pointer;
-      z-index: 10;
-      transition: background 0.3s, transform 0.3s;
-      line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 18px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-
-    .carousel-btn:hover {
-      background: var(--gold);
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .carousel-prev {
-      left: 10px;
-    }
-
-    .carousel-next {
-      right: 10px;
-    }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
+    .carousel-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(226,178,31,0.08); }
+    .carousel-dots { display: flex; gap: 8px; align-items: center; }
     .carousel-dot {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
+      background: var(--border);
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
     }
-
-    .carousel-dot.active {
-      background: var(--gold);
-      transform: scale(1.2);
-    }
-
-    .carousel-dot:hover {
-      background: rgba(226, 178, 31, 0.5);
-    }
+    .carousel-dot.active { background: var(--gold); transform: scale(1.3); }
 
     /* ===== FINAL CTA ===== */
-    .final-cta {
-      text-align: center;
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(194, 0, 120, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .final-cta-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .final-cta .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      margin-bottom: 16px;
-    }
-
-    .final-cta .section-desc {
-      margin: 0 auto 36px;
-      text-align: center;
-    }
-
+    #final-cta { background: var(--bg); text-align: center; }
+    #final-cta .container { max-width: 680px; }
+    #final-cta .section-title .highlight { color: var(--gold); }
+    #final-cta .section-desc { margin: 0 auto 44px; }
     .final-cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--magenta);
+      background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
       color: #fff;
-      padding: 18px 42px;
-      border-radius: 14px;
-      font-size: 1.15rem;
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-size: 18px;
       font-weight: 700;
       text-decoration: none;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(194, 0, 120, 0.3);
+      box-shadow: 0 0 40px rgba(194,0,120,0.3);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
-
-    .final-cta-btn:hover {
-      background: var(--magenta-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 32px rgba(194, 0, 120, 0.4);
-    }
-
-    .final-cta-btn svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    .final-cta-sub {
-      margin-top: 16px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
+    .final-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(194,0,120,0.4); }
+    .final-cta-btn svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
+    .final-cta-sub { color: var(--text-dim); font-size: 14px; margin-top: 16px; }
 
     /* ===== FOOTER ===== */
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    footer p {
+      padding: 32px 24px;
+      font-size: 14px;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
     }
-
-    footer a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover {
-      color: var(--gold);
-    }
-
-    /* ===== ANIMATIONS ===== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .offers-grid {
-        grid-template-columns: 1fr;
-        max-width: 480px;
-        margin: 0 auto;
-      }
-
-      .proof-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .proof-testimonials {
-        grid-template-columns: 1fr;
-        max-width: 480px;
-        margin: 0 auto;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .about-visual {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-image { order: -1; max-width: 480px; margin: 0 auto; }
+      .offers-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .carousel { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .proof-stats { gap: 32px; }
     }
 
-    @media (max-width: 640px) {
-      .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background: rgba(30, 34, 44, 0.98);
-        backdrop-filter: blur(12px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 28px;
-        z-index: 99;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        font-size: 1.2rem;
-      }
-
-      .nav-toggle {
-        display: block;
-        z-index: 101;
-      }
-
-      .nav-toggle.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      .nav-toggle.open span:nth-child(2) {
-        opacity: 0;
-      }
-      .nav-toggle.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-      }
-
-      section {
-        padding: 64px 0;
-      }
-
-      .proof-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-
-      .proof-stat {
-        padding: 24px 12px;
-      }
-
-      .proof-stat-number {
-        font-size: 2rem;
-      }
-
-      .about-visual {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .carousel-prev {
-        left: 10px;
-      }
-
-      .carousel-next {
-        right: 10px;
-      }
-
-      .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-      }
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .hero { padding: 120px 24px 80px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .proof-stats { flex-direction: column; gap: 24px; }
+      .about-stats { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav id="main-nav">
     <div class="container">
-      <a href="#" class="nav-logo"><img src="logo.png" alt="נתנאל היבש"></a>
-      <ul class="nav-links" id="navLinks">
+      <a href="#" class="nav-logo">
+        <img src="logo.png" alt="נתנאל היבש">
+      </a>
+      <ul class="nav-links">
         <li><a href="#about">מי אני</a></li>
-        <li><a href="#offers">הצעות</a></li>
+        <li><a href="#offers">מה אני עושה</a></li>
         <li><a href="#proof">תוצאות</a></li>
-        <li><a href="https://wa.me/972529286072?text=היי מירי, הגעתי מהאתר ואשמח לשמוע עוד" class="nav-cta">בואו נדבר</a></li>
+        <li>
+          <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="nav-cta">
+            דברו איתי
+          </a>
+        </li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="תפריט">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="hamburger" id="hamburger" aria-label="תפריט">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about" class="mobile-link">מי אני</a>
+    <a href="#offers" class="mobile-link">מה אני עושה</a>
+    <a href="#proof" class="mobile-link">תוצאות</a>
+    <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="nav-cta">דברו איתי</a>
+  </div>
+
   <!-- HERO -->
   <section class="hero">
+    <div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div>
     <div class="hero-content fade-up">
       <div class="hero-badge">בהירות עסקית &bull; אוטומציה &bull; AI</div>
-      <h1>כשמייצרים <span class="highlight">בהירות</span>,<br>דברים זזים במהירות</h1>
-      <p>אני עוזר ליועצים, מומחים ובעלי עסקים לבנות מערכות אוטומטיות שעובדות בשבילם &mdash; כדי שהם יתפנו לעשות את מה שהם באמת טובים בו.</p>
-      <a href="https://wa.me/972529286072?text=היי מירי, הגעתי מהאתר ואשמח לשמוע עוד" class="hero-cta">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        דברו עם מירי בוואטסאפ
-      </a>
-      <p class="hero-sub">מירי, העוזרת הדיגיטלית שלי, תענה תוך דקות</p>
+      <h1>אני בונה מערכות <span class="highlight">AI</span> שעובדות<br>בשביל העסק שלך &#8212; גם כשאתה לא שם</h1>
+      <p class="subtitle">ליווי אישי, בניית מנטורים דיגיטליים, ומערכות אוטומטיות ליועצים ומומחים שרוצים להכפיל תוצאות בלי להכפיל שעות</p>
+      <div class="hero-cta-wrap">
+        <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="hero-cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.547a.5.5 0 0 0 .609.61l5.805-1.453A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.504-5.198-1.385l-.372-.217-3.846.962.981-3.764-.237-.386A9.964 9.964 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          דברו איתי בוואטסאפ
+        </a>
+        <span class="hero-sub">תגובה אישית תוך דקות</span>
+      </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="about" id="about">
+  <section id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-text fade-up">
-          <span class="section-label">מי אני</span>
+          <span class="section-label" style="color: var(--teal);">מי אני</span>
           <h2 class="section-title">נתנאל היבש</h2>
-          <p class="section-desc">
-            יזם, בונה מערכות ואוטומציות, מלווה יועצים ומומחים בבניית תשתית דיגיטלית שמייצרת הכנסה חוזרת. מאמין שהדרך לצמיחה עוברת דרך בהירות &mdash; לא דרך עוד כלי.
-          </p>
+          <p>יזם, בונה מערכות AI ואוטומציות. מאמין שיועץ טוב לא צריך לעבוד יותר &#8212; הוא צריך מערכת חכמה שעובדת בשבילו. בניתי את מירי, מנטורית AI שמנהלת לי את העסק. עכשיו אני בונה את זה ללקוחות.</p>
           <div class="about-highlights">
             <div class="about-highlight">
               <div class="about-highlight-icon gold">&#x1F4A1;</div>
-              <p><strong>בהירות לפני כלים</strong> &mdash; קודם מבינים מה צריך, אחר כך בונים</p>
+              <div class="about-highlight-text">
+                <strong>בהירות לפני כלים</strong>
+                <span>קודם מבינים מה העסק צריך, אחר כך בונים</span>
+              </div>
             </div>
             <div class="about-highlight">
-              <div class="about-highlight-icon magenta">&#x2699;</div>
-              <p><strong>מערכות שעובדות לבד</strong> &mdash; אוטומציות, AI, תהליכים אוטונומיים</p>
+              <div class="about-highlight-icon magenta">&#x2699;&#xFE0F;</div>
+              <div class="about-highlight-text">
+                <strong>מערכות שעובדות לבד</strong>
+                <span>AI agents, אוטומציות, תהליכים אוטונומיים</span>
+              </div>
             </div>
             <div class="about-highlight">
-              <div class="about-highlight-icon teal">&#x1F91D;</div>
-              <p><strong>ליווי, לא ייעוץ</strong> &mdash; בונה איתך, לא רק אומר לך מה לעשות</p>
+              <div class="about-highlight-icon teal">&#x1F9E0;</div>
+              <div class="about-highlight-text">
+                <strong>One Man Show + AI</strong>
+                <span>בלי צוות ענק. סוכנים חכמים שעושים את העבודה</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div class="about-stat">
+              <strong>50+</strong>
+              <span>מערכות שנבנו</span>
+            </div>
+            <div class="about-stat">
+              <strong>10+</strong>
+              <span>לקוחות AI brains</span>
+            </div>
+            <div class="about-stat">
+              <strong>3+</strong>
+              <span>שנות ניסיון</span>
             </div>
           </div>
         </div>
-        <div class="about-visual fade-up">
-          <div class="about-image-wrapper">
-            <img src="netanel-profile.png" alt="נתנאל היבש" class="about-image">
-          </div>
-          <div class="about-stats-mini">
-            <div class="stat-mini">
-              <span class="stat-number">6,000+</span>
-              <span class="stat-label">משתמשים ביומטוב</span>
-            </div>
-            <div class="stat-mini">
-              <span class="stat-number">2,000+</span>
-              <span class="stat-label">חברי אוטוטיוזדיי</span>
-            </div>
-            <div class="stat-mini">
-              <span class="stat-number">50+</span>
-              <span class="stat-label">מערכות שנבנו</span>
-            </div>
-          </div>
+        <div class="about-image fade-up">
+          <img src="netanel-profile.png" alt="נתנאל היבש">
         </div>
       </div>
     </div>
   </section>
 
   <!-- OFFERS -->
-  <section class="offers" id="offers">
+  <section id="offers">
     <div class="container">
-      <div class="offers-header fade-up">
-        <span class="section-label">ההצעות שלי</span>
+      <div class="fade-up" style="margin-bottom: 48px;">
+        <span class="section-label" style="color: var(--teal);">מה אני עושה</span>
         <h2 class="section-title">שלוש דרכים לעבוד איתי</h2>
-        <p class="section-desc">לא משנה באיזה שלב אתם &mdash; יש פתרון שמותאם לכם</p>
+        <p class="section-desc">לא משנה באיזה שלב אתם &#8212; יש פתרון שמותאם לכם</p>
       </div>
       <div class="offers-grid">
 
-        <!-- Blueprint -->
-        <div class="offer-card blueprint fade-up">
-          <div class="offer-icon">&#x1F3D7;</div>
-          <h3>Blueprint</h3>
-          <span class="offer-tag">ליווי 1-on-1</span>
-          <p class="offer-desc">ליווי אישי ליועצים ומומחים בבניית מערכות אוטומטיות. מהאפיון ועד ההפעלה &mdash; בונה איתך את התשתית שמייצרת הכנסה חוזרת.</p>
-          <ul class="offer-features">
-            <li>אפיון מלא של המערכת</li>
-            <li>בנייה ואוטומציה מותאמת</li>
-            <li>הדרכה ותמיכה שוטפת</li>
-            <li>AI agents מותאמים אישית</li>
-          </ul>
-          <div class="offer-price">החל מ-4,000&#8362; <span>| אפיון + בנייה</span></div>
-          <a href="https://wa.me/972529286072?text=היי מירי, מעוניין לשמוע על שירות Blueprint" class="offer-cta">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            בואו נדבר על זה
-          </a>
-        </div>
-
-        <!-- Mastermind -->
-        <div class="offer-card mastermind fade-up">
+        <!-- Miri Knows -->
+        <div class="offer-card magenta fade-up">
           <div class="offer-icon">&#x1F9E0;</div>
-          <h3>מאסטרמיינד דיגיטלי</h3>
-          <span class="offer-tag">קורס דיגיטלי</span>
-          <p class="offer-desc">בנה מועצת יועצים אישית מבוססת AI. שיטה מוכחת שמביאה בהירות, החלטות טובות יותר ותוצאות עסקיות &mdash; בלי לשלם ליועצים.</p>
+          <span class="offer-tag magenta">מנטור AI אישי</span>
+          <h3>Miri Knows</h3>
+          <p>בונה לך מנטור דיגיטלי שיודע הכל על העסק שלך &#8212; עונה ללקוחות, מלווה תהליכים, ומשרת 24/7. הידע שלך, בגרסת AI.</p>
           <ul class="offer-features">
-            <li>בניית מועצת יועצים AI</li>
-            <li>תבניות ופרומפטים מוכנים</li>
-            <li>גישה לקהילת בוגרים</li>
-            <li>עדכונים שוטפים</li>
+            <li class="magenta">בניית brain מלא מהידע שלך</li>
+            <li class="magenta">חיבור ל-WhatsApp ואתר</li>
+            <li class="magenta">תוצאה תוך 45 יום</li>
+            <li class="magenta">תמיכה ועדכונים שוטפים</li>
           </ul>
-          <div class="offer-price">997&#8362; <span>| גישה מלאה</span></div>
-          <a href="https://mastermind.netanelhibsh.com" class="offer-cta">
-            לעמוד הקורס
-            <svg viewBox="0 0 24 24" style="transform: scaleX(-1)"><path d="M14 7l-5 5 5 5V7z"/></svg>
-          </a>
+          <div class="offer-price">החל מ-8,000&#8362; + retainer חודשי</div>
+          <a href="https://miriknows.com" target="_blank" rel="noopener" class="offer-btn magenta-filled">למדו עוד</a>
         </div>
 
-        <!-- AutoTuesday -->
-        <div class="offer-card autotuesday fade-up">
-          <div class="offer-icon">&#x1F916;</div>
-          <h3>אוטוטיוזדיי</h3>
-          <span class="offer-tag">קהילה חינם</span>
-          <p class="offer-desc">הקהילה הגדולה בישראל לאוטומציה ו-AI. כל שבוע תכנים חדשים, הדגמות, ושיתוף ידע &mdash; בחינם.</p>
+        <!-- Blueprint -->
+        <div class="offer-card gold fade-up">
+          <div class="offer-icon">&#x1F3D7;&#xFE0F;</div>
+          <span class="offer-tag gold">ליווי 1-on-1</span>
+          <h3>Blueprint</h3>
+          <p>ליווי אישי בבניית מערכת אוטומטית מותאמת. מהאפיון ועד ההפעלה &#8212; בונה איתך את התשתית שמייצרת הכנסה חוזרת.</p>
           <ul class="offer-features">
-            <li>תכנים שבועיים חדשים</li>
-            <li>קהילת 2,000+ חברים</li>
-            <li>הדגמות כלים ואוטומציות</li>
-            <li>נטוורקינג ושיתופי פעולה</li>
+            <li class="gold">אפיון מלא של המערכת</li>
+            <li class="gold">בנייה ואוטומציה מותאמת</li>
+            <li class="gold">הדרכה ותמיכה שוטפת</li>
+            <li class="gold">AI agents מותאמים אישית</li>
           </ul>
-          <div class="offer-price">חינם <span>| הצטרפות פתוחה</span></div>
-          <a href="https://wa.me/972529286072?text=היי מירי, רוצה להצטרף לאוטוטיוזדיי" class="offer-cta">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            הצטרפות לקהילה
-          </a>
+          <div class="offer-price">פיצוח 4,000&#8362; | בנייה מ-20,000&#8362;</div>
+          <a href="blueprint.html" class="offer-btn gold-outline">לפרטים נוספים</a>
+        </div>
+
+        <!-- Partnerships -->
+        <div class="offer-card teal fade-up">
+          <div class="offer-icon">&#x1F91D;</div>
+          <span class="offer-tag teal">בואו נבנה ביחד</span>
+          <h3>שיתופי פעולה</h3>
+          <p>יש לך רעיון שאפשר להעיף עם AI? בוא נדבר. אתה מביא את הידע והקהל, אני מביא את הבנייה &#8212; וגדלים ביחד.</p>
+          <ul class="offer-features">
+            <li class="teal">שותפות אמיתית, לא ספק</li>
+            <li class="teal">אני בונה, אתה מביא קהל</li>
+            <li class="teal">שקיפות מלאה</li>
+            <li class="teal">מודל גמיש</li>
+          </ul>
+          <div class="offer-price">מודל שותפות גמיש</div>
+          <a href="partnerships.html" class="offer-btn teal-outline">למדו עוד</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF -->
-  <section class="proof" id="proof">
+  <!-- PROOF -->
+  <section id="proof">
     <div class="container">
-      <div class="proof-header fade-up">
-        <span class="section-label">תוצאות</span>
-        <h2 class="section-title">מספרים שמדברים</h2>
-        <p class="section-desc">מאחורי כל מספר יש אנשים שקיבלו בהירות ויצרו שינוי</p>
-      </div>
-      <div class="proof-stats fade-up">
-        <div class="proof-stat">
-          <div class="proof-stat-number">6,000+</div>
-          <div class="proof-stat-label">משתמשים ביומטוב</div>
-        </div>
-        <div class="proof-stat">
-          <div class="proof-stat-number">2,000+</div>
-          <div class="proof-stat-label">חברי אוטוטיוזדיי</div>
-        </div>
-        <div class="proof-stat">
-          <div class="proof-stat-number">50+</div>
-          <div class="proof-stat-label">מערכות שנבנו</div>
-        </div>
-        <div class="proof-stat">
-          <div class="proof-stat-number">3+</div>
-          <div class="proof-stat-label">שנות ניסיון</div>
-        </div>
-      </div>
-      <!-- קרוסלת סרטוני עדויות -->
-      <div class="testimonials-carousel fade-up">
-        <div class="carousel-container">
-          <div class="carousel-track">
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/1025817617" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/1025817526" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/662472228?h=cf05d6309a" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/676726575" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/670855455" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/662463813" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/662462890" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
+      <div class="fade-up">
+        <span class="section-label" style="color: var(--teal);">תוצאות</span>
+        <h2 class="section-title">תוצאות שמדברות</h2>
+        <p class="section-desc">מאחורי כל מערכת יש אנשים שחיסכו זמן, הגדילו הכנסות, והפסיקו לנהל הכל לבד</p>
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <strong>50+</strong>
+            <span>מערכות שנבנו</span>
           </div>
-          <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
-          <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+          <div class="proof-stat">
+            <strong>10+</strong>
+            <span>לקוחות AI brains</span>
+          </div>
+          <div class="proof-stat">
+            <strong>3+</strong>
+            <span>שנות ניסיון</span>
+          </div>
         </div>
-        <div class="carousel-dots"></div>
+      </div>
+      <div class="carousel-wrap fade-up">
+        <div class="carousel" id="carousel">
+          <div class="carousel-item">
+            <iframe src="https://player.vimeo.com/video/1025817617" allowfullscreen title="המלצה 1"></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe src="https://player.vimeo.com/video/1025817526" allowfullscreen title="המלצה 2"></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe src="https://player.vimeo.com/video/662472228?h=cf05d6309a" allowfullscreen title="המלצה 3"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/676726575" allowfullscreen title="המלצה 4"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/670855455" allowfullscreen title="המלצה 5"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/662463813" allowfullscreen title="המלצה 6"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/662462890" allowfullscreen title="המלצה 7"></iframe>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="הקודם">&#8250;</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="הבא">&#8249;</button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <section class="final-cta">
-    <div class="container">
-      <div class="final-cta-content fade-up">
-        <span class="section-label">הצעד הבא</span>
-        <h2 class="section-title">מוכנים ליצור <span style="color: var(--gold)">בהירות</span>?</h2>
-        <p class="section-desc">ספרו למירי, העוזרת הדיגיטלית שלי, מה אתם מחפשים &mdash; והיא תתאים לכם בדיוק את מה שאתם צריכים.</p>
-        <a href="https://wa.me/972529286072?text=היי מירי, הגעתי מהאתר ואשמח לשמוע עוד" class="final-cta-btn">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          שלחו הודעה למירי
-        </a>
-        <p class="final-cta-sub">תגובה תוך דקות &bull; בלי טפסים &bull; בלי המתנה</p>
-      </div>
+  <section id="final-cta">
+    <div class="container fade-up">
+      <span class="section-label" style="color: var(--teal);">הצעד הבא</span>
+      <h2 class="section-title">מוכנים <span class="highlight">להתחיל</span>?</h2>
+      <p class="section-desc">ספרו לי מה אתם מחפשים &#8212; ונראה ביחד מה הצעד הנכון.</p>
+      <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="final-cta-btn">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.547a.5.5 0 0 0 .609.61l5.805-1.453A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.504-5.198-1.385l-.372-.217-3.846.962.981-3.764-.237-.386A9.964 9.964 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        שלחו הודעה בוואטסאפ
+      </a>
+      <p class="final-cta-sub">תגובה אישית &bull; בלי טפסים &bull; בלי המתנה</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <p>&copy; 2026 נתנאל היבש &bull; <a href="mailto:netanel@netanelhibsh.com">netanel@netanelhibsh.com</a></p>
-    </div>
+    <p>&#169; 2026 נתנאל היבש &bull; <a href="mailto:netanel@netanelhibsh.com">netanel@netanelhibsh.com</a></p>
   </footer>
 
   <script>
-    // Nav scroll effect
+    // Nav scroll
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // Mobile menu toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-    navLinks.querySelectorAll('a').forEach(link => {
+    document.querySelectorAll('.mobile-link').forEach(link => {
       link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
       });
     });
 
-    // Fade-up on scroll
+    // Fade-up
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Testimonials Carousel
-    const carousel = document.querySelector('.carousel-track');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    const dotsContainer = document.querySelector('.carousel-dots');
+    // Carousel
+    const videos = [
+      'https://player.vimeo.com/video/1025817617',
+      'https://player.vimeo.com/video/1025817526',
+      'https://player.vimeo.com/video/662472228?h=cf05d6309a',
+      'https://player.vimeo.com/video/676726575',
+      'https://player.vimeo.com/video/670855455',
+      'https://player.vimeo.com/video/662463813',
+      'https://player.vimeo.com/video/662462890'
+    ];
+    const perPage = () => window.innerWidth <= 768 ? 1 : 3;
+    let currentPage = 0;
+    const dotsEl = document.getElementById('carousel-dots');
 
-    if (carousel && slides.length > 0) {
-      let currentIndex = 0;
-
-      // Create dots
-      slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('carousel-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-      });
-
-      const dots = document.querySelectorAll('.carousel-dot');
-
-      function updateCarousel() {
-        carousel.style.transform = `translateX(${currentIndex * 100}%)`;
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentIndex);
-        });
-      }
-
-      function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-      }
-
-      function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-      }
-
-      function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-      }
-
-      prevBtn.addEventListener('click', prevSlide);
-      nextBtn.addEventListener('click', nextSlide);
-
-      // Auto-play (optional)
-      // setInterval(nextSlide, 5000);
+    function totalPages() {
+      return Math.ceil(videos.length / perPage());
     }
-  </script>
 
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < totalPages(); i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
+        dot.addEventListener('click', () => { currentPage = i; renderCarousel(); });
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function renderCarousel() {
+      const pp = perPage();
+      const start = currentPage * pp;
+      const end = start + pp;
+      const items = document.querySelectorAll('#carousel .carousel-item');
+      items.forEach((item, i) => {
+        item.style.display = (i >= start && i < end) ? '' : 'none';
+      });
+      document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentPage);
+      });
+    }
+
+    document.getElementById('carousel-prev').addEventListener('click', () => {
+      currentPage = (currentPage + 1) % totalPages();
+      renderCarousel();
+    });
+    document.getElementById('carousel-next').addEventListener('click', () => {
+      currentPage = (currentPage - 1 + totalPages()) % totalPages();
+      renderCarousel();
+    });
+
+    window.addEventListener('resize', () => {
+      if (currentPage >= totalPages()) currentPage = 0;
+      buildDots();
+      renderCarousel();
+    });
+
+    buildDots();
+    renderCarousel();
+  </script>
 </body>
 </html>
