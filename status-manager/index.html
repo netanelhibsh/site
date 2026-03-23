@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>סטטוס מנג'ר — ניהול סטטוסים לוואטסאפ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #25D366;
+      --green-dark: #1ebe5a;
+      --green-light: #dcfce7;
+      --bg-main: #0B141A;
+      --bg-card: #162026;
+      --bg-card-hover: #1c2b34;
+      --bg-highlight: #1B2631;
+      --text-primary: #e8eaed;
+      --text-secondary: #9aafb8;
+      --text-muted: #6b8490;
+      --border: #2a3f4a;
+      --border-light: #1e3040;
+      --gold: #f5c842;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 52px 0;
+    }
+
+    /* ─── HEADER STRIP ─── */
+    .top-bar {
+      background: var(--bg-highlight);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .top-bar strong {
+      color: var(--green);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 60px 0 48px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(37, 211, 102, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(37, 211, 102, 0.25);
+      border-radius: 30px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 6vw, 38px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 3.5vw, 18px);
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    /* ─── PAIN POINTS ─── */
+    .pain-list {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-right: 3px solid #e74c3c;
+      border-radius: var(--radius);
+      padding: 28px;
+      margin: 40px 0 0;
+      text-align: right;
+    }
+
+    .pain-list h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e74c3c;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .pain-list ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pain-list ul li {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .pain-list ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: #e74c3c;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      height: 1px;
+      background: var(--border-light);
+      margin: 0;
+    }
+
+    /* ─── SECTION TITLE ─── */
+    .section-title {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .section-title p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .step-text h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .step-text p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ─── TOGGLE ─── */
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .toggle-label.active {
+      color: #ffffff;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 26px;
+      cursor: pointer;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: var(--border);
+      border-radius: 26px;
+      transition: background 0.25s;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.25s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .toggle-switch input:checked ~ .toggle-track {
+      background: var(--green);
+    }
+
+    .toggle-switch input:checked ~ .toggle-thumb {
+      transform: translateX(-24px);
+    }
+
+    .annual-badge {
+      background: rgba(37, 211, 102, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(37, 211, 102, 0.2);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ─── PACKAGES ─── */
+    .packages-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .package-card.featured {
+      border-color: var(--green);
+      position: relative;
+    }
+
+    .featured-ribbon {
+      background: var(--green);
+      color: #0B141A;
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+      padding: 6px 0;
+      letter-spacing: 0.08em;
+    }
+
+    .package-header {
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .package-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    .package-card.featured .package-name {
+      color: var(--green);
+    }
+
+    .package-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .package-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-amount {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .price-unit {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .price-setup {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .price-setup.crossed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    /* price toggle visibility */
+    .price-monthly { display: block; }
+    .price-annual { display: none; }
+    body.annual .price-monthly { display: none; }
+    body.annual .price-annual { display: block; }
+
+    .package-body {
+      padding: 20px 24px 24px;
+    }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 20px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .check-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      background: rgba(37, 211, 102, 0.12);
+      border-radius: 50%;
+      margin-top: 1px;
+    }
+
+    .check-icon svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .feature-highlight {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .addon-note {
+      background: rgba(37, 211, 102, 0.05);
+      border: 1px solid rgba(37, 211, 102, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .addon-note strong {
+      color: var(--green);
+    }
+
+    .package-cta {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid var(--border);
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .package-card.featured .package-cta {
+      background: var(--green);
+      border-color: var(--green);
+      color: #0B141A;
+    }
+
+    .package-card.featured .package-cta:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+    }
+
+    .package-cta:hover {
+      border-color: var(--text-secondary);
+      color: #ffffff;
+    }
+
+    /* ─── CONTACTS LIMIT ─── */
+    .contacts-tag {
+      display: inline-block;
+      background: rgba(245, 200, 66, 0.08);
+      border: 1px solid rgba(245, 200, 66, 0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: 12px;
+    }
+
+    /* ─── GUARANTEE ─── */
+    .guarantee-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+    }
+
+    .guarantee-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(37, 211, 102, 0.1);
+      border: 2px solid rgba(37, 211, 102, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .guarantee-icon svg {
+      width: 26px;
+      height: 26px;
+      color: var(--green);
+    }
+
+    .guarantee-section h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .guarantee-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-align: right;
+      background: var(--bg-highlight);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+
+    .guarantee-num {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      min-width: 36px;
+    }
+
+    .guarantee-text h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .guarantee-text p {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ─── PAUSE NOTE ─── */
+    .pause-note {
+      background: var(--bg-highlight);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .pause-note p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .pause-note strong {
+      color: var(--text-primary);
+    }
+
+    /* ─── MAIN CTA ─── */
+    .main-cta-section {
+      text-align: center;
+      padding: 56px 0;
+    }
+
+    .main-cta-section h2 {
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .main-cta-section p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    .btn-main-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: #0B141A;
+      font-family: 'Heebo', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-main-cta:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-main-cta svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .no-commitment {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    footer strong {
+      color: var(--text-secondary);
+    }
+
+    /* ─── RESPONSIVE TWEAKS ─── */
+    @media (max-width: 400px) {
+      .guarantee-item {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .package-header, .package-body {
+        padding: 18px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    שיתוף פעולה רשמי: <strong>יוסי יחזקאל &times; נתנאל היבש</strong>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">ניהול סטטוסים חכם לוואטסאפ</div>
+      <h1>
+        הסטטוסים שלך שווים<br />
+        <span>אלפי שקלים בחודש.</span><br />
+        בתנאי שאף אחד לא חוסם אותך.
+      </h1>
+      <p class="hero-sub">
+        מערכת שמנהלת את הסטטוסים שלך אוטומטית — עם Warm-up חכם שמגן על המספר, אנליטיקות מעמיקות, ותזמון לפי לוח השנה העברי.
+      </p>
+
+      <div class="pain-list">
+        <h3>את מכירה את זה?</h3>
+        <ul>
+          <li>המספר נחסם בדיוק לפני קמפיין חשוב</li>
+          <li>שלחת סטטוסים לאלפי אנשים — ואין לך מושג מי ראה</li>
+          <li>מבלה שעות בשליחה ידנית ובמעקב</li>
+          <li>אין גיבוי לאנשי הקשר — אם המספר נחסם, הכל נעלם</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>איך זה עובד</h2>
+        <p>שלושה דברים שמשתנים מהיום הראשון</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>שרת נפרד לחלוטין שלך</h4>
+            <p>המספר שלך עובד על שרת בלעדי — לא מתחלק עם אף אחד. Warm-up חכם שמונע חסימות ושומר על המספר.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>שולחים, מתזמנים, ויודעים מה קרה</h4>
+            <p>סטטוסים ללא הגבלה עם תזמון אוטומטי — כולל הדלקת נרות, שבת, וחגים לפי לוח עברי. אחרי כל שליחה יש לך מספרים מדויקים.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>אנשי הקשר שלך מוגנים</h4>
+            <p>שמירה אוטומטית ל-Google Contacts — גם אם קורה משהו למספר, כל אנשי הקשר שלך שמורים ובטוחים.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PACKAGES -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>בחרי את החבילה שמתאימה לך</h2>
+        <p>כל החבילות כוללות שרת נפרד ו-Warm-up חכם</p>
+      </div>
+
+      <!-- BILLING TOGGLE -->
+      <div class="billing-toggle">
+        <span class="toggle-label active" id="label-monthly">תשלום חודשי</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billing-toggle" onchange="toggleBilling(this)" />
+          <span class="toggle-track"></span>
+          <span class="toggle-thumb"></span>
+        </label>
+        <span class="toggle-label" id="label-annual">
+          תשלום שנתי <span class="annual-badge">ללא setup</span>
+        </span>
+      </div>
+
+      <div class="packages-grid">
+
+        <!-- ESSENTIAL -->
+        <div class="package-card">
+          <div class="package-header">
+            <div class="package-name">Essential</div>
+            <div class="package-title">כל הבסיס שצריך</div>
+
+            <!-- Monthly -->
+            <div class="price-monthly">
+              <div class="package-price">
+                <span class="price-amount">2,500</span>
+                <span class="price-unit">&#8362;/חודש</span>
+              </div>
+              <div class="price-setup">+ setup חד-פעמי 1,500&#8362;</div>
+            </div>
+
+            <!-- Annual -->
+            <div class="price-annual">
+              <div class="package-price">
+                <span class="price-amount">2,200</span>
+                <span class="price-unit">&#8362;/חודש</span>
+              </div>
+              <div class="price-setup crossed">setup 1,500&#8362; — בחבילה שנתית: חינם</div>
+            </div>
+
+            <div class="contacts-tag">עד 20,000 אנשי קשר</div>
+          </div>
+          <div class="package-body">
+            <ul class="features-list">
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>סטטוסים ללא הגבלה</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>קמפיינים ותזמון אוטומטי</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span><span class="feature-highlight">לוח שנה עברי מובנה</span> — הדלקת נרות, שבת, חגים</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>Warm-up חכם — מגן על המספר מחסימות</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>שרת נפרד בלעדי שלך</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>אנליטיקות בסיסיות</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>תמיכה במייל</span>
+              </li>
+            </ul>
+            <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A9%D7%A7%D7%A2%20%D7%A1%D7%98%D7%98%D7%95%D7%A1%20%D7%9E%D7%A0%D7%92%27%D7%A8%20%D7%95%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Essential" class="package-cta">רוצה לשמוע עוד</a>
+          </div>
+        </div>
+
+        <!-- PRO (FEATURED) -->
+        <div class="package-card featured">
+          <div class="featured-ribbon">הכי פופולרית</div>
+          <div class="package-header">
+            <div class="package-name">Pro</div>
+            <div class="package-title">מה שרוב האושיות בוחרות</div>
+
+            <!-- Monthly -->
+            <div class="price-monthly">
+              <div class="package-price">
+                <span class="price-amount">4,500</span>
+                <span class="price-unit">&#8362;/חודש</span>
+              </div>
+              <div class="price-setup">+ setup חד-פעמי 2,000&#8362;</div>
+            </div>
+
+            <!-- Annual -->
+            <div class="price-annual">
+              <div class="package-price">
+                <span class="price-amount">3,900</span>
+                <span class="price-unit">&#8362;/חודש</span>
+              </div>
+              <div class="price-setup crossed">setup 2,000&#8362; — בחבילה שנתית: חינם</div>
+            </div>
+
+            <div class="contacts-tag">עד 35,000 אנשי קשר</div>
+          </div>
+          <div class="package-body">
+            <ul class="features-list">
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>הכל מחבילת Essential</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span><span class="feature-highlight">סינון צופים</span> — מי ראה, מי לא, מתי</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span><span class="feature-highlight">שמירה אוטומטית</span> לGoogle Contacts</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>אנליטיקות מלאות — שעות שיא, חוסמים</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>חיתוך סרטונים אוטומטי</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>תמיכה טלפונית</span>
+              </li>
+            </ul>
+            <div class="addon-note">
+              מספר נוסף (mirror): <strong>+1,500&#8362;/חודש</strong>
+            </div>
+            <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A9%D7%A7%D7%A2%20%D7%A1%D7%98%D7%98%D7%95%D7%A1%20%D7%9E%D7%A0%D7%92%27%D7%A8%20%D7%95%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Pro" class="package-cta">רוצה לשמוע עוד</a>
+          </div>
+        </div>
+
+        <!-- AGENCY -->
+        <div class="package-card">
+          <div class="package-header">
+            <div class="package-name">Agency</div>
+            <div class="package-title">לניהול כמה ערוצים</div>
+
+            <!-- Monthly -->
+            <div class="price-monthly">
+              <div class="package-price">
+                <span class="price-amount">9,500</span>
+                <span class="price-unit">&#8362;/חודש</span>
+              </div>
+              <div class="price-setup">+ setup חד-פעמי 2,500&#8362;</div>
+            </div>
+
+            <!-- Annual -->
+            <div class="price-annual">
+              <div class="package-price">
+                <span class="price-amount">8,500</span>
+                <span class="price-unit">&#8362;/חודש</span>
+              </div>
+              <div class="price-setup crossed">setup 2,500&#8362; — בחבילה שנתית: חינם</div>
+            </div>
+
+            <div class="contacts-tag">עד 5 מספרים/חשבונות</div>
+          </div>
+          <div class="package-body">
+            <ul class="features-list">
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>הכל מחבילת Pro</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span><span class="feature-highlight">עד 5 מספרים/חשבונות</span> תחת ניהול אחד</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>תצוגת ניהול מרכזית לכולם</span>
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+                </span>
+                <span>Priority support</span>
+              </li>
+            </ul>
+            <div class="addon-note">
+              כל מספר נוסף מעל 5: <strong>+1,500&#8362;/חודש</strong>
+            </div>
+            <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A9%D7%A7%D7%A2%20%D7%A1%D7%98%D7%98%D7%95%D7%A1%20%D7%9E%D7%A0%D7%92%27%D7%A8%20%D7%95%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Agency" class="package-cta">רוצה לשמוע עוד</a>
+          </div>
+        </div>
+
+      </div><!-- /packages-grid -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- GUARANTEE -->
+  <section>
+    <div class="container">
+      <div class="guarantee-section">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9,12 11,14 15,10"/>
+          </svg>
+        </div>
+        <h2>ערבות כפולה</h2>
+        <div class="guarantee-items">
+          <div class="guarantee-item">
+            <div class="guarantee-num">30</div>
+            <div class="guarantee-text">
+              <h4>יום ללא שאלות</h4>
+              <p>לא אהבת? לא מתאים? מחזירים הכל — בלי שאלות ובלי ביירוקרטיה.</p>
+            </div>
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-num">60</div>
+            <div class="guarantee-text">
+              <h4>יום ערבות תוצאה</h4>
+              <p>אם המערכת לא שלחה 90%+ מהסטטוסים בהצלחה — מקבלים חודש מנוי חינם.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pause-note">
+          <p>
+            <strong>צריך לעצור לתקופה?</strong><br />
+            עד 60 יום הקפאה בשנה ללא עלות. המנוי ממשיך מאיפה שעצרת.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- MAIN CTA -->
+  <section class="main-cta-section">
+    <div class="container">
+      <h2>מוכנה להפסיק לפחד מחסימות?</h2>
+      <p>
+        שלחי הודעה ונמצא ביחד את החבילה שמתאימה לגודל הרשת שלך.
+      </p>
+      <a
+        href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A9%D7%A7%D7%A2%20%D7%A1%D7%98%D7%98%D7%95%D7%A1%20%D7%9E%D7%A0%D7%92%27%D7%A8%20%D7%95%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93"
+        class="btn-main-cta"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        רוצה לשמוע עוד
+      </a>
+      <p class="no-commitment">ללא התחייבות — שיחה קצרה בלבד</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <strong>נתנאל היבש</strong> | שותף רשמי של סטטוס מנג'ר
+    </div>
+  </footer>
+
+  <script>
+    function toggleBilling(checkbox) {
+      const body = document.body;
+      const labelMonthly = document.getElementById('label-monthly');
+      const labelAnnual = document.getElementById('label-annual');
+
+      if (checkbox.checked) {
+        body.classList.add('annual');
+        labelMonthly.classList.remove('active');
+        labelAnnual.classList.add('active');
+      } else {
+        body.classList.remove('annual');
+        labelMonthly.classList.add('active');
+        labelAnnual.classList.remove('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
