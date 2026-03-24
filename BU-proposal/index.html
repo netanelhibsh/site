@@ -5,26 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>הצעה לאלחנן בן אורי | נתנאל היבש</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+  @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-light-aaa.otf'); font-weight: 300; }
+  @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-regular-aaa.otf'); font-weight: 400; }
+  @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-medium-aaa.otf'); font-weight: 500; }
+  @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-bold-aaa.otf'); font-weight: 700; }
+  @font-face { font-family: 'Almoni'; src: url('/fonts/almoni-black-aaa.otf'); font-weight: 900; }
 
   :root {
-    --primary: #f0f0f0;
-    --accent: #e2b21f;
-    --green: #5b959e;
-    --bg: #1e222c;
-    --bg-soft: #262a36;
-    --bg-card: #262a36;
-    --text: #f0f0f0;
-    --text-muted: #a0a6b8;
-    --border: #363a48;
-    --gradient: linear-gradient(135deg, #1e222c 0%, #262a36 50%, #2d3242 100%);
-    --gradient-accent: linear-gradient(135deg, #c20078 0%, #e2b21f 100%);
+    --bg: #0a0a14;
+    --bg-card: #12121e;
+    --bg-soft: #181828;
+    --gold: #e2b21f;
+    --gold-light: #f5d060;
+    --magenta: #c20078;
+    --magenta-light: #e84aad;
+    --teal: #5b959e;
+    --teal-light: #7eb8c1;
+    --text: #f0f0f5;
+    --text-muted: #8b8ba3;
+    --text-dim: #6b7280;
+    --border: rgba(255,255,255,0.08);
+    --gradient-accent: linear-gradient(135deg, var(--magenta) 0%, var(--gold) 100%);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Almoni', 'Heebo', sans-serif;
     color: var(--text);
     background: var(--bg);
     line-height: 1.8;
@@ -35,9 +42,37 @@
 
   /* Header */
   .header {
-    padding: 48px 32px 32px;
+    padding: 56px 32px 40px;
     text-align: center;
     border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(226,178,31,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(194,0,120,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-content { position: relative; z-index: 1; }
+  .header-logo {
+    height: 28px;
+    margin-bottom: 24px;
+    opacity: 0.9;
   }
   .header-meta {
     display: flex;
@@ -47,16 +82,22 @@
     font-size: 14px;
     color: var(--text-muted);
   }
-  .header-meta span { font-weight: 600; color: var(--primary); }
+  .header-meta span { font-weight: 700; color: var(--text); }
   .header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 4px;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header h1 em {
+    font-style: normal;
+    color: var(--gold);
   }
   .header p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-muted);
+    font-weight: 300;
   }
 
   /* Sections */
@@ -65,18 +106,28 @@
     border-bottom: 1px solid var(--border);
   }
   .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
   .section-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     margin-bottom: 20px;
-    color: var(--primary);
+    color: var(--text);
+    letter-spacing: -0.3px;
   }
   .section p {
     color: var(--text-muted);
     margin-bottom: 16px;
+    font-weight: 300;
   }
   .section p:last-child { margin-bottom: 0; }
-  .section p strong { color: var(--primary); font-weight: 700; }
+  .section p strong { color: var(--text); font-weight: 700; }
 
   /* Engine cards */
   .engine {
@@ -85,45 +136,45 @@
     border-radius: 16px;
     padding: 28px;
     margin-bottom: 20px;
+    transition: border-color 0.3s;
   }
+  .engine:hover { border-color: rgba(226,178,31,0.2); }
   .engine-label {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--accent);
-    letter-spacing: 1px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
     margin-bottom: 6px;
   }
   .engine h3 {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
   }
   .engine p {
     font-size: 16px;
     color: var(--text-muted);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-weight: 300;
   }
-  .engine ul {
-    list-style: none;
-    padding: 0;
-  }
+  .engine ul { list-style: none; padding: 0; }
   .engine li {
     padding: 6px 0;
     font-size: 15px;
     color: var(--text-muted);
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
   }
   .engine li::before {
     content: '✓';
-    color: var(--green);
+    color: var(--teal);
     font-weight: 700;
     flex-shrink: 0;
   }
 
-  /* Roles table */
+  /* Roles */
   .roles-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -131,25 +182,27 @@
     margin-top: 16px;
   }
   .role-card {
-    background: var(--bg-soft);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
   }
   .role-card h4 {
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--accent);
+    margin-bottom: 14px;
+    color: var(--gold);
   }
+  .role-card ul { list-style: none; padding: 0; }
   .role-card li {
-    list-style: none;
     padding: 5px 0;
     font-size: 15px;
     color: var(--text-muted);
+    font-weight: 300;
   }
   .role-card li::before {
-    content: '• ';
-    color: var(--text-muted);
+    content: '— ';
+    color: var(--text-dim);
   }
 
   /* Timeline */
@@ -161,12 +214,13 @@
   }
   .timeline-week {
     flex-shrink: 0;
-    background: var(--bg-soft);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 4px 12px;
+    padding: 4px 14px;
     font-size: 13px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--gold);
     min-width: 80px;
     text-align: center;
     margin-top: 2px;
@@ -174,15 +228,17 @@
   .timeline-text {
     font-size: 16px;
     color: var(--text-muted);
+    font-weight: 300;
   }
 
   /* Pricing */
   .pricing-card {
     background: var(--bg-card);
-    border: 2px solid var(--accent);
+    border: 1px solid var(--gold);
     border-radius: 16px;
     overflow: hidden;
     margin-top: 16px;
+    box-shadow: 0 0 40px rgba(226,178,31,0.06);
   }
   .pricing-row {
     display: flex;
@@ -195,19 +251,20 @@
   .pricing-label {
     font-size: 16px;
     color: var(--text-muted);
+    font-weight: 400;
   }
   .pricing-value {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--primary);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text);
   }
   .pricing-note {
     font-size: 13px;
-    color: var(--text-muted);
+    color: var(--text-dim);
     margin-top: 4px;
   }
   .pricing-footer {
-    background: var(--bg-soft);
+    background: rgba(226,178,31,0.04);
     padding: 16px 28px;
     font-size: 14px;
     color: var(--text-muted);
@@ -215,45 +272,48 @@
     gap: 24px;
     flex-wrap: wrap;
   }
-  .pricing-footer strong { color: var(--green); }
+  .pricing-footer strong { color: var(--teal); font-weight: 700; }
 
   /* Deferred */
   .deferred {
-    background: var(--bg-soft);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px 24px;
     margin-top: 20px;
     font-size: 15px;
     color: var(--text-muted);
+    font-weight: 300;
   }
-  .deferred strong { color: var(--primary); }
+  .deferred strong { color: var(--text); font-weight: 700; }
 
   /* Guarantee */
   .guarantee {
     background: var(--bg-card);
-    border: 1px solid var(--green);
+    border: 1px solid rgba(91,149,158,0.3);
     border-radius: 12px;
     padding: 24px;
     margin-top: 16px;
   }
-  .guarantee p { font-size: 16px; color: var(--text-muted); }
-  .guarantee strong { color: var(--green); }
+  .guarantee p { font-size: 16px; color: var(--text-muted); font-weight: 300; }
+  .guarantee strong { color: var(--teal); font-weight: 700; }
 
   /* CTA */
   .cta {
     text-align: center;
-    padding: 48px 0;
+    padding: 56px 0 48px;
   }
   .cta p {
-    font-size: 18px;
+    font-size: 20px;
     color: var(--text-muted);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    font-weight: 300;
   }
   .cta-btn {
     display: inline-block;
     background: var(--gradient-accent);
     color: white;
-    padding: 14px 40px;
+    padding: 16px 48px;
     border-radius: 100px;
     font-size: 18px;
     font-weight: 700;
@@ -266,11 +326,22 @@
   }
 
   .footer {
-    padding: 20px;
+    padding: 24px;
     text-align: center;
     font-size: 13px;
-    color: var(--text-muted);
+    color: var(--text-dim);
     border-top: 1px solid var(--border);
+  }
+  .footer a { color: var(--text-dim); text-decoration: none; }
+  .footer a:hover { color: var(--gold); }
+
+  /* Divider accent */
+  .accent-line {
+    width: 40px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+    margin-bottom: 20px;
   }
 
   @media (max-width: 640px) {
@@ -278,6 +349,8 @@
     .header-meta { flex-direction: column; gap: 8px; }
     .pricing-footer { flex-direction: column; gap: 8px; }
     body { font-size: 16px; }
+    .header h1 { font-size: 26px; }
+    .container { padding: 0 20px; }
   }
 
   @media print {
@@ -290,8 +363,9 @@
 
 <!-- HEADER -->
 <div class="header">
-  <div class="container">
-    <h1>הצעת עבודה — פונטים בעברית</h1>
+  <div class="header-content container">
+    <img src="/logo.png" alt="נתנאל היבש" class="header-logo">
+    <h1>הצעת עבודה — <em>פונטים בעברית</em></h1>
     <p>סיכום הפגישה שלנו + תוכנית עבודה</p>
     <div class="header-meta">
       <div>עבור <span>אלחנן בן אורי</span></div>
@@ -311,6 +385,8 @@
 
   <!-- WHAT I UNDERSTOOD -->
   <div class="section">
+    <div class="section-label">רקע</div>
+    <div class="accent-line"></div>
     <div class="section-title">מה הבנתי מהשיחה</div>
     <p>אתה יושב על <strong>14,000 כתובות</strong> של אנשים שאהבו לקנות ממך לפחות פעם אחת. זה הנכס הכי חשוב שלך — לא הפונטים עצמם.</p>
     <p>הבעיה: אתה מדבר איתם רק כשיש מבצע. אין שום מנגנון שמחבר בין מה שהם רוצים לבין הזדמנות לקנות.</p>
@@ -319,6 +395,8 @@
 
   <!-- WHAT I'M BUILDING -->
   <div class="section">
+    <div class="section-label">תוכנית עבודה</div>
+    <div class="accent-line"></div>
     <div class="section-title">מה אני בונה</div>
 
     <div class="engine">
@@ -354,6 +432,8 @@
 
   <!-- ROLES -->
   <div class="section">
+    <div class="section-label">שיתוף פעולה</div>
+    <div class="accent-line"></div>
     <div class="section-title">חלוקת תפקידים</div>
     <div class="roles-grid">
       <div class="role-card">
@@ -379,6 +459,8 @@
 
   <!-- TIMELINE -->
   <div class="section">
+    <div class="section-label">לו"ז</div>
+    <div class="accent-line"></div>
     <div class="section-title">לוח זמנים</div>
     <div class="timeline-item">
       <div class="timeline-week">שבוע 1-2</div>
@@ -396,6 +478,8 @@
 
   <!-- PRICING -->
   <div class="section">
+    <div class="section-label">השקעה</div>
+    <div class="accent-line"></div>
     <div class="section-title">תמחור</div>
 
     <div class="pricing-card">
@@ -429,6 +513,8 @@
 
   <!-- GUARANTEE -->
   <div class="section">
+    <div class="section-label">הגנה</div>
+    <div class="accent-line"></div>
     <div class="section-title">התחייבות</div>
     <div class="guarantee">
       <p>אם מנוע 1 לא מייצר מכירות <strong>בחודשיים הראשונים אחרי Go Live</strong> — אני ממשיך לעבוד עד שזה קורה, בלי חיוב נוסף. <strong>60 יום מרגע ההשקה.</strong></p>
@@ -444,7 +530,7 @@
 </div>
 
 <div class="footer">
-  נתנאל היבש · netanelhibsh.com · 2026
+  <a href="https://netanelhibsh.com">נתנאל היבש</a> · netanelhibsh.com · 2026
 </div>
 
 </body>
