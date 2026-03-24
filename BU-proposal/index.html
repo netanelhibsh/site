@@ -252,6 +252,25 @@
       margin-top: 1px;
     }
 
+    /* Value Stack */
+    .stack-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .stack-table td { padding: 16px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .stack-table tr:last-child td { border-bottom: none; }
+    .stack-name { font-size: 17px; font-weight: 700; color: var(--text); }
+    .stack-desc { font-size: 15px; color: var(--text-muted); font-weight: 300; margin-top: 4px; }
+    .stack-price { font-size: 17px; font-weight: 700; color: var(--text-muted); text-align: left; white-space: nowrap; padding-right: 0; padding-left: 16px; }
+    .stack-subtotal td { padding: 20px 0 8px; border-bottom: none; }
+    .stack-subtotal .stack-name { color: var(--gold); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .stack-subtotal .stack-price { color: var(--gold); }
+    .stack-total { background: rgba(226,178,31,0.06); border-radius: 12px; padding: 24px 28px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+    .stack-total-label { font-size: 18px; font-weight: 300; color: var(--text-muted); }
+    .stack-total-label strong { color: var(--text); font-weight: 700; }
+    .stack-total-value { font-size: 28px; font-weight: 900; color: var(--text-muted); text-decoration: line-through; }
+    .stack-final { background: var(--bg-card); border: 2px solid var(--gold); border-radius: 16px; padding: 32px; margin-top: 20px; text-align: center; box-shadow: 0 0 48px rgba(226,178,31,0.12); }
+    .stack-final-price { font-size: 48px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .stack-final-label { font-size: 16px; color: var(--text-muted); margin-top: 8px; font-weight: 300; }
+    .stack-saving { display: inline-block; background: rgba(91,149,158,0.15); border: 1px solid rgba(91,149,158,0.3); border-radius: 100px; padding: 6px 20px; font-size: 15px; color: var(--teal); font-weight: 700; margin-top: 16px; }
+
     /* Deferred box */
     .deferred-card {
       background: var(--bg-card);
@@ -583,30 +602,129 @@
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- VALUE STACK -->
 <section class="pricing-section">
   <div class="container">
     <div class="section-header fade-up" style="text-align: center;">
-      <div class="section-label">השקעה</div>
-      <div class="section-title">תמחור</div>
+      <div class="section-label">מה כלול</div>
+      <div class="section-title">פירוט מלא</div>
+      <div class="section-desc" style="margin: 0 auto;">כל רכיב עם ערך עצמאי — כאילו הזמנת אותו בנפרד.</div>
     </div>
-    <div class="price-card fade-up">
-      <!-- קבוע: הקמה + fee לסיבוב -->
-      <div class="price-row">
-        <div>
-          <div class="price-label">הקמה (חד-פעמי)</div>
-          <div class="price-note">פריסה: 12,500₪ בהתחלה + 12,500₪ עם השקת מנוע 1</div>
-        </div>
-        <div class="price-value">25,000 ₪</div>
+
+    <div class="engine-card fade-up" style="margin-top: 40px;">
+      <div class="engine-badge">מנוע 1 — Font Alert</div>
+      <table class="stack-table">
+        <tr>
+          <td>
+            <div class="stack-name">Wish List אישי</div>
+            <div class="stack-desc">כל לקוח מגדיר פונטים שהוא רוצה. אתה יודע מה כל אחד מחפש — עוד לפני שהוא חשב על זה.</div>
+          </td>
+          <td class="stack-price">8,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">Font Drop אוטומטי</div>
+            <div class="stack-desc">פונט מה-Wish List ירד במחיר? הלקוח מקבל הודעה אישית. 14K ברשימה, גם 2% = 280 מכירות על אוטומט.</div>
+          </td>
+          <td class="stack-price">12,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">נטישת עגלה</div>
+            <div class="stack-desc">70% נוטשים עגלה. רצף אוטומטי של 3 הודעות מחזיר 15-20% מהם. על ההכנסות שלך — אלפים בחודש שנעלמים היום.</div>
+          </td>
+          <td class="stack-price">14,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">Post-Purchase Upsell</div>
+            <div class="stack-desc">הרגע הכי קל למכור — שנייה אחרי שמישהו כבר שילם. הצעה אוטומטית לפונט משלים או bundle.</div>
+          </td>
+          <td class="stack-price">8,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">Welcome Sequence</div>
+            <div class="stack-desc">רצף לרשומים חדשים — מי אלחנן, למה לסמוך עליו, מה כדאי לקנות ראשון. הופך lead קר לקונה.</div>
+          </td>
+          <td class="stack-price">6,000 ₪</td>
+        </tr>
+        <tr class="stack-subtotal">
+          <td><div class="stack-name">סה"כ מנוע 1</div></td>
+          <td class="stack-price">48,000 ₪</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="engine-card fade-up">
+      <div class="engine-badge">מנוע 2 — פונט תוך 30 יום</div>
+      <table class="stack-table">
+        <tr>
+          <td>
+            <div class="stack-name">דף נחיתה לגיוס</div>
+            <div class="stack-desc">דף ייעודי שעובד 24/7 — מסביר, מרגש, ומכניס אנשים לקבוצה. בלי שאלחנן מסביר ידנית.</div>
+          </td>
+          <td class="stack-price">6,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">קבוצת WA אוטומטית</div>
+            <div class="stack-desc">כל מי שנרשם נכנס אוטומטית, מקבל ברוכים הבאים, מבין מה הולך לקרות. חיסכון שעות לכל סיבוב.</div>
+          </td>
+          <td class="stack-price">5,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">בוט ניהול קבוצה</div>
+            <div class="stack-desc">תזכורות, הצבעות, מעורבות — הכל אוטומטי. אלחנן יכול להיות בחו"ל והקבוצה עדיין רצה.</div>
+          </td>
+          <td class="stack-price">8,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">רצף גיוס אוטומטי</div>
+            <div class="stack-desc">סדרת הודעות שבונות ציפייה לפני פתיחת הרישום. הופך כל סיבוב ל-event שאנשים מחכים לו.</div>
+          </td>
+          <td class="stack-price">7,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">Launch Sequence</div>
+            <div class="stack-desc">Early bird לרשימת המתנה, deadline, upsell. ה-60-80K לסיבוב בא מהשלושה ימים האלה.</div>
+          </td>
+          <td class="stack-price">10,000 ₪</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stack-name">תשתית תשלום + מדידה</div>
+            <div class="stack-desc">הכל מחובר — תשלום, אישורים, דשבורד שאומר כמה נרשמו, כמה שילמו, מאיפה הגיעו.</div>
+          </td>
+          <td class="stack-price">7,000 ₪</td>
+        </tr>
+        <tr class="stack-subtotal">
+          <td><div class="stack-name">סה"כ מנוע 2</div></td>
+          <td class="stack-price">43,000 ₪</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Total + Final Price -->
+    <div class="fade-up">
+      <div class="stack-total">
+        <div class="stack-total-label">ערך כל הרכיבים <strong>אם מזמינים בנפרד</strong></div>
+        <div class="stack-total-value">91,000 ₪</div>
       </div>
-      <div class="price-row" style="border-bottom: 2px solid rgba(226,178,31,0.2);">
-        <div>
-          <div class="price-label">Fee לכל סיבוב "פונט תוך 30 יום"</div>
-          <div class="price-note">תפעול, בוט קבוצה, אוטומציית השקה</div>
-        </div>
-        <div class="price-value">3,000 ₪</div>
+
+      <div class="stack-final">
+        <div style="font-size: 15px; color: var(--text-muted); margin-bottom: 8px; font-weight: 300;">שני המנועים, מתחיל עד מסיים</div>
+        <div class="stack-final-price">35,000 ₪</div>
+        <div class="stack-final-label">פריסה: 17,500₪ בהתחלה + 17,500₪ עם השקת מנוע 1</div>
+        <div class="stack-saving">חיסכון של 56,000 ₪</div>
       </div>
-      <!-- שוטף: 15% מהכל -->
+    </div>
+
+    <!-- Ongoing -->
+    <div class="price-card fade-up" style="margin-top: 28px;">
       <div class="price-row" style="padding: 28px 32px;">
         <div>
           <div class="price-label" style="font-size: 18px; font-weight: 700; color: var(--text);">שוטף — 15% מכל המכירות דרך המערכות</div>
@@ -614,10 +732,16 @@
         </div>
         <div class="price-value" style="font-size: 36px;">15%</div>
       </div>
+      <div class="price-row" style="border-bottom: none;">
+        <div>
+          <div class="price-label">Fee לכל סיבוב "פונט תוך 30 יום"</div>
+          <div class="price-note">תפעול, בוט קבוצה, אוטומציית השקה</div>
+        </div>
+        <div class="price-value">3,000 ₪</div>
+      </div>
       <div class="price-footer">
         <span><strong>0%</strong> ממכירות אורגניות</span>
         <span><strong>0%</strong> ממבצעים תקופתיים שלך</span>
-
       </div>
     </div>
   </div>
