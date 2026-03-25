@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פירוט ההצעה — אלחנן בן אורי</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1e222c;
+    --bg-card: #252a36;
+    --bg-card-hover: #2c3244;
+    --bg-deep: #181c25;
+    --gold: #e2b21f;
+    --gold-dim: rgba(226,178,31,0.12);
+    --gold-border: rgba(226,178,31,0.25);
+    --green: #5b959e;
+    --green-dim: rgba(91,149,158,0.12);
+    --green-border: rgba(91,149,158,0.25);
+    --text: #e8eaf0;
+    --text-muted: #8a92a8;
+    --text-dim: #5e6578;
+    --border: rgba(255,255,255,0.06);
+    --border-subtle: rgba(255,255,255,0.04);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --transition: 0.2s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 0 16px 80px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .header-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .header-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .page-header h1 {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .page-header h1 span {
+    color: var(--gold);
+  }
+
+  .page-header .subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 20px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .meta-item .icon {
+    width: 28px;
+    height: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── FOUNDATION CARD ─── */
+  .foundation-block {
+    background: var(--bg-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .foundation-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(226,178,31,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .foundation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .foundation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .foundation-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .foundation-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 520px) {
+    .foundation-items { grid-template-columns: 1fr; }
+  }
+
+  .foundation-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+  }
+
+  .foundation-item-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .foundation-item-name .num {
+    width: 22px;
+    height: 22px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .foundation-item-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .foundation-note {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: rgba(226,178,31,0.06);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+    border-right: 3px solid var(--gold);
+  }
+
+  /* ─── PARALLEL ENGINES DIVIDER ─── */
+  .parallel-divider {
+    text-align: center;
+    margin: 0 0 40px;
+    position: relative;
+  }
+
+  .parallel-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-deep);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .parallel-inner .arrow {
+    font-size: 16px;
+    color: var(--text-dim);
+  }
+
+  /* ─── ENGINES GRID ─── */
+  .engines-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 600px) {
+    .engines-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── ENGINE BLOCK ─── */
+  .engine {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .engine-header {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .engine-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .engine-1 .engine-label {
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+  }
+
+  .engine-2 .engine-label {
+    background: var(--green-dim);
+    border: 1px solid var(--green-border);
+    color: var(--green);
+  }
+
+  .engine-header h2 {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .engine-header .engine-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .engine-steps {
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  /* ─── STEP CARD ─── */
+  .step {
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: var(--bg-deep);
+    transition: background var(--transition), border-color var(--transition);
+    cursor: default;
+  }
+
+  .step:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border);
+  }
+
+  .step-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .engine-1 .step-num {
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+  }
+
+  .engine-2 .step-num {
+    background: var(--green-dim);
+    border: 1px solid var(--green-border);
+    color: var(--green);
+  }
+
+  .step-content { flex: 1; min-width: 0; }
+
+  .step-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .step-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .step-why {
+    margin-top: 10px;
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.55;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .engine-1 .step-why {
+    background: rgba(226,178,31,0.07);
+    color: rgba(226,178,31,0.85);
+    border-right: 2px solid rgba(226,178,31,0.3);
+  }
+
+  .engine-2 .step-why {
+    background: rgba(91,149,158,0.07);
+    color: rgba(91,149,158,0.9);
+    border-right: 2px solid rgba(91,149,158,0.3);
+  }
+
+  .step-why .why-arrow {
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── BOTTOM SECTIONS ─── */
+  .bottom-sections {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 560px) {
+    .bottom-sections { grid-template-columns: 1fr; }
+  }
+
+  .bottom-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+
+  .bottom-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bottom-card-title .icon-sm {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .not-included .icon-sm { background: rgba(255,255,255,0.05); }
+  .bonus-card .icon-sm { background: rgba(91,149,158,0.12); }
+
+  .not-list, .bonus-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .not-list li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .not-list li::before {
+    content: '—';
+    color: var(--text-dim);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .bonus-list li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .bonus-list li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .bottom-note {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  footer a:hover { color: var(--gold); }
+
+  /* ─── CONNECTOR LINE ─── */
+  .connector {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .connector::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: var(--border);
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  .connector-inner {
+    background: var(--bg);
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 480px) {
+    .page-header { padding: 40px 0 32px; }
+    .engines-grid { gap: 16px; }
+    .engine-steps { padding: 12px 16px; }
+    .engine-header { padding: 16px 16px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="header-eyebrow">
+      <span class="dot"></span>
+      מסמך פנימי · מרץ 2026
+    </div>
+    <h1>פירוט ההצעה — <span>אלחנן בן אורי</span></h1>
+    <p class="subtitle">מה אתה מקבל, שלב אחרי שלב — ולמה כל רכיב חשוב</p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="icon">📋</span>
+        <span>2 מנועי מכירות</span>
+      </div>
+      <div class="meta-item">
+        <span class="icon">⚡</span>
+        <span>11 שלבים</span>
+      </div>
+      <div class="meta-item">
+        <span class="icon">🎯</span>
+        <span>מכירות אוטומטיות 24/7</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- STAGE 0: FOUNDATION -->
+  <div class="section-title">שלב 0 · תשתית</div>
+
+  <div class="foundation-block">
+    <div class="foundation-badge">▣ Foundation</div>
+    <div class="foundation-title">תשתית הבסיס</div>
+    <div class="foundation-sub">לפני שכל מנוע עולה — הדאטה והדלתות צריכות להיות מוכנות.</div>
+
+    <div class="foundation-items">
+      <div class="foundation-item">
+        <div class="foundation-item-name">
+          <span class="num">א</span>
+          פרופיל לקוח חכם
+        </div>
+        <div class="foundation-item-desc">מסד נתונים שמחזיק על כל לקוח: מה הוא רוצה, מה הוא קנה, באיזה שלב הוא. בלי זה — אי אפשר לשלוח שום דבר אישי. זה הלגו הראשון.</div>
+      </div>
+      <div class="foundation-item">
+        <div class="foundation-item-name">
+          <span class="num">ב</span>
+          Triggers — הדלתות של המערכת
+        </div>
+        <div class="foundation-item-desc">זיהוי אוטומטי של אירועים: מישהו נרשם, מישהו קנה, מישהו נטש עגלה. כל אוטומציה שנבנה אחר כך נשענת על הדלתות האלה.</div>
+      </div>
+    </div>
+
+    <div class="foundation-note">
+      אחרי ששלב 0 עומד — שני המנועים נבנים במקביל.
+    </div>
+  </div>
+
+  <!-- PARALLEL DIVIDER -->
+  <div class="parallel-divider">
+    <div class="parallel-inner">
+      <span>מנוע 1</span>
+      <span class="arrow">⇔</span>
+      <span>מנוע 2</span>
+    </div>
+  </div>
+
+  <!-- ENGINES GRID -->
+  <div class="engines-grid">
+
+    <!-- ENGINE 1 -->
+    <div class="engine engine-1">
+      <div class="engine-header">
+        <div class="engine-label">Engine 1</div>
+        <h2>Font Alert</h2>
+        <div class="engine-sub">מערכת שמייצרת מכירות אוטומטיות כל השנה, בלי מבצעים גורפים.</div>
+      </div>
+      <div class="engine-steps">
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-name">Welcome Sequence</div>
+              <div class="step-desc">רצף מיילים אוטומטי לכל נרשם חדש. מי אלחנן, למה לסמוך עליו, הפונטים הכי פופולריים, הצעה ראשונה.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>הופך lead קר לקונה תוך שבוע. בלי זה — נרשם ושוכח. גם בדיקה שהתשתית עובדת.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-name">Wish List אישי</div>
+              <div class="step-desc">כל לקוח מסמן פונטים שהוא רוצה. נשמר בפרופיל שלו.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>700 אנשים שהרימו יד ואמרו "אני רוצה את זה". זה הבסיס לכל הפרסונליזציה. בלי Wish List — אין Font Drop.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-name">Font Drop אוטומטי</div>
+              <div class="step-desc">פונט מה-Wish List ירד במחיר? הלקוח מקבל הודעה אישית. לא blast לכולם — רק למי שביקש.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>זה לב המנוע. "ההזדמנות שביקשת הגיעה" ≠ "מבצע". המותג לא נשחק. 2% מ-14K = 280 מכירות אוטומטיות.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-name">נטישת עגלה</div>
+              <div class="step-desc">מישהו שם פונט בעגלה ולא שילם? רצף של 3 הודעות מחזיר אותו.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>70% מהאנשים שמתחילים לקנות לא מסיימים. הרצף מחזיר 15-20% מהם. כסף שכבר כמעט נכנס ופשוט נעלם.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-name">Post-Purchase Upsell</div>
+              <div class="step-desc">מישהו קנה פונט? שנייה אחרי — הצעה אוטומטית לפונט משלים או bundle.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>הרגע הכי קל למכור — הארנק פתוח, האמון גבוה. 10% שלוקחים upsell = 10% הכנסות נוספות על כל רכישה, בלי עלות שיווק.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ENGINE 2 -->
+    <div class="engine engine-2">
+      <div class="engine-header">
+        <div class="engine-label">Engine 2</div>
+        <h2>פונט תוך 30 יום</h2>
+        <div class="engine-sub">אירוע 1-2 פעמים בשנה: 1,000 אנשים רואים פונט נולד, מצביעים, מרגישים חלק — וקונים לפני שהמוצר יצא.</div>
+      </div>
+      <div class="engine-steps">
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-name">דף נחיתה לגיוס</div>
+              <div class="step-desc">דף ייעודי שמסביר מה זה, מרגש, ומכניס אנשים לקבוצה. עובד 24/7.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>בלי דף — אלחנן מסביר ידנית כל פעם. עם דף — שולח לינק, הדף מוכר. שער הכניסה לכל האירוע.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-name">רצף גיוס אוטומטי</div>
+              <div class="step-desc">סדרת הודעות שבונות ציפייה לפני פתיחת הרישום. טיזרים, הצצות, countdown.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>ההבדל בין "פתחנו קבוצה" ל-"אירוע שאנשים מחכים לו". הגיוס עצמו הופך לאירוע שיווקי.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-name">קבוצת WA אוטומטית</div>
+              <div class="step-desc">כל מי שנרשם בדף נכנס אוטומטית לקבוצה, מקבל ברוכים הבאים, מבין מה הולך לקרות.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>חוסך שעות ידניות. אלחנן לא מוסיף אנשים ידנית, לא שולח הודעת פתיחה. הכל לבד.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-name">בוט ניהול קבוצה</div>
+              <div class="step-desc">תזכורות, הצבעות על כיוון הפונט, עדכוני התקדמות, מעורבות — אוטומטי לאורך 30 יום.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>שומר מעורבות גבוהה 30 יום. אלחנן מתמקד ביצירת הפונט. עובד גם כשאלחנן בחו"ל.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-name">Launch Sequence</div>
+              <div class="step-desc">Early bird לרשימת המתנה, deadline, upsell. שלושת הימים האחרונים — שם הכסף הגדול.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>ה-60-80K לסיבוב מגיע מהימים האלה. Early bird = urgency אמיתית. Deadline = FOMO. Upsell = ערך גבוה יותר.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-top">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <div class="step-name">תשתית תשלום + מדידה</div>
+              <div class="step-desc">תשלום, אישורים, דשבורד שמראה כמה נרשמו, כמה שילמו, מאיפה הגיעו.</div>
+              <div class="step-why">
+                <span class="why-arrow">→</span>
+                <span>אלחנן רואה תוצאות בזמן אמת. גם מאפשר חישוב שקוף של ה-revenue share לשני הצדדים.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /engines-grid -->
+
+  <!-- BOTTOM CARDS -->
+  <div class="bottom-sections">
+
+    <div class="bottom-card not-included">
+      <div class="bottom-card-title">
+        <span class="icon-sm">◌</span>
+        מה לא כלול — ולמה זה חכם
+      </div>
+      <ul class="not-list">
+        <li>מנוי חודשי — מורכב מדי לשלב הזה</li>
+        <li>AI recommendation — לא בשל עדיין</li>
+      </ul>
+      <div class="bottom-note">נתמקד קודם במה שמביא כסף בוודאות. אחרי שהמנועים רצים — נשב שוב.</div>
+    </div>
+
+    <div class="bottom-card bonus-card">
+      <div class="bottom-card-title">
+        <span class="icon-sm">+</span>
+        בונוס
+      </div>
+      <ul class="bonus-list">
+        <li>הבוט שכבר חי ממשיך לעבוד</li>
+        <li>שיפורים כלולים בפרויקט — לא עלות נוספת</li>
+      </ul>
+    </div>
+
+  </div><!-- /bottom-sections -->
+
+  <!-- FOOTER -->
+  <footer>
+    <span>נתנאל היבש · <a href="https://netanelhibsh.com" target="_blank">netanelhibsh.com</a></span>
+    <span>מסמך פנימי · 2026</span>
+  </footer>
+
+</div><!-- /container -->
+</body>
+</html>
