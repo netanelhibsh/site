@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>נתנאל היבש | מלמד ומלווה בעלי עסקים לנהל AI</title>
-  <meta name="description" content="מלמד ומלווה בעלי עסקים לנהל את העסק שלהם דרך AI — לבד או עם כל הצוות. אתה מוביל, ה-AI מבצע.">
+  <title>נתנאל היבש | מערכות AI שעובדות בשביל העסק שלך</title>
+  <meta name="description" content="נתנאל היבש — בונה מערכות AI ואוטומציות ליועצים ומומחים. Miri Knows, Blueprint, שיתופי פעולה. תוצאות אמיתיות, מערכות שעובדות לבד.">
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
     @font-face { font-family: 'Almoni'; src: url('fonts/almoni-light-aaa.otf') format('opentype'); font-weight: 300; font-display: swap; }
@@ -160,19 +160,32 @@
       pointer-events: none;
     }
     .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-badge {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 24px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      background: rgba(226,178,31,0.1);
+      border: 1px solid rgba(226,178,31,0.3);
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
     .hero h1 {
       font-size: clamp(40px, 7vw, 72px);
       font-weight: 900;
-      line-height: 1.15;
+      line-height: 1.1;
       letter-spacing: -1px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
+    .hero h1 .highlight { color: var(--gold); }
     .hero .subtitle {
       font-size: clamp(18px, 3vw, 22px);
       font-weight: 300;
       line-height: 1.6;
       color: var(--text-muted);
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto 40px;
     }
     .hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
@@ -195,8 +208,7 @@
     .hero-sub { color: var(--text-dim); font-size: 14px; }
 
     /* ===== SECTION BASE ===== */
-    section { padding: 100px 0; position: relative; }
-    section.alt { background: var(--bg-card); }
+    section { padding: 100px 0; }
     .section-label {
       display: inline-block;
       font-size: 13px;
@@ -204,12 +216,11 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 12px;
-      color: var(--teal);
     }
     .section-title {
       font-size: clamp(28px, 4vw, 40px);
       font-weight: 800;
-      line-height: 1.25;
+      line-height: 1.2;
       margin-bottom: 16px;
     }
     .section-desc {
@@ -229,52 +240,8 @@
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== ONE-LINER PULLQUOTE ===== */
-    #oneliner { text-align: center; }
-    .pullquote-hero {
-      font-size: clamp(22px, 3.2vw, 30px);
-      font-weight: 500;
-      line-height: 1.7;
-      color: var(--text);
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    .pullquote-hero .accent { color: var(--gold); font-weight: 700; }
-
-    /* ===== STAKES ===== */
-    .stakes-text p {
-      color: var(--text-muted);
-      font-size: 18px;
-      line-height: 1.85;
-      margin-bottom: 18px;
-      max-width: 700px;
-    }
-    .stakes-text p:last-child { margin-bottom: 0; font-weight: 600; color: var(--text); }
-
-    /* ===== VALUE ===== */
-    .value-intro {
-      font-size: 19px;
-      font-style: italic;
-      color: var(--gold-light);
-      margin-bottom: 18px;
-      max-width: 680px;
-      line-height: 1.7;
-    }
-    .value-transform {
-      color: var(--text-muted);
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 40px;
-      max-width: 700px;
-    }
-    .value-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px 40px;
-    }
-
-    /* ===== ABOUT / GUIDE ===== */
-    #about { background: var(--bg); }
+    /* ===== ABOUT ===== */
+    #about { background: var(--bg-card); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -283,16 +250,7 @@
     }
     .about-text .section-label { color: var(--teal); }
     .about-text .section-title { margin-bottom: 20px; }
-    .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; font-size: 17px; }
-    .guide-pullquote {
-      font-size: clamp(24px, 3.2vw, 32px);
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1.4;
-      margin: 28px 0;
-      padding-right: 20px;
-      border-right: 3px solid var(--gold);
-    }
+    .about-text > p { color: var(--text-muted); line-height: 1.75; margin-bottom: 32px; font-size: 17px; }
     .about-highlights { display: flex; flex-direction: column; gap: 20px; }
     .about-highlight { display: flex; align-items: flex-start; gap: 16px; }
     .about-highlight-icon {
@@ -317,27 +275,23 @@
       display: block;
       border: 1px solid var(--border);
     }
+    .about-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .about-stat { text-align: center; }
+    .about-stat strong { display: block; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+    .about-stat span { font-size: 13px; color: var(--text-dim); }
 
-    /* ===== PLAN ===== */
-    .plan-grid {
+    /* ===== OFFERS ===== */
+    #offers { background: var(--bg); }
+    .offers-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
-    .plan-step {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    .plan-step:hover { transform: translateY(-6px); border-color: rgba(226,178,31,0.3); }
-    .plan-num { font-size: 14px; font-weight: 700; color: var(--gold); letter-spacing: 2px; margin-bottom: 14px; }
-    .plan-step h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-    .plan-step p { color: var(--text-muted); font-size: 15px; line-height: 1.75; }
-
-    /* ===== TRACKS (offer cards) ===== */
-    .tracks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .offer-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -357,9 +311,11 @@
     }
     .offer-card.magenta::before { background: linear-gradient(90deg, var(--magenta), var(--magenta-light)); }
     .offer-card.gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .offer-card.teal::before { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
     .offer-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
     .offer-card.magenta:hover { border-color: rgba(194,0,120,0.3); }
     .offer-card.gold:hover { border-color: rgba(226,178,31,0.3); }
+    .offer-card.teal:hover { border-color: rgba(91,149,158,0.3); }
     .offer-icon { font-size: 32px; margin-bottom: 16px; }
     .offer-tag {
       display: inline-block;
@@ -369,51 +325,119 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       margin-bottom: 16px;
-      width: fit-content;
     }
     .offer-tag.magenta { background: rgba(194,0,120,0.15); color: var(--magenta-light); }
     .offer-tag.gold { background: rgba(226,178,31,0.15); color: var(--gold); }
-    .offer-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 14px; }
-    .offer-card > p { color: var(--text-muted); font-size: 15px; line-height: 1.75; }
-    .tracks-note {
-      text-align: center;
-      font-style: italic;
+    .offer-tag.teal { background: rgba(91,149,158,0.15); color: var(--teal-light); }
+    .offer-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 14px; }
+    .offer-card > p { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 20px; }
+    .offer-features { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .offer-features li { font-size: 14px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; }
+    .offer-features li::before { content: '✓'; flex-shrink: 0; font-weight: 700; font-size: 13px; }
+    .offer-features li.magenta::before { color: var(--magenta-light); }
+    .offer-features li.gold::before { color: var(--gold); }
+    .offer-features li.teal::before { color: var(--teal-light); }
+    .offer-price {
+      font-size: 14px;
       color: var(--text-dim);
+      margin-bottom: 24px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .offer-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 100px;
       font-size: 15px;
-      margin-top: 32px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, background 0.2s;
+      text-align: center;
     }
-
-    /* ===== BRIDGE ===== */
-    .bridge-intro { color: var(--text-muted); font-size: 18px; margin-bottom: 24px; }
-    .bridge-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin: 0 0 32px;
-      max-width: 600px;
+    .offer-btn.magenta-filled {
+      background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(194,0,120,0.3);
     }
-    .bridge-list li {
-      font-size: 17px;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.6;
-    }
-    .bridge-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
-    .bridge-text p { color: var(--text-muted); font-size: 17px; line-height: 1.8; margin-bottom: 18px; max-width: 700px; }
-    .bridge-final {
-      font-size: clamp(20px, 2.4vw, 24px);
-      font-weight: 700;
+    .offer-btn.magenta-filled:hover { transform: translateY(-1px); opacity: 0.92; box-shadow: 0 6px 28px rgba(194,0,120,0.4); }
+    .offer-btn.gold-outline {
+      border: 1.5px solid var(--gold);
       color: var(--gold);
+      background: transparent;
+    }
+    .offer-btn.gold-outline:hover { background: rgba(226,178,31,0.1); transform: translateY(-1px); }
+    .offer-btn.teal-outline {
+      border: 1.5px solid var(--teal);
+      color: var(--teal-light);
+      background: transparent;
+    }
+    .offer-btn.teal-outline:hover { background: rgba(91,149,158,0.1); transform: translateY(-1px); }
+
+    /* ===== PROOF ===== */
+    #proof { background: var(--bg-card); }
+    .proof-stats {
+      display: flex;
+      gap: 48px;
+      margin: 40px 0 56px;
+      flex-wrap: wrap;
+    }
+    .proof-stat strong { display: block; font-size: 40px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+    .proof-stat span { font-size: 14px; color: var(--text-dim); }
+    .carousel-wrap { position: relative; }
+    .carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .carousel-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .carousel-item iframe { width: 100%; height: 100%; border: none; display: block; }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
       margin-top: 32px;
     }
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .carousel-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(226,178,31,0.08); }
+    .carousel-dots { display: flex; gap: 8px; align-items: center; }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+    }
+    .carousel-dot.active { background: var(--gold); transform: scale(1.3); }
 
     /* ===== FINAL CTA ===== */
     #final-cta { background: var(--bg); text-align: center; }
-    #final-cta .container { max-width: 700px; }
-    #final-cta .section-title { color: var(--magenta-light); }
+    #final-cta .container { max-width: 680px; }
+    #final-cta .section-title .highlight { color: var(--gold); }
     #final-cta .section-desc { margin: 0 auto 44px; }
     .final-cta-btn {
       display: inline-flex;
@@ -448,9 +472,9 @@
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-image { order: -1; max-width: 480px; margin: 0 auto; }
-      .tracks-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
-      .plan-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
-      .value-grid { grid-template-columns: 1fr; max-width: 560px; }
+      .offers-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .carousel { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .proof-stats { gap: 32px; }
     }
 
     @media (max-width: 768px) {
@@ -458,6 +482,8 @@
       .hero { padding: 120px 24px 80px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .proof-stats { flex-direction: column; gap: 24px; }
+      .about-stats { justify-content: center; }
     }
   </style>
 </head>
@@ -470,10 +496,9 @@
         <img src="logo.png" alt="נתנאל היבש">
       </a>
       <ul class="nav-links">
-        <li><a href="#stakes">הבעיה</a></li>
         <li><a href="#about">מי אני</a></li>
-        <li><a href="#plan">איך זה עובד</a></li>
-        <li><a href="#tracks">שתי דרכים</a></li>
+        <li><a href="#offers">מה אני עושה</a></li>
+        <li><a href="#proof">תוצאות</a></li>
         <li>
           <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="nav-cta">
             דברו איתי
@@ -488,112 +513,74 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#stakes" class="mobile-link">הבעיה</a>
     <a href="#about" class="mobile-link">מי אני</a>
-    <a href="#plan" class="mobile-link">איך זה עובד</a>
-    <a href="#tracks" class="mobile-link">שתי דרכים</a>
+    <a href="#offers" class="mobile-link">מה אני עושה</a>
+    <a href="#proof" class="mobile-link">תוצאות</a>
     <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="nav-cta">דברו איתי</a>
   </div>
 
-  <!-- SECTION 1 — HERO -->
+  <!-- HERO -->
   <section class="hero">
     <div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div>
     <div class="hero-content fade-up">
-      <h1>אתה יודע ש-AI זה העתיד.<br>אני יודע לקחת אותך לשם.</h1>
-      <p class="subtitle">מלמד ומלווה בעלי עסקים לנהל את העסק שלהם דרך AI — ולהוביל בעצמם.</p>
+      <div class="hero-badge">בהירות עסקית &bull; אוטומציה &bull; AI</div>
+      <h1>אני בונה מערכות <span class="highlight">AI</span> שעובדות<br>בשביל העסק שלך &#8212; גם כשאתה לא שם</h1>
+      <p class="subtitle">ליווי אישי, בניית מנטורים דיגיטליים, ומערכות אוטומטיות ליועצים ומומחים שרוצים להכפיל תוצאות בלי להכפיל שעות</p>
       <div class="hero-cta-wrap">
         <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="hero-cta">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.547a.5.5 0 0 0 .609.61l5.805-1.453A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.504-5.198-1.385l-.372-.217-3.846.962.981-3.764-.237-.386A9.964 9.964 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          שלח לי הודעה ב-WhatsApp
+          דברו איתי בוואטסאפ
         </a>
         <span class="hero-sub">תגובה אישית תוך דקות</span>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2 — ONE-LINER -->
-  <section id="oneliner" class="alt">
-    <div class="container fade-up">
-      <p class="pullquote-hero">
-        בעל עסק שלא יודע לנהל AI — הוא <span class="accent">עבד</span> של העסק שלו.<br>
-        אני מלמד ומלווה אותך לנהל סוכני AI, כמו שמנהל עובדים.<br>
-        כך שאתה מוביל, העסק רץ, ואתה חוזר להיות <span class="accent">הבוס</span>.
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 3 — STAKES -->
-  <section id="stakes">
-    <div class="container">
-      <div class="fade-up">
-        <span class="section-label">האתגר</span>
-        <h2 class="section-title">הבעיה היא לא שאתה עסוק. הבעיה היא שהעסק מנהל אותך.</h2>
-        <div class="stakes-text">
-          <p>כל שעה שחולפת — עוד משימה ידנית. עוד עדכון, עוד מענה, עוד ריצה.</p>
-          <p>אתה אמור לנהל עסק. אבל בפועל — אם אתה עוצר, הכל עוצר. זה לא עייפות. זו תלות.</p>
-          <p>בעל עסק שמנהל AI — חי בעתיד. מי שלא לומד לנהל אותו — ממשיך להאמין בו מבחוץ.</p>
-          <p>ובעל עסק שמאמין ב-AI ולא יודע לנהל אותו — עובד קשה מדי בשביל עתיד שהוא כבר מאמין בו.</p>
-          <p>זה לא הגיוני. ואתה יודע את זה.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4 — VALUE -->
-  <section id="value" class="alt">
-    <div class="container">
-      <div class="fade-up">
-        <span class="section-label">התוצאה</span>
-        <h2 class="section-title">מה קורה כשאתה יודע לנהל:</h2>
-        <p class="value-intro">תקום בבוקר. תפתח לפטופ. הסוכנים עבדו כל הלילה. אתה שותה קפה — ומחליט, לא מגיב. מוביל, לא מרוץ.</p>
-        <p class="value-transform">זאת הנקודה שהעבודה עצמה משתנה. לא רק כמה אתה מספיק לעשות — גם איך היא מרגישה. שליטה, לא ריצה. התקדמות, לא טחינה. מנהל, לא מבצע.</p>
-        <div class="value-grid">
-          <div class="about-highlight">
-            <div class="about-highlight-icon gold">🎛️</div>
-            <div class="about-highlight-text">
-              <strong>מנהל סוכנים, מאציל משימות, בונה תהליכים</strong>
-              <span>אתה מגדיר מה לעשות. הסוכנים מבצעים.</span>
-            </div>
-          </div>
-          <div class="about-highlight">
-            <div class="about-highlight-icon magenta">📈</div>
-            <div class="about-highlight-text">
-              <strong>פי 10 תפוקה, אותן שעות שלך</strong>
-              <span>תוצאות שמתרחשות גם כשאתה לא שם.</span>
-            </div>
-          </div>
-          <div class="about-highlight">
-            <div class="about-highlight-icon teal">🔓</div>
-            <div class="about-highlight-text">
-              <strong>עצמאות מלאה</strong>
-              <span>לא תלוי בי, לא תלוי באף אחד. יודע לנהל את המערכת.</span>
-            </div>
-          </div>
-          <div class="about-highlight">
-            <div class="about-highlight-icon gold">👑</div>
-            <div class="about-highlight-text">
-              <strong>חוזר להיות הבוס</strong>
-              <span>מנהל, לא מבצע. מוביל, לא מגיב. זה הפלואו שמגיע לך.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 5 — GUIDE -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-text fade-up">
-          <span class="section-label">מי אני</span>
+          <span class="section-label" style="color: var(--teal);">מי אני</span>
           <h2 class="section-title">נתנאל היבש</h2>
-          <p>פעם הייתי בדיוק שם.</p>
-          <p>עסק שצמח, ואני שוקע. כל יום יותר משימות, פחות מרחב לחשוב. הייתי מנהל בתואר ועובד בפועל.</p>
-          <p>אז בניתי משהו אחר.</p>
-          <p>היום אני מנהל את אוטוטיוזדיי — קהילה של 2,000+ אנשי אוטומציה — לבד.</p>
-          <div class="guide-pullquote">אין לי צוות עובדים.<br>יש לי מערכת.</div>
-          <p>את השיטה הזו לימדתי בקורסים לקהילה. עכשיו אני מלמד ומלווה — אחד על אחד, או נכנס לעסק עם כל הצוות.</p>
+          <p>יזם, בונה מערכות AI ואוטומציות. מאמין שיועץ טוב לא צריך לעבוד יותר &#8212; הוא צריך מערכת חכמה שעובדת בשבילו. בניתי את מירי, מנטורית AI שמנהלת לי את העסק. עכשיו אני בונה את זה ללקוחות.</p>
+          <div class="about-highlights">
+            <div class="about-highlight">
+              <div class="about-highlight-icon gold">&#x1F4A1;</div>
+              <div class="about-highlight-text">
+                <strong>בהירות לפני כלים</strong>
+                <span>קודם מבינים מה העסק צריך, אחר כך בונים</span>
+              </div>
+            </div>
+            <div class="about-highlight">
+              <div class="about-highlight-icon magenta">&#x2699;&#xFE0F;</div>
+              <div class="about-highlight-text">
+                <strong>מערכות שעובדות לבד</strong>
+                <span>AI agents, אוטומציות, תהליכים אוטונומיים</span>
+              </div>
+            </div>
+            <div class="about-highlight">
+              <div class="about-highlight-icon teal">&#x1F9E0;</div>
+              <div class="about-highlight-text">
+                <strong>One Man Show + AI</strong>
+                <span>בלי צוות ענק. סוכנים חכמים שעושים את העבודה</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div class="about-stat">
+              <strong>50+</strong>
+              <span>מערכות שנבנו</span>
+            </div>
+            <div class="about-stat">
+              <strong>10+</strong>
+              <span>לקוחות AI brains</span>
+            </div>
+            <div class="about-stat">
+              <strong>3+</strong>
+              <span>שנות ניסיון</span>
+            </div>
+          </div>
         </div>
         <div class="about-image fade-up">
           <img src="netanel-profile.png" alt="נתנאל היבש">
@@ -602,92 +589,134 @@
     </div>
   </section>
 
-  <!-- SECTION 6 — PLAN -->
-  <section id="plan" class="alt">
+  <!-- OFFERS -->
+  <section id="offers">
     <div class="container">
       <div class="fade-up" style="margin-bottom: 48px;">
-        <span class="section-label">התהליך</span>
-        <h2 class="section-title">כך זה עובד:</h2>
+        <span class="section-label" style="color: var(--teal);">מה אני עושה</span>
+        <h2 class="section-title">שלוש דרכים לעבוד איתי</h2>
+        <p class="section-desc">לא משנה באיזה שלב אתם &#8212; יש פתרון שמותאם לכם</p>
       </div>
-      <div class="plan-grid">
-        <div class="plan-step fade-up">
-          <div class="plan-num">שלב 1</div>
-          <h3>שיחת אבחון</h3>
-          <p>מבינים יחד מה אתה עושה ידנית שסוכן AI יכול לקחת ממך — ומה הצעד הראשון שיוכיח לך שזה עובד בעסק שלך.</p>
-        </div>
-        <div class="plan-step fade-up">
-          <div class="plan-num">שלב 2</div>
-          <h3>אתה לומד, אני לידך</h3>
-          <p>אני לא בונה לך מערכת ויוצא. אני מלמד ומלווה — סוכן אחרי סוכן, תהליך אחרי תהליך — כשאתה מבצע ואני לידך. ההבדל הוא שאתה יודע מה קורה ומנהל את זה בלעדיי.</p>
-        </div>
-        <div class="plan-step fade-up">
-          <div class="plan-num">שלב 3</div>
-          <h3>אתה מוביל לבד</h3>
-          <p>המטרה שלי היא שלא תצטרך אותי יותר. יוצא כשאתה עצמאי.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="offers-grid">
 
-  <!-- SECTION 7 — שתי דרכים -->
-  <section id="tracks">
-    <div class="container">
-      <div class="fade-up" style="margin-bottom: 48px;">
-        <span class="section-label">איך עובדים ביחד</span>
-        <h2 class="section-title">שתי דרכים לעבוד ביחד:</h2>
-      </div>
-      <div class="tracks-grid">
+        <!-- Miri Knows -->
         <div class="offer-card magenta fade-up">
-          <div class="offer-icon">👤</div>
-          <span class="offer-tag magenta">אישי</span>
-          <h3>1X1</h3>
-          <p>אני מלמד ומלווה אותך — בעל העסק — לנהל AI בעצמך. לנהל סוכנים, להאציל משימות, ולבנות תהליכים שרצים לבדם. בסוף הליווי — אתה עצמאי לחלוטין.</p>
+          <div class="offer-icon">&#x1F9E0;</div>
+          <span class="offer-tag magenta">מנטור AI אישי</span>
+          <h3>Miri Knows</h3>
+          <p>בונה לך מנטור דיגיטלי שיודע הכל על העסק שלך &#8212; עונה ללקוחות, מלווה תהליכים, ומשרת 24/7. הידע שלך, בגרסת AI.</p>
+          <ul class="offer-features">
+            <li class="magenta">בניית brain מלא מהידע שלך</li>
+            <li class="magenta">חיבור ל-WhatsApp ואתר</li>
+            <li class="magenta">תוצאה תוך 45 יום</li>
+            <li class="magenta">תמיכה ועדכונים שוטפים</li>
+          </ul>
+          <div class="offer-price">החל מ-8,000&#8362; + retainer חודשי</div>
+          <a href="https://miriknows.com" target="_blank" rel="noopener" class="offer-btn magenta-filled">למדו עוד</a>
         </div>
+
+        <!-- Blueprint -->
         <div class="offer-card gold fade-up">
-          <div class="offer-icon">🏢</div>
-          <span class="offer-tag gold">ארגוני</span>
-          <h3>כל הצוות</h3>
-          <p>אני נכנס לעסק שלך והופך כל עובד מפועל למנהל של העבודה שלו. מנהלת חשבונות, נציג מכירות, מתאמת — כל אחד מאציל לסוכן AI את השגרה, ועוסק במה שבאמת דורש אותו. העבודה הופכת לפלואו. אתה — בעל העסק — מוביל את השינוי.</p>
+          <div class="offer-icon">&#x1F3D7;&#xFE0F;</div>
+          <span class="offer-tag gold">ליווי 1-on-1</span>
+          <h3>Blueprint</h3>
+          <p>ליווי אישי בבניית מערכת אוטומטית מותאמת. מהאפיון ועד ההפעלה &#8212; בונה איתך את התשתית שמייצרת הכנסה חוזרת.</p>
+          <ul class="offer-features">
+            <li class="gold">אפיון מלא של המערכת</li>
+            <li class="gold">בנייה ואוטומציה מותאמת</li>
+            <li class="gold">הדרכה ותמיכה שוטפת</li>
+            <li class="gold">AI agents מותאמים אישית</li>
+          </ul>
+          <div class="offer-price">פיצוח 4,000&#8362; | בנייה מ-20,000&#8362;</div>
+          <a href="blueprint.html" class="offer-btn gold-outline">לפרטים נוספים</a>
         </div>
+
+        <!-- Partnerships -->
+        <div class="offer-card teal fade-up">
+          <div class="offer-icon">&#x1F91D;</div>
+          <span class="offer-tag teal">בואו נבנה ביחד</span>
+          <h3>שיתופי פעולה</h3>
+          <p>יש לך רעיון שאפשר להעיף עם AI? בוא נדבר. אתה מביא את הידע והקהל, אני מביא את הבנייה &#8212; וגדלים ביחד.</p>
+          <ul class="offer-features">
+            <li class="teal">שותפות אמיתית, לא ספק</li>
+            <li class="teal">אני בונה, אתה מביא קהל</li>
+            <li class="teal">שקיפות מלאה</li>
+            <li class="teal">מודל גמיש</li>
+          </ul>
+          <div class="offer-price">מודל שותפות גמיש</div>
+          <a href="partnerships.html" class="offer-btn teal-outline">למדו עוד</a>
+        </div>
+
       </div>
-      <p class="tracks-note fade-up">בשני האופנים — שיחת ההיכרות היא הצעד הראשון. שם נבין מה מתאים לך ולעסק שלך.</p>
     </div>
   </section>
 
-  <!-- SECTION 8 — BRIDGE -->
-  <section id="bridge" class="alt">
+  <!-- PROOF -->
+  <section id="proof">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">שאלה שעולה</span>
-        <h2 class="section-title">לא מתכנת? טוב. אני לא מחפש מתכנתים.</h2>
-        <p class="bridge-intro">ניהול AI — בפועל — אומר:</p>
-        <ul class="bridge-list">
-          <li><strong>לנהל סוכנים</strong> &mdash; לתת להם משימה, לבדוק שביצעו</li>
-          <li><strong>להאציל משימות לסוכנים</strong> &mdash; לא לבצע בעצמך</li>
-          <li><strong>ליצור סוכנים</strong> &mdash; לבנות כלים חכמים לפי הצורך</li>
-          <li><strong>לבנות תהליכים אוטומטיים</strong> &mdash; זרימות שרצות לבד</li>
-        </ul>
-        <div class="bridge-text">
-          <p>לא לכתוב קוד. לנהל. בדיוק כמו שמנהל עובד.</p>
-          <p>ההבדל בין DFY ל-DWY: מישהו שבונה לך מערכת ויוצא — משאיר אותך תלוי בו. אני מלמד ומלווה — אתה בונה בזמן שאני לידך, ואז עצמאי.</p>
+        <span class="section-label" style="color: var(--teal);">תוצאות</span>
+        <h2 class="section-title">תוצאות שמדברות</h2>
+        <p class="section-desc">מאחורי כל מערכת יש אנשים שחיסכו זמן, הגדילו הכנסות, והפסיקו לנהל הכל לבד</p>
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <strong>50+</strong>
+            <span>מערכות שנבנו</span>
+          </div>
+          <div class="proof-stat">
+            <strong>10+</strong>
+            <span>לקוחות AI brains</span>
+          </div>
+          <div class="proof-stat">
+            <strong>3+</strong>
+            <span>שנות ניסיון</span>
+          </div>
         </div>
-        <div class="guide-pullquote" style="margin-bottom:0;">בעל עסק שמבין מה הסוכנים שלו עושים — זה הבוס האמיתי.</div>
-        <p class="bridge-final">ה-AI הוא הכלי. המוצר הוא מה שאתה הופך להיות.</p>
+      </div>
+      <div class="carousel-wrap fade-up">
+        <div class="carousel" id="carousel">
+          <div class="carousel-item">
+            <iframe src="https://player.vimeo.com/video/1025817617" allowfullscreen title="המלצה 1"></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe src="https://player.vimeo.com/video/1025817526" allowfullscreen title="המלצה 2"></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe src="https://player.vimeo.com/video/662472228?h=cf05d6309a" allowfullscreen title="המלצה 3"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/676726575" allowfullscreen title="המלצה 4"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/670855455" allowfullscreen title="המלצה 5"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/662463813" allowfullscreen title="המלצה 6"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://player.vimeo.com/video/662462890" allowfullscreen title="המלצה 7"></iframe>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="הקודם">&#8250;</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="הבא">&#8249;</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 9 — FINAL CTA -->
+  <!-- FINAL CTA -->
   <section id="final-cta">
     <div class="container fade-up">
-      <span class="section-label">הצעד הבא</span>
-      <h2 class="section-title">מאמין ש-AI זה הכיוון? שלח הודעה — נראה אם אני הנכון בשבילך.</h2>
-      <p class="section-desc">שלח הודעה — נדבר. נבין אם הליווי מתאים לאיפה שאתה עומד ולאן אתה רוצה להגיע.</p>
+      <span class="section-label" style="color: var(--teal);">הצעד הבא</span>
+      <h2 class="section-title">מוכנים <span class="highlight">להתחיל</span>?</h2>
+      <p class="section-desc">ספרו לי מה אתם מחפשים &#8212; ונראה ביחד מה הצעד הנכון.</p>
       <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="final-cta-btn">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.547a.5.5 0 0 0 .609.61l5.805-1.453A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.504-5.198-1.385l-.372-.217-3.846.962.981-3.764-.237-.386A9.964 9.964 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        שלח לי הודעה ב-WhatsApp
+        שלחו הודעה בוואטסאפ
       </a>
-      <p class="final-cta-sub">מדבר עם מי שכבר החליט. לא עם מי שעוד שוקל.</p>
+      <p class="final-cta-sub">תגובה אישית &bull; בלי טפסים &bull; בלי המתנה</p>
     </div>
   </section>
 
@@ -726,6 +755,65 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Carousel
+    const videos = [
+      'https://player.vimeo.com/video/1025817617',
+      'https://player.vimeo.com/video/1025817526',
+      'https://player.vimeo.com/video/662472228?h=cf05d6309a',
+      'https://player.vimeo.com/video/676726575',
+      'https://player.vimeo.com/video/670855455',
+      'https://player.vimeo.com/video/662463813',
+      'https://player.vimeo.com/video/662462890'
+    ];
+    const perPage = () => window.innerWidth <= 768 ? 1 : 3;
+    let currentPage = 0;
+    const dotsEl = document.getElementById('carousel-dots');
+
+    function totalPages() {
+      return Math.ceil(videos.length / perPage());
+    }
+
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < totalPages(); i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
+        dot.addEventListener('click', () => { currentPage = i; renderCarousel(); });
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function renderCarousel() {
+      const pp = perPage();
+      const start = currentPage * pp;
+      const end = start + pp;
+      const items = document.querySelectorAll('#carousel .carousel-item');
+      items.forEach((item, i) => {
+        item.style.display = (i >= start && i < end) ? '' : 'none';
+      });
+      document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentPage);
+      });
+    }
+
+    document.getElementById('carousel-prev').addEventListener('click', () => {
+      currentPage = (currentPage + 1) % totalPages();
+      renderCarousel();
+    });
+    document.getElementById('carousel-next').addEventListener('click', () => {
+      currentPage = (currentPage - 1 + totalPages()) % totalPages();
+      renderCarousel();
+    });
+
+    window.addEventListener('resize', () => {
+      if (currentPage >= totalPages()) currentPage = 0;
+      buildDots();
+      renderCarousel();
+    });
+
+    buildDots();
+    renderCarousel();
   </script>
 </body>
 </html>
