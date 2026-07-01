@@ -444,6 +444,56 @@
     footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--gold); }
 
+    /* ===== PROOF / TESTIMONIALS ===== */
+    .carousel-wrap { position: relative; }
+    .carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .carousel-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .carousel-item iframe { width: 100%; height: 100%; border: none; display: block; }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .carousel-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(226,178,31,0.08); }
+    .carousel-dots { display: flex; gap: 8px; align-items: center; }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      padding: 0;
+    }
+    .carousel-dot.active { background: var(--gold); transform: scale(1.3); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -451,6 +501,7 @@
       .tracks-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .plan-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .value-grid { grid-template-columns: 1fr; max-width: 560px; }
+      .carousel { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
     }
 
     @media (max-width: 768px) {
@@ -470,8 +521,9 @@
         <img src="logo.png" alt="נתנאל היבש">
       </a>
       <ul class="nav-links">
-        <li><a href="#stakes">הבעיה</a></li>
+        <li><a href="#stakes">האפשרות</a></li>
         <li><a href="#about">מי אני</a></li>
+        <li><a href="#proof">עדויות</a></li>
         <li><a href="#plan">איך זה עובד</a></li>
         <li><a href="#tracks">שתי דרכים</a></li>
         <li>
@@ -488,8 +540,9 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#stakes" class="mobile-link">הבעיה</a>
+    <a href="#stakes" class="mobile-link">האפשרות</a>
     <a href="#about" class="mobile-link">מי אני</a>
+    <a href="#proof" class="mobile-link">עדויות</a>
     <a href="#plan" class="mobile-link">איך זה עובד</a>
     <a href="#tracks" class="mobile-link">שתי דרכים</a>
     <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" class="nav-cta">דברו איתי</a>
@@ -515,9 +568,9 @@
   <section id="oneliner" class="alt">
     <div class="container fade-up">
       <p class="pullquote-hero">
-        בעל עסק שלא יודע לנהל AI — הוא <span class="accent">עבד</span> של העסק שלו.<br>
-        אני מלמד ומלווה אותך לנהל סוכני AI, כמו שמנהל עובדים.<br>
-        כך שאתה מוביל, העסק רץ, ואתה חוזר להיות <span class="accent">הבוס</span>.
+        כל מה שאתה עושה היום — אפשר לעשות <span class="accent">פי 10</span> יותר טוב.<br>
+        כל מה שאתה לא אוהב לעשות — סוכן AI יעשה במקומך.<br>
+        אתה מוביל, הסוכנים מבצעים, והעסק <span class="accent">פורץ קדימה</span>.
       </p>
     </div>
   </section>
@@ -526,14 +579,13 @@
   <section id="stakes">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">האתגר</span>
-        <h2 class="section-title">הבעיה היא לא שאתה עסוק. הבעיה היא שהעסק מנהל אותך.</h2>
+        <span class="section-label">האפשרות</span>
+        <h2 class="section-title">תאר לעצמך את העסק שלך, פי 10.</h2>
         <div class="stakes-text">
-          <p>כל שעה שחולפת — עוד משימה ידנית. עוד עדכון, עוד מענה, עוד ריצה.</p>
-          <p>אתה אמור לנהל עסק. אבל בפועל — אם אתה עוצר, הכל עוצר. זה לא עייפות. זו תלות.</p>
-          <p>בעל עסק שמנהל AI — חי בעתיד. מי שלא לומד לנהל אותו — ממשיך להאמין בו מבחוץ.</p>
-          <p>ובעל עסק שמאמין ב-AI ולא יודע לנהל אותו — עובד קשה מדי בשביל עתיד שהוא כבר מאמין בו.</p>
-          <p>זה לא הגיוני. ואתה יודע את זה.</p>
+          <p>המשימות שגוזלות לך היום שעות — ירוצו מהר פי כמה, בלי שתיגע בהן.</p>
+          <p>הדברים שאתה דוחה כי הם פשוט לא אתה — סוכן ייקח על עצמו, מסביב לשעון.</p>
+          <p>ואתה משתחרר לדבר האחד שרק אתה יודע לעשות: להוביל, להחליט, לצמוח.</p>
+          <p>זה לא עתיד רחוק. זה כבר כאן — השאלה היחידה היא כמה מהר אתה נכנס פנימה.</p>
         </div>
       </div>
     </div>
@@ -597,6 +649,47 @@
         </div>
         <div class="about-image fade-up">
           <img src="netanel-profile.png" alt="נתנאל היבש">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5.5 — PROOF / TESTIMONIALS -->
+  <section id="proof">
+    <div class="container">
+      <div class="fade-up">
+        <span class="section-label">בקולם</span>
+        <h2 class="section-title">הם מספרים, לא אני</h2>
+        <p class="section-desc">לא בניתי במקומם — לימדתי אותם לנהל לבד.</p>
+      </div>
+      <div class="carousel-wrap fade-up">
+        <div class="carousel" id="carousel">
+          <div class="carousel-item">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/d4350431-7af1-41a6-83ef-04983d421d6d" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 1"></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/4b5a24cf-2740-4489-af7b-39ff901b2766" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 2"></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/c9c895ef-953b-4c41-a894-2bf30d6b66ab" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 3"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/9f0d400f-9e39-4536-83b3-c58c7fb1eb67" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 4"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/53e0ca54-e15c-49cd-b8d9-d93ae56b96f6" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 5"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/8b01240a-33be-448e-aa52-6c7e53bb5722" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 6"></iframe>
+          </div>
+          <div class="carousel-item" style="display:none;">
+            <iframe src="https://iframe.mediadelivery.net/embed/694624/dc72780f-4305-48e4-b37d-98f6922b19ee" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 7"></iframe>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="הקודם">&#8250;</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="הבא">&#8249;</button>
         </div>
       </div>
     </div>
@@ -726,6 +819,62 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Carousel (testimonials)
+    const carouselEl = document.getElementById('carousel');
+    if (carouselEl) {
+      const perPage = () => window.innerWidth <= 768 ? 1 : 3;
+      let currentPage = 0;
+      const dotsEl = document.getElementById('carousel-dots');
+      const items = document.querySelectorAll('#carousel .carousel-item');
+
+      function totalPages() {
+        return Math.ceil(items.length / perPage());
+      }
+
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        for (let i = 0; i < totalPages(); i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
+          dot.setAttribute('aria-label', 'עמוד ' + (i + 1));
+          dot.addEventListener('click', () => { currentPage = i; renderCarousel(); });
+          dotsEl.appendChild(dot);
+        }
+      }
+
+      function renderCarousel() {
+        const pp = perPage();
+        const start = currentPage * pp;
+        const end = start + pp;
+        items.forEach((item, i) => {
+          item.style.display = (i >= start && i < end) ? '' : 'none';
+        });
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentPage);
+        });
+      }
+
+      document.getElementById('carousel-prev').addEventListener('click', () => {
+        currentPage = (currentPage + 1) % totalPages();
+        buildDots();
+        renderCarousel();
+      });
+      document.getElementById('carousel-next').addEventListener('click', () => {
+        currentPage = (currentPage - 1 + totalPages()) % totalPages();
+        buildDots();
+        renderCarousel();
+      });
+
+      window.addEventListener('resize', () => {
+        if (currentPage >= totalPages()) currentPage = 0;
+        buildDots();
+        renderCarousel();
+      });
+
+      buildDots();
+      renderCarousel();
+    }
   </script>
 </body>
 </html>
