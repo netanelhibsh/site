@@ -461,54 +461,69 @@
     footer a:hover { color: var(--gold); }
 
     /* ===== PROOF / TESTIMONIALS ===== */
-    .carousel-wrap { position: relative; }
-    .carousel {
+    .testi-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 28px;
     }
-    .carousel-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+    .testi-card.testi-hidden { display: none; }
+    .testi-video {
+      position: relative;
       border-radius: 16px;
       overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-    .carousel-item iframe { width: 100%; height: 100%; border: none; display: block; }
-    .carousel-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 32px;
-    }
-    .carousel-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
       border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text-muted);
+      aspect-ratio: 16/9;
+      background: var(--bg-card);
       cursor: pointer;
+    }
+    .testi-video img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .testi-video iframe { width: 100%; height: 100%; border: none; display: block; }
+    .testi-play {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      background: rgba(10,10,20,0.15);
+      transition: background 0.2s;
     }
-    .carousel-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(226,178,31,0.08); }
-    .carousel-dots { display: flex; gap: 8px; align-items: center; }
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
+    .testi-video:hover .testi-play { background: rgba(10,10,20,0.05); }
+    .testi-play span {
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      background: var(--border);
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      border: none;
-      padding: 0;
+      background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(194,0,120,0.45);
+      transition: transform 0.2s;
     }
-    .carousel-dot.active { background: var(--gold); transform: scale(1.3); }
+    .testi-video:hover .testi-play span { transform: scale(1.1); }
+    .testi-play svg { width: 24px; height: 24px; fill: #fff; transform: translateX(-1px); }
+    .testi-name {
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .testi-more-wrap { text-align: center; margin-top: 40px; }
+    .testi-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 32px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-family: 'Almoni', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .testi-more:hover { border-color: var(--gold); color: var(--gold); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
@@ -517,7 +532,7 @@
       .tracks-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .plan-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .value-grid { grid-template-columns: 1fr; max-width: 560px; }
-      .carousel { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .testi-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
     }
 
     @media (max-width: 768px) {
@@ -679,34 +694,61 @@
       <div class="fade-up">
         <span class="section-label">בקולם</span>
         <h2 class="section-title">הם מספרים, לא אני</h2>
-        <p class="section-desc">במשך שנים ליוויתי בעלי עסקים לעומק — מיתוג, בהירות עסקית, משפכים שיווקיים. העדויות האלה משם. היום אני חוזר לאותו ליווי בדיוק — עם הכלי החזק ביותר שהיה לי אי פעם: AI שאתה מנהל.</p>
+        <p class="section-desc">במשך שנים ליוויתי בעלי עסקים לעומק — מיתוג, בהירות עסקית, משפכים שיווקיים — והיום אני מלמד באותו עומק ניהול AI. חלק מהעדויות מהליווי ההוא, חלק מהסדנאות של היום. השיטה אותה שיטה — הכלי חזק פי כמה.</p>
       </div>
-      <div class="carousel-wrap fade-up">
-        <div class="carousel" id="carousel">
-          <div class="carousel-item">
-            <iframe src="https://iframe.mediadelivery.net/embed/694624/d4350431-7af1-41a6-83ef-04983d421d6d" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 1"></iframe>
+      <div class="testi-grid fade-up" id="testi-grid">
+        <div class="testi-card">
+          <div class="testi-video" data-guid="dc72780f-4305-48e4-b37d-98f6922b19ee" data-name="נעמה אריאל">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/dc72780f-4305-48e4-b37d-98f6922b19ee/thumbnail.jpg" alt="עדות — נעמה אריאל" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <div class="carousel-item">
-            <iframe src="https://iframe.mediadelivery.net/embed/694624/4b5a24cf-2740-4489-af7b-39ff901b2766" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 2"></iframe>
-          </div>
-          <div class="carousel-item">
-            <iframe src="https://iframe.mediadelivery.net/embed/694624/c9c895ef-953b-4c41-a894-2bf30d6b66ab" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 3"></iframe>
-          </div>
-          <div class="carousel-item" style="display:none;">
-            <iframe src="https://iframe.mediadelivery.net/embed/694624/9f0d400f-9e39-4536-83b3-c58c7fb1eb67" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 4"></iframe>
-          </div>
-          <div class="carousel-item" style="display:none;">
-            <iframe src="https://iframe.mediadelivery.net/embed/694624/8b01240a-33be-448e-aa52-6c7e53bb5722" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 6"></iframe>
-          </div>
-          <div class="carousel-item" style="display:none;">
-            <iframe src="https://iframe.mediadelivery.net/embed/694624/dc72780f-4305-48e4-b37d-98f6922b19ee" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen title="עדות 7"></iframe>
-          </div>
+          <div class="testi-name">נעמה אריאל</div>
         </div>
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="carousel-prev" aria-label="הקודם">&#8250;</button>
-          <div class="carousel-dots" id="carousel-dots"></div>
-          <button class="carousel-btn" id="carousel-next" aria-label="הבא">&#8249;</button>
+        <div class="testi-card">
+          <div class="testi-video" data-guid="d4350431-7af1-41a6-83ef-04983d421d6d" data-name="סמדר מילר">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/d4350431-7af1-41a6-83ef-04983d421d6d/thumbnail.jpg" alt="עדות — סמדר מילר" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </div>
+          <div class="testi-name">סמדר מילר</div>
         </div>
+        <div class="testi-card">
+          <div class="testi-video" data-guid="c9c895ef-953b-4c41-a894-2bf30d6b66ab" data-name="יעל בן מויאל">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/c9c895ef-953b-4c41-a894-2bf30d6b66ab/thumbnail.jpg" alt="עדות — יעל בן מויאל" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </div>
+          <div class="testi-name">יעל בן מויאל</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-video" data-guid="9f0d400f-9e39-4536-83b3-c58c7fb1eb67" data-name="פנחס בן נאים">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/9f0d400f-9e39-4536-83b3-c58c7fb1eb67/thumbnail.jpg" alt="עדות — פנחס בן נאים" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </div>
+          <div class="testi-name">פנחס בן נאים</div>
+        </div>
+        <div class="testi-card testi-hidden">
+          <div class="testi-video" data-guid="141d9093-9d8f-4d58-bf5c-fbcc3e1bc9b7" data-name="יצחק ווחנון">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/141d9093-9d8f-4d58-bf5c-fbcc3e1bc9b7/thumbnail.jpg" alt="עדות — יצחק ווחנון" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </div>
+          <div class="testi-name">יצחק ווחנון · סדנת AI</div>
+        </div>
+        <div class="testi-card testi-hidden">
+          <div class="testi-video" data-guid="4b5a24cf-2740-4489-af7b-39ff901b2766" data-name="עדות">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/4b5a24cf-2740-4489-af7b-39ff901b2766/thumbnail.jpg" alt="עדות" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </div>
+          <div class="testi-name">TBD-NAME-1</div>
+        </div>
+        <div class="testi-card testi-hidden">
+          <div class="testi-video" data-guid="8b01240a-33be-448e-aa52-6c7e53bb5722" data-name="עדות">
+            <img src="https://vz-1a546671-4a6.b-cdn.net/8b01240a-33be-448e-aa52-6c7e53bb5722/thumbnail.jpg" alt="עדות" loading="lazy">
+            <div class="testi-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </div>
+          <div class="testi-name">TBD-NAME-2</div>
+        </div>
+      </div>
+      <div class="testi-more-wrap fade-up">
+        <button class="testi-more" id="testi-more">עוד עדויות ↓</button>
       </div>
     </div>
   </section>
@@ -831,60 +873,29 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Carousel (testimonials)
-    const carouselEl = document.getElementById('carousel');
-    if (carouselEl) {
-      const perPage = () => window.innerWidth <= 768 ? 1 : 3;
-      let currentPage = 0;
-      const dotsEl = document.getElementById('carousel-dots');
-      const items = document.querySelectorAll('#carousel .carousel-item');
+    // Testimonials: click-to-play (no autoplay on load)
+    document.querySelectorAll('.testi-video').forEach(el => {
+      el.addEventListener('click', () => {
+        const guid = el.dataset.guid;
+        const name = el.dataset.name || 'עדות';
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://iframe.mediadelivery.net/embed/694624/' + guid + '?autoplay=true';
+        iframe.title = 'עדות — ' + name;
+        iframe.allow = 'accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;';
+        iframe.allowFullscreen = true;
+        el.innerHTML = '';
+        el.appendChild(iframe);
+        el.style.cursor = 'default';
+      }, { once: true });
+    });
 
-      function totalPages() {
-        return Math.ceil(items.length / perPage());
-      }
-
-      function buildDots() {
-        dotsEl.innerHTML = '';
-        for (let i = 0; i < totalPages(); i++) {
-          const dot = document.createElement('button');
-          dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
-          dot.setAttribute('aria-label', 'עמוד ' + (i + 1));
-          dot.addEventListener('click', () => { currentPage = i; renderCarousel(); });
-          dotsEl.appendChild(dot);
-        }
-      }
-
-      function renderCarousel() {
-        const pp = perPage();
-        const start = currentPage * pp;
-        const end = start + pp;
-        items.forEach((item, i) => {
-          item.style.display = (i >= start && i < end) ? '' : 'none';
-        });
-        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-          dot.classList.toggle('active', i === currentPage);
-        });
-      }
-
-      document.getElementById('carousel-prev').addEventListener('click', () => {
-        currentPage = (currentPage + 1) % totalPages();
-        buildDots();
-        renderCarousel();
+    // Testimonials: show more
+    const moreBtn = document.getElementById('testi-more');
+    if (moreBtn) {
+      moreBtn.addEventListener('click', () => {
+        document.querySelectorAll('.testi-card.testi-hidden').forEach(c => c.classList.remove('testi-hidden'));
+        moreBtn.parentElement.style.display = 'none';
       });
-      document.getElementById('carousel-next').addEventListener('click', () => {
-        currentPage = (currentPage - 1 + totalPages()) % totalPages();
-        buildDots();
-        renderCarousel();
-      });
-
-      window.addEventListener('resize', () => {
-        if (currentPage >= totalPages()) currentPage = 0;
-        buildDots();
-        renderCarousel();
-      });
-
-      buildDots();
-      renderCarousel();
     }
   </script>
 </body>
