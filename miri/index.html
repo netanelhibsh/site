@@ -1,150 +1,255 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מירי - העוזרת שזוכרת כל מה שנאמר</title>
-<meta name="description" content="עוזרת AI שמקליטה, מתמללת ומתעדת כל פגישה ושיחה. רוצה אחת כזו גם אצלך?">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg1:#f1ecfb; --bg2:#e4dbf5; --ink:#3a2560; --ink2:#5a4680;
-    --violet:#6b3fa0; --violet-d:#57318a; --violet-l:#8a5fc0;
-    --card:#ffffff; --line:#e0d5f2; --soft:#f7f3fd;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    font-family:'Heebo',sans-serif; color:var(--ink);
-    background:linear-gradient(160deg,var(--bg1),var(--bg2));
-    line-height:1.65; -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:760px; margin:0 auto; padding:0 22px}
-  /* hero */
-  .hero{text-align:center; padding:54px 0 30px}
-  .hero img.miri{
-    width:180px; height:180px; border-radius:50%; object-fit:cover;
-    border:5px solid #fff; box-shadow:0 14px 40px rgba(90,54,140,.22);
-    background:var(--soft);
-  }
-  .hero h1{
-    font-size:clamp(26px,5.2vw,40px); font-weight:900; line-height:1.25;
-    margin:26px 0 14px; color:var(--ink);
-  }
-  .hero p.sub{font-size:clamp(16px,2.6vw,19px); color:var(--ink2); max-width:600px; margin:0 auto}
-  .hero .name-badge{
-    display:inline-block; margin-top:18px; font-weight:700; color:var(--violet);
-    background:#fff; padding:7px 18px; border-radius:100px; font-size:15px;
-    box-shadow:0 4px 14px rgba(90,54,140,.10);
-  }
-  /* section */
-  section{padding:32px 0}
-  h2{font-size:clamp(21px,3.4vw,27px); font-weight:800; text-align:center; margin-bottom:22px; color:var(--ink)}
-  /* problem cards */
-  .pains{display:grid; gap:14px}
-  .pain{
-    background:rgba(255,255,255,.6); border:1px solid var(--line); border-radius:16px;
-    padding:16px 20px; font-size:16.5px; font-weight:500; display:flex; gap:13px; align-items:center;
-  }
-  .pain .dot{font-size:22px; flex:none}
-  /* solution */
-  .sol{background:var(--card); border-radius:22px; padding:28px 26px; box-shadow:0 10px 34px rgba(90,54,140,.10)}
-  .sol ul{list-style:none; display:grid; gap:15px; margin-top:6px}
-  .sol li{display:flex; gap:13px; align-items:flex-start; font-size:16.5px; font-weight:500}
-  .sol li b{font-weight:800; color:var(--violet-d)}
-  .sol li .ic{font-size:22px; flex:none; line-height:1.3}
-  /* tiers */
-  .tiers{display:grid; gap:18px; margin-top:6px}
-  .tier{border-radius:22px; padding:28px 26px}
-  .tier.primary{
-    background:linear-gradient(155deg,var(--violet),var(--violet-d)); color:#fff;
-    box-shadow:0 16px 44px rgba(87,49,138,.34);
-  }
-  .tier.primary .tag{background:rgba(255,255,255,.2); color:#fff}
-  .tier.secondary{background:var(--card); border:1.5px solid var(--line); color:var(--ink)}
-  .tier .tag{
-    display:inline-block; font-size:13px; font-weight:700; padding:5px 14px;
-    border-radius:100px; margin-bottom:12px; background:var(--soft); color:var(--violet)
-  }
-  .tier h3{font-size:clamp(19px,3vw,24px); font-weight:800; margin-bottom:8px}
-  .tier p{font-size:16px; margin-bottom:20px; opacity:.95}
-  .tier.secondary p{color:var(--ink2)}
-  .btn{
-    display:block; text-align:center; text-decoration:none; font-weight:800; font-size:17.5px;
-    padding:16px 22px; border-radius:14px; transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .btn:hover{transform:translateY(-2px)}
-  .btn.wa{background:#fff; color:var(--violet-d); box-shadow:0 8px 22px rgba(0,0,0,.14)}
-  .btn.tl{background:var(--violet); color:#fff; box-shadow:0 8px 22px rgba(107,63,160,.28)}
-  .tier.primary .mini{display:block; text-align:center; margin-top:12px; font-size:13.5px; opacity:.85}
-  /* closing */
-  .closing{text-align:center; padding:40px 0 20px}
-  .closing p{font-size:clamp(18px,3vw,22px); font-weight:700; color:var(--ink); max-width:560px; margin:0 auto 22px}
-  .closing .btn.wa{background:var(--violet); color:#fff; max-width:340px; margin:0 auto; box-shadow:0 8px 22px rgba(107,63,160,.28)}
-  footer{text-align:center; padding:26px 0 40px; font-size:13.5px; color:var(--ink2); opacity:.75}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מירי - ה-Chief of Staff הדיגיטלי | נתנאל היבש</title>
+  <meta name="description" content="מירי היא עוזרת AI שמנהלת עסק שלם: פרויקטים, צוות, זיכרון ארגוני ודוחות. רוצה מנהלת כזו גם אצלך?">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <style>
+    @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-light-aaa.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-regular-aaa.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-medium-aaa.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-bold-aaa.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Almoni'; src: url('../fonts/almoni-black-aaa.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+
+    :root {
+      --bg: #0a0a14; --bg-card: #12121e;
+      --gold: #e2b21f; --gold-light: #f5d060;
+      --magenta: #c20078; --magenta-light: #e84aad;
+      --teal: #5b959e; --teal-light: #7eb8c1;
+      --text: #f0f0f5; --text-muted: #8b8ba3; --border: rgba(255,255,255,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Almoni', sans-serif; font-size: 17px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; right: 0; left: 0; z-index: 100; padding: 16px 0; transition: background 0.3s, box-shadow 0.3s; }
+    nav.scrolled { background: rgba(10,10,20,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 2px 24px rgba(0,0,0,0.4); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; background: linear-gradient(135deg, var(--magenta), var(--magenta-light)); color: #fff; font-weight: 600; font-size: 15px; border-radius: 100px; text-decoration: none; box-shadow: 0 4px 20px rgba(194,0,120,0.3); transition: transform 0.2s, box-shadow 0.2s; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(194,0,120,0.45); }
+
+    /* FLOATING NODES */
+    .node { position: absolute; border-radius: 50%; animation: float 6s ease-in-out infinite; opacity: 0.4; pointer-events: none; z-index: 0; }
+    .node:nth-child(1) { width: 6px; height: 6px; background: var(--magenta); top: 20%; right: 15%; animation-delay: 0s; }
+    .node:nth-child(2) { width: 4px; height: 4px; background: var(--gold); top: 60%; right: 25%; animation-delay: 1s; }
+    .node:nth-child(3) { width: 8px; height: 8px; background: var(--teal); top: 30%; left: 20%; animation-delay: 2s; }
+    .node:nth-child(4) { width: 5px; height: 5px; background: var(--magenta-light); top: 70%; left: 15%; animation-delay: 3s; }
+    .node:nth-child(5) { width: 4px; height: 4px; background: var(--gold-light); top: 15%; left: 40%; animation-delay: 4s; }
+    .node:nth-child(6) { width: 6px; height: 6px; background: var(--magenta); top: 80%; right: 40%; animation-delay: 1.5s; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; } 50% { transform: translateY(-20px) scale(1.3); opacity: 0.7; } }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 24px 90px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(194,0,120,0.16) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(226,178,31,0.08) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 80% 85%, rgba(194,0,120,0.08) 0%, transparent 60%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+    .hero-img { width: 300px; max-width: 68vw; height: auto; margin: 0 auto 6px; display: block; filter: drop-shadow(0 22px 55px rgba(194,0,120,0.3)); }
+    .hero-badge { display: inline-block; font-size: 15px; font-weight: 500; padding: 8px 24px; border-radius: 100px; border: 1px solid rgba(226,178,31,0.3); background: rgba(226,178,31,0.1); color: var(--gold-light); margin-bottom: 26px; }
+    .hero h1 { font-size: clamp(36px, 6.5vw, 66px); font-weight: 900; line-height: 1.12; letter-spacing: -1px; margin-bottom: 22px; }
+    .hero h1 .highlight { color: var(--gold); }
+    .hero-sub { font-size: clamp(18px, 3vw, 22px); font-weight: 300; line-height: 1.6; color: var(--text-muted); max-width: 660px; margin: 0 auto 38px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; padding: 16px 40px; border-radius: 100px; background: linear-gradient(135deg, var(--magenta), var(--magenta-light)); color: #fff; text-decoration: none; box-shadow: 0 8px 32px rgba(194,0,120,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+    .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(194,0,120,0.5); }
+
+    /* SECTIONS */
+    section { padding: 90px 0; }
+    .section-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold-light); margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .section-desc { font-size: 18px; font-weight: 300; color: var(--text-muted); line-height: 1.6; max-width: 650px; }
+    .section-header { margin-bottom: 52px; }
+
+    /* PAINS */
+    .pains-section { background: #0d0d1a; }
+    .pains-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pain-card { padding: 30px; border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border); transition: border-color 0.3s, transform 0.3s; }
+    .pain-card:hover { border-color: rgba(194,0,120,0.3); transform: translateY(-4px); }
+    .pain-icon { font-size: 30px; margin-bottom: 16px; display: block; }
+    .pain-card p { font-size: 17px; font-weight: 400; color: var(--text); line-height: 1.55; }
+
+    /* WHAT MIRI DOES */
+    .does-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 920px; margin: 0 auto; }
+    .does-card { display: flex; gap: 16px; align-items: flex-start; padding: 26px; border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border); transition: border-color 0.3s, transform 0.3s; }
+    .does-card:hover { border-color: rgba(226,178,31,0.3); transform: translateY(-4px); }
+    .does-icon { font-size: 28px; flex: none; }
+    .does-card h3 { font-size: 18.5px; font-weight: 700; margin-bottom: 4px; }
+    .does-card p { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.55; }
+
+    /* PROOF STRIP */
+    .proof { background: #0d0d1a; }
+    .proof-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .proof-quote { font-size: clamp(22px, 3.2vw, 30px); font-weight: 700; line-height: 1.4; }
+    .proof-quote .g { color: var(--gold); }
+    .proof-by { font-size: 16px; color: var(--text-muted); margin-top: 18px; font-weight: 300; }
+
+    /* TIERS */
+    .tiers-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: stretch; }
+    .tier { border-radius: 20px; padding: 38px 34px; display: flex; flex-direction: column; }
+    .tier-primary { background: linear-gradient(150deg, rgba(194,0,120,0.18), rgba(18,18,30,0.6)); border: 1px solid rgba(194,0,120,0.4); box-shadow: 0 0 55px rgba(194,0,120,0.14); }
+    .tier-secondary { background: var(--bg-card); border: 1px solid var(--border); }
+    .tier-tag { display: inline-block; align-self: flex-start; font-size: 12.5px; font-weight: 700; letter-spacing: 1px; padding: 6px 16px; border-radius: 100px; margin-bottom: 18px; }
+    .tier-primary .tier-tag { background: linear-gradient(135deg, var(--magenta), var(--magenta-light)); color: #fff; }
+    .tier-secondary .tier-tag { background: rgba(91,149,158,0.12); color: var(--teal-light); border: 1px solid rgba(91,149,158,0.25); }
+    .tier h3 { font-size: clamp(21px, 2.6vw, 27px); font-weight: 800; margin-bottom: 12px; line-height: 1.25; }
+    .tier p { font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.6; margin-bottom: 28px; flex: 1; }
+    .btn-magenta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; font-weight: 700; padding: 15px 32px; border-radius: 100px; background: linear-gradient(135deg, var(--magenta), var(--magenta-light)); color: #fff; text-decoration: none; box-shadow: 0 8px 28px rgba(194,0,120,0.32); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-magenta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(194,0,120,0.48); }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 700; padding: 14px 30px; border-radius: 100px; background: transparent; border: 1px solid var(--teal); color: var(--teal-light); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .btn-outline:hover { background: var(--teal); color: #0a0a14; }
+    .tier-note { font-size: 13px; color: var(--text-muted); margin-top: 12px; text-align: center; }
+
+    /* FINAL CTA */
+    .final-cta { text-align: center; padding: 110px 24px; position: relative; overflow: hidden; }
+    .final-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(194,0,120,0.12) 0%, transparent 70%); pointer-events: none; }
+    .final-cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .final-cta h2 { font-size: clamp(30px, 5vw, 50px); font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
+    .final-cta p { font-size: 20px; font-weight: 300; color: var(--text-muted); margin-bottom: 38px; }
+    .cta-note { font-size: 14px; color: var(--text-muted); margin-top: 20px; }
+
+    /* FOOTER */
+    footer { padding: 32px 24px; font-size: 14px; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
+
+    /* FADE UP */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .pains-grid { grid-template-columns: 1fr; }
+      .does-grid { grid-template-columns: 1fr; }
+      .tiers-grid { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="hero">
-    <img class="miri" src="miri.png" alt="מירי, העוזרת האישית של נתנאל">
-    <h1>כל מה שנאמר בפגישה החשובה שלך נעלם ברגע שהיא נגמרת.</h1>
-    <p class="sub">אני מירי, עוזרת ה-AI של נתנאל. אני מקליטה, מתמללת ומתעדת כל שיחה ופגישה שלו, כדי ששום החלטה, משימה או רעיון לא ייפול בין הכיסאות.</p>
-    <span class="name-badge">רוצה עוזרת כזו גם אצלך? יש שתי דרכים.</span>
-  </div>
+  <!-- NAV -->
+  <nav id="main-nav">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="נתנאל היבש"></a>
+      <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%A8%D7%99%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9E%D7%A0%D7%94%D7%9C%D7%AA%20AI%20%D7%9B%D7%96%D7%95%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%3F" target="_blank" class="nav-cta">
+        בוא נדבר
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </nav>
 
-  <section>
-    <h2>נשמע מוכר?</h2>
-    <div class="pains">
-      <div class="pain"><span class="dot">😵‍💫</span><span>יוצאים מפגישה, ותוך שעה כבר שוכחים חצי ממה שנאמר.</span></div>
-      <div class="pain"><span class="dot">⏳</span><span>מבזבזים שעות יקרות על סיכומים ותיעוד ידני.</span></div>
-      <div class="pain"><span class="dot">🕳️</span><span>החלטות ומשימות פשוט נופלות בין הכיסאות.</span></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div>
+    <div class="hero-content">
+      <img class="hero-img fade-up" src="miri.png" alt="מירי, ה-Chief of Staff הדיגיטלי של נתנאל">
+      <div class="hero-badge fade-up">הכירו את מירי</div>
+      <h1 class="fade-up">מירי מנהלת לנתנאל<br>את כל המשרד. <span class="highlight">לבד.</span></h1>
+      <p class="hero-sub fade-up">היא לא בוט ולא כלי תמלול. מירי היא ה-Chief of Staff הדיגיטלי - מנהלת פרויקטים, זוכרת כל פגישה והחלטה, מתזמרת צוות שלם, ומגישה דוח כל בוקר. עכשיו אפשר לבנות מנהלת כזו גם לעסק שלך.</p>
+      <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%A8%D7%99%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9E%D7%A0%D7%94%D7%9C%D7%AA%20AI%20%D7%9B%D7%96%D7%95%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%3F" target="_blank" class="hero-cta fade-up">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.296-1.508A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.002-1.366l-.36-.213-3.733.894.944-3.63-.236-.374A9.78 9.78 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        בוא נבנה לך מנהלת כזו
+      </a>
     </div>
   </section>
 
-  <section>
-    <div class="sol">
-      <h2>מה אני עושה בשבילך</h2>
-      <ul>
-        <li><span class="ic">🎙️</span><span><b>מקליטה</b> כל שיחה ופגישה, בלי שתצטרך לזכור להפעיל כלום.</span></li>
-        <li><span class="ic">✍️</span><span><b>מתמללת</b> הכל אוטומטית לעברית, מילה במילה.</span></li>
-        <li><span class="ic">📋</span><span><b>מסכמת ומתעדת</b> את ההחלטות והמשימות, מסודר ומוכן לחיפוש.</span></li>
-        <li><span class="ic">⚡</span><span><b>זמינה לך תמיד</b> - כל מה שנאמר, במרחק חיפוש אחד.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <h2>איך מתחילים?</h2>
-    <div class="tiers">
-
-      <div class="tier primary">
-        <span class="tag">הדרך המומלצת</span>
-        <h3>רוצה מערכת כזו, מותאמת בדיוק לך?</h3>
-        <p>נתנאל יבנה איתך עוזרת AI אישית - שמדברת בשפה שלך, מכירה את העסק שלך, ועובדת בדיוק על מה שחשוב לך. בוא נדבר על מה שאתה צריך.</p>
-        <a class="btn wa" href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%A8%D7%99%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A2%D7%95%D7%96%D7%A8%D7%AA%20AI%20%D7%9B%D7%96%D7%95%20%D7%92%D7%9D.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%3F">💬 בוא נדבר בוואטסאפ</a>
-        <span class="mini">שיחה ישירה עם נתנאל, בלי התחייבות</span>
+  <!-- PAINS -->
+  <section class="pains-section">
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center;">
+        <div class="section-label">נשמע מוכר?</div>
+        <h2 class="section-title">העסק גדל - ואתה הפכת לצוואר הבקבוק.</h2>
       </div>
-
-      <div class="tier secondary">
-        <span class="tag">רוצה להתחיל לבד</span>
-        <h3>רק רוצה כלי שמתמלל, כבר עכשיו?</h3>
-        <p>זה הכלי שאני משתמשת בו כל יום. פותחים חשבון, מתחילים להקליט, והתמלול מגיע לבד. דרך נתנאל אתה מקבל חודש חינם.</p>
-        <a class="btn tl" href="https://my.timeless.day/gift/%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%D7%94%D7%99%D7%91%D7%A9" target="_blank" rel="noopener">🎁 קבל חודש חינם ב-Timeless</a>
+      <div class="pains-grid">
+        <div class="pain-card fade-up"><span class="pain-icon">🤯</span><p>כל דבר עובר דרכך. אתה מנהל את הכל בראש, ודברים מתחילים ליפול.</p></div>
+        <div class="pain-card fade-up"><span class="pain-icon">🕳️</span><p>לידים, פולואפים והחלטות נופלים בין הכיסאות - ואתה מגלה מאוחר מדי.</p></div>
+        <div class="pain-card fade-up"><span class="pain-icon">⏳</span><p>אתה שוקע בתפעול במקום להתמקד במה שבאמת מזיז - מכירות וצמיחה.</p></div>
       </div>
-
     </div>
   </section>
 
-  <div class="closing">
-    <p>כל פגישה שעוברת בלי תיעוד היא עוד רעיון טוב שהלך לאיבוד.</p>
-    <a class="btn wa" href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A2%D7%95%D7%96%D7%A8%D7%AA%20AI%20%D7%9B%D7%9E%D7%95%20%D7%9E%D7%99%D7%A8%D7%99">💬 בוא נדבר</a>
-  </div>
+  <!-- WHAT MIRI DOES -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center;">
+        <div class="section-label">מה מירי מנהלת</div>
+        <h2 class="section-title">לא עוזרת. מנהלת.</h2>
+        <p class="section-desc" style="margin:0 auto;">כל מה שהיית נותן ל-Chief of Staff אנושי - מירי עושה, 24/7, ולא שוכחת כלום.</p>
+      </div>
+      <div class="does-grid">
+        <div class="does-card fade-up"><span class="does-icon">🧠</span><div><h3>הזיכרון הארגוני שלך</h3><p>כל פגישה, החלטה, ליד ואיש קשר - זכורים, מקושרים וזמינים בחיפוש אחד.</p></div></div>
+        <div class="does-card fade-up"><span class="does-icon">🎯</span><div><h3>מנהלת פרויקטים</h3><p>עוקבת אחרי משימות, סטטוסים ומי תקוע - ומתריעה לפני שמשהו נופל.</p></div></div>
+        <div class="does-card fade-up"><span class="does-icon">👥</span><div><h3>מתזמרת צוות</h3><p>מחלקת משימות, מנהלת handoffs ועוקבת אחרי ביצוע - כל אחד יודע מה עליו.</p></div></div>
+        <div class="does-card fade-up"><span class="does-icon">📊</span><div><h3>דוח על השולחן כל בוקר</h3><p>מה קרה, מה דחוף, ומה מחכה להכרעה שלך - בלי שתצטרך לשאול.</p></div></div>
+        <div class="does-card fade-up"><span class="does-icon">🎙️</span><div><h3>לא מפספסת מילה</h3><p>מקליטה, מתמללת ומתעדת כל שיחה ופגישה - כחלק מהזיכרון, לא כמטרה.</p></div></div>
+        <div class="does-card fade-up"><span class="does-icon">💬</span><div><h3>זמינה תמיד</h3><p>שואלת, מזכירה וממליצה - בכל ערוץ, בלי הפסקה ובלי ימי חופש.</p></div></div>
+      </div>
+    </div>
+  </section>
 
-  <footer>נתנאל היבש · אוטומציה ו-AI שעובדים בשבילך</footer>
+  <!-- PROOF -->
+  <section class="proof">
+    <div class="container">
+      <div class="proof-inner fade-up">
+        <p class="proof-quote">כבר חצי שנה שמירי מנהלת לי את כל העסק.<br>אני כבר לא <span class="g">מבצע</span> - אני <span class="g">מחליט</span>.</p>
+        <p class="proof-by">— נתנאל היבש, בנה את מירי לעצמו</p>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <!-- TIERS -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center;">
+        <div class="section-label">איך מתחילים?</div>
+        <h2 class="section-title">רוצה מנהלת כזו לעסק שלך?</h2>
+      </div>
+      <div class="tiers-grid">
+        <div class="tier tier-primary fade-up">
+          <span class="tier-tag">הדרך המומלצת</span>
+          <h3>נבנה לך Chief of Staff AI משלך</h3>
+          <p>לא כלי מדף שקונים. נתנאל ילווה אותך בבניית מנהלת AI אמיתית - מותאמת לעסק, לצוות ולדרך העבודה שלך. מערכת שמכירה את השטח שלך, מנהלת אותו, וגדלה איתך. בדיוק כמו שמירי מנהלת את המשרד של נתנאל.</p>
+          <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%A8%D7%99%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9E%D7%A0%D7%94%D7%9C%D7%AA%20AI%20%D7%9B%D7%96%D7%95%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%3F" target="_blank" class="btn-magenta">💬 בוא נדבר על מנהלת משלך</a>
+          <span class="tier-note">שיחת אפיון עם נתנאל, בלי התחייבות</span>
+        </div>
+        <div class="tier tier-secondary fade-up">
+          <span class="tier-tag">צעד ראשון קטן</span>
+          <h3>רק רוצה שהפגישות שלך יתועדו?</h3>
+          <p>אם עוד לא הגעת למנהלת מלאה, התחל מהבסיס: הכלי שמירי משתמשת בו כדי לא לפספס אף שיחה. פותחים חשבון, מקליטים, והתמלול מגיע לבד. דרך נתנאל - חודש חינם.</p>
+          <a href="https://my.timeless.day/gift/%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%D7%94%D7%99%D7%91%D7%A9" target="_blank" rel="noopener" class="btn-outline">🎁 חודש חינם ב-Timeless</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="final-cta-inner">
+      <div class="section-label fade-up" style="text-align:center;">מוכן להפסיק להיות צוואר הבקבוק?</div>
+      <h2 class="fade-up">העסק שלך מגיע למנהלת<br>שלא שוכחת כלום.</h2>
+      <p class="fade-up">בוא נבנה לך אחת - ותחזור להיות זה שמחליט, לא זה שרץ.</p>
+      <a href="https://wa.me/972504777411?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%9E%D7%A0%D7%94%D7%9C%D7%AA%20AI%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99" target="_blank" class="hero-cta fade-up">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.296-1.508A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.002-1.366l-.36-.213-3.733.894.944-3.63-.236-.374A9.78 9.78 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        בוא נדבר
+      </a>
+      <p class="cta-note fade-up">תגובה אישית &nbsp;•&nbsp; בלי התחייבות</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container"><p>© 2026 נתנאל היבש &nbsp;|&nbsp; <a href="../index.html">חזרה לדף הבית</a></p></div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
